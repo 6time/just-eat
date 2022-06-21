@@ -8,8 +8,9 @@ pageEncoding="UTF-8" %>
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
-    <div class="main-title">Just Eat</div>
-    Hello ${member.name} ${member.id}
-    <button class="main-button">친구 추가</button>
+    <div class="member-title">로그인</div>
+    <input class="member-input" placeholder="이메일" />
+    <input class="member-input" placeholder="비밀번호" />
+    <button class="member-button">로그인</button>
   </body>
 </html>
