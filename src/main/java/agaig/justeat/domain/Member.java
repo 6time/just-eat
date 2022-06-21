@@ -5,9 +5,7 @@ public class Member {
     private String email;
     private String password;
     private String name;
-    private String sex;
-    private String weight;
-    private String height;
+    private String phone;
 
     public Long getId() {
         return id;
@@ -41,27 +39,21 @@ public class Member {
         this.name = name;
     }
 
-    public String getSex() {
-        return sex;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public String getWeight() {
-        return weight;
+    public String getAddress() {
+        return address;
     }
 
-    public void setWeight(String weight) {
-        this.weight = weight;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getHeight() {
-        return height;
-    }
-
-    public void setHeight(String height) {
-        this.height = height;
-    }
+    private String address;
 }
