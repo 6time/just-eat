@@ -4,7 +4,7 @@ pageEncoding="UTF-8" %>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <title>Just Eat</title>
+    <title>로그인 | Just Eat</title>
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
