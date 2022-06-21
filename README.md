@@ -26,7 +26,8 @@
 
 # 💡ERD
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/dce39fcf-df59-4165-83e6-90c0637b2912/Untitled.png)
+![ERD](https://user-images.githubusercontent.com/82517133/174810738-abaab0a7-3d4a-4790-a49e-98ac9c3594a0.png)
+
 
 ## 📝 구현 기능 명세
 
