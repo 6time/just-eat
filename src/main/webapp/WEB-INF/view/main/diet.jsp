@@ -5,14 +5,10 @@ pageEncoding="UTF-8" %>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <title>로그인 | Just Eat</title>
+    <title>식단 | Just Eat</title>
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
-  <c:if test="true">HELLO</c:if>
-    <div class="member-title">로그인</div>
-    <input class="member-input" placeholder="이메일" />
-    <input class="member-input" placeholder="비밀번호" />
-    <button class="member-button">로그인</button>
+   <c:import url=""/>
   </body>
 </html>
