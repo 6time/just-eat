@@ -10,6 +10,15 @@ public class MemberHealth {
     private String protein;
     private String carbo;
     private String fat;
+    private String exercise;
+
+    public String getExercise() {
+        return exercise;
+    }
+
+    public void setExercise(String exercise) {
+        this.exercise = exercise;
+    }
 
     public Long getMember_id() {
         return member_id;

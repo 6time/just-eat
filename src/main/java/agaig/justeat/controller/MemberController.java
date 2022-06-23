@@ -12,4 +12,9 @@ public class MemberController {
     public String signIn() {
         return "/member/signIn";
     }
+
+    @GetMapping("/kakao")
+    public String sns() {
+        return "/member/sns";
+    }
 }
