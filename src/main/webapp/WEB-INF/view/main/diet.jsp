@@ -5,6 +5,7 @@ pageEncoding="UTF-8" %>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" href="/img/just-eat-r-128.png" />
     <title>식단 | Just Eat</title>
     <link rel="stylesheet" href="/css/style.css" />
   </head>
