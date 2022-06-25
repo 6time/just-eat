@@ -27,7 +27,7 @@
 
 # 💡ERD
 
-![ERD](https://user-images.githubusercontent.com/82517133/174810738-abaab0a7-3d4a-4790-a49e-98ac9c3594a0.png)
+![just-eat-erd](https://user-images.githubusercontent.com/82517133/175777838-09a3c6e7-5d22-4c0b-9a13-f0c83909e375.png)
 
 
 ## 📝 구현 기능 명세
