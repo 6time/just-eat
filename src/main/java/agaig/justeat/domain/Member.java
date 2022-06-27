@@ -12,7 +12,6 @@ public class Member {
     private String gender;
     private String birth;
     private String goal;
-    private String nutrient;
     private String exercise;
 
     public Long getMember_id() {
@@ -101,14 +100,6 @@ public class Member {
 
     public void setGoal(String goal) {
         this.goal = goal;
-    }
-
-    public String getNutrient() {
-        return nutrient;
-    }
-
-    public void setNutrient(String nutrient) {
-        this.nutrient = nutrient;
     }
 
     public String getExercise() {
