@@ -26,7 +26,8 @@ public class SelfCheckTest {
         while (true) {
 
             dayEnergy = sc.nextInt();
-            if(dayEnergy == 0){
+
+            if (dayEnergy == 0) {
                     System.out.println("1단계 호흡의 변화 없음 (스트레칭)|| 2단계 숨이 깊어지지만 편히 대화 가능 (걷기)|| 3단계 대화하기엔 숨쉬기 다소 힘든정도 (적당한 달리기)");
                     System.out.println("4단계 숨이 많이 차고 숨쉬기 힘든 정도 (빠른 달리기)|| 5단계 숨쉬기 매우 힘들고 극도록 힘이 드는 정도 (전력 달리기)");
                     System.out.println("이제 알맞는 번호를 선택해주세요.");
