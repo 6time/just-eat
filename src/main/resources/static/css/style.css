@@ -1,0 +1,85 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+
+* {
+   font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+      "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+      "Malgun Gothic", sans-serif;
+}
+body {
+   background-color: #f1f1f1;
+   display: flex;
+   justify-content: center;
+}
+.member-out-box {
+   display: flex;
+   justify-content: center;
+   width: 520px;
+   height: 100vh;
+   border-left: 1px solid #cacaca;
+   border-right: 1px solid #cacaca;
+   background-color: white;
+}
+.member-submit-box {
+   width: 500px;
+   height: 800px;
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   align-items: center;
+}
+.member-title {
+   font-family: "Pretendard";
+   font-size: 24px;
+   margin: 10px;
+}
+.member-input-text {
+   font-family: "Pretendard";
+   width: 374px;
+   height: 48px;
+   color: #555;
+   font-size: 16px;
+   font-weight: 400;
+   margin-top: 15px;
+   display: block;
+   border: 1px solid #cacaca;
+   border-radius: 5px;
+}
+.member-btn-a {
+   font-family: "Pretendard";
+   cursor: pointer;
+   width: 380px;
+   height: 50px;
+   border-radius: 5px;
+   border: none;
+   background-color: #b3dbf2;
+   color: #000000;
+   font-size: 16px;
+   font-weight: 400;
+   margin-top: 10px;
+   margin-bottom: 10px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.member-btn-sns {
+   font-family: "Pretendard";
+   cursor: pointer;
+   width: 380px;
+   height: 64px;
+   border-radius: 5px;
+   border: none;
+   background-color: #ffe500;
+   color: #000000;
+   font-size: 16px;
+   font-weight: 400;
+   margin-top: 10px;
+   margin-bottom: 10px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+#kakao {
+   padding-right: 50px;
+}
+.sns-text {
+}
