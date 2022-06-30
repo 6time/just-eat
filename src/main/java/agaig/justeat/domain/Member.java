@@ -1,18 +1,22 @@
 package agaig.justeat.domain;
 
 public class Member {
-    private Long id;
+    private Long member_id;
     private String email;
     private String password;
     private String name;
     private String phone;
+    private String address;
+    private String gender;
+    private String birth;
+ 
 
-    public Long getId() {
-        return id;
+    public Long getMember_id() {
+        return member_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setMember_id(Long member_id) {
+        this.member_id = member_id;
     }
 
     public String getEmail() {
@@ -54,6 +58,20 @@ public class Member {
     public void setAddress(String address) {
         this.address = address;
     }
+    
+    public String getGender() {
+        return gender;
+    }
 
-    private String address;
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getBirth() {
+        return birth;
+    }
+
+    public void setBirth(String birth) {
+        this.birth = birth;
+    }
 }
