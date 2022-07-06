@@ -5,6 +5,8 @@ import agaig.justeat.jiwon.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BoardService {
     BoardRepository boardRepository;
@@ -21,4 +23,18 @@ public class BoardService {
     public void test2(Long id){
         boardRepository.findById(id);
     }
+
+    public Long join(Articles articles){
+        boardRepository.save(articles);
+        return articles.getArticle_id();
+    }
+
+    public List<Articles> findList() {
+        return boardRepository.findAll();
+    }
+
+
+
 }
+
+// 1. 데이터베이스 연결 2. jstl forEach를 이용한 반복문 작성 3. jsp를 통한 게시판 틀 작성

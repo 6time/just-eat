@@ -13,7 +13,7 @@ public interface BoardRepository {
     Articles save(Articles articles);
     Articles update(Articles articles);
     Articles findById(Long id);
-    List<Articles> findAll(Articles articles);
+    List<Articles> findAll();
     void delete(Long id);
 
 }
