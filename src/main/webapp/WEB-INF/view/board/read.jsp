@@ -12,6 +12,7 @@
 </head>
 <body>
 <h1>read</h1>
+<form action="/boards" method="post">
 <table>
     <tr>
         <th>제목 : </th>
@@ -28,10 +29,11 @@
         <td></td>
         <td>
             <input type="submit" value="등록">
-            <input type="button" value="수정">
+            <input type="button" value="삭제" onclick="location.href='/boards/view/${Article.article_id}/delete'">
             <input type="button" value="취소" onclick="location.href='/boards'">
         </td>
     </tr>
 </table>
+</form>
 </body>
 </html>

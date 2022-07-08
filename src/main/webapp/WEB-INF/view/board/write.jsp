@@ -14,7 +14,7 @@
     <table>
         <tr>
             <th>제목 : </th>
-            <td><input type="text" placeholder="제목을 입력하세요." id=article_title name="article_title"></td>
+            <td><input type="text" placeholder="제목을 입력하세요." id="article_title" name="article_title"></td>
         </tr>
         <tr>
             <th>내용 : </th>

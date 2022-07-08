@@ -77,7 +77,11 @@ public class BoardController {
         return "board/read";
     }
 
-
+    @GetMapping("/view/{article_id}/delete")
+    public String delete(@PathVariable Long article_id){
+        boardService.deleteList(article_id);
+        return "board/list";
+    }
 
 
 

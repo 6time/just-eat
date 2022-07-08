@@ -34,7 +34,9 @@ public class BoardService {
         return boardRepository.findAll();
     }
 
-
+    public void deleteList(Long article_id){
+        boardRepository.delete(article_id);
+    }
 
 }
 

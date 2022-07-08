@@ -43,7 +43,7 @@ public class JdbcTemplateBoardRepository implements BoardRepository{
 
     @Override
     public void delete(Long id) {
-
+        hashMap.remove(id);
     }
 
 
