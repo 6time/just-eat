@@ -20,8 +20,9 @@ public class BoardService {
         boardRepository.save(articles);
     }
 
-    public void test2(Long id){
-        boardRepository.findById(id);
+    public Articles findOne(Long id){
+      return boardRepository.findById(id);
+
     }
 
     public Long join(Articles articles){

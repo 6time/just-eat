@@ -16,4 +16,6 @@ public interface BoardRepository {
     List<Articles> findAll();
     void delete(Long id);
 
+
+
 }

@@ -33,7 +33,7 @@ public class JdbcTemplateBoardRepository implements BoardRepository{
         Articles articles = hashMap.get(id);
         System.out.println("게시글 제목 " + articles.getArticle_title());
         System.out.println("게시글 " + articles.getArticle_text());
-        return null;
+        return articles;
     }
 
     @Override
@@ -45,6 +45,7 @@ public class JdbcTemplateBoardRepository implements BoardRepository{
     public void delete(Long id) {
 
     }
+
 
 
 }

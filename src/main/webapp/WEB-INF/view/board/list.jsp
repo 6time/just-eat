@@ -9,7 +9,6 @@
 </head>
 <body>
     <h1>게시글</h1>
-    
     <table>
         <tr>
            <th>번호</th>
@@ -21,13 +20,14 @@
         <tr>
 
                 <td>${articles.article_id}</td>
-                <td><a href="/boards/view/no">${articles.article_title}</a></td>
+                <!-- 수정 -->
+                <td><a href="${path}/boards/view/${articles.article_id}">${articles.article_title}</a></td> <!-- 원래는 /boards/view/no -->
             <!-- <td>jiwon</td> -->
             <!-- <td>yyyy-mm-dd</td> -->
 
         </tr>
         </c:forEach>
-    </table>
-    <a href="/boards/write">글쓰기</a>
+        </table>
+        <a href="/boards/write">글쓰기</a>
 </body>
 </html>

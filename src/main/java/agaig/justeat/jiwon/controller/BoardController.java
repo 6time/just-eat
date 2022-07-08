@@ -5,9 +5,7 @@ import agaig.justeat.jiwon.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,7 +30,7 @@ public class BoardController {
     @GetMapping("/view/no")
     public String readArticle() {
         Long id = 1L;
-        boardService.test2(id);
+        boardService.findOne(id);
         return "/board/read";
     }
 
@@ -63,6 +61,24 @@ public class BoardController {
 
         return "redirect:/boards";
     }
+
+    //추가
+//    @RequestMapping(value = "/read", method = RequestMethod.GET)
+//    public String getRead() throws Exception{
+//        return "board/read";
+//    }
+
+    @GetMapping("/view/{article_id}")
+    public String viewId(@PathVariable Long article_id, Model model) {
+        Articles article = boardService.findOne(article_id);
+
+        model.addAttribute("Article", article);
+
+        return "board/read";
+    }
+
+
+
 
 
 }
