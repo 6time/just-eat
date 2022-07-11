@@ -7,6 +7,8 @@ import agaig.justeat.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class MemberService {
     private final MemberRepository memberRepository;
@@ -17,15 +19,16 @@ public class MemberService {
     }
 
     public Long join(MemberSaveRequestDto requestDto) {
-//        memberRepository.findByEmail(requestDto.getEmail())
-//                .ifPresent((member -> {
-//                    throw new IllegalStateException("이미 존재하는 회원입니다.");
-//                }));
-        return memberRepository.save(requestDto.toEntity()).getMember_id();
+        Optional.ofNullable(memberRepository.findByEmail(requestDto.getEmail()))
+                .ifPresent((member -> {
+                    throw new IllegalStateException("이미 존재하는 회원입니다.");
+                }));
+        return memberRepository.save(requestDto.toEntity());
     }
 
     public MemberResponseDto signIn(String email, String password) {
-        Member member = memberRepository.findByEmail(email).orElseThrow(() -> new IllegalArgumentException("존재하지 않는 회원 입니다."));
+        System.out.println(email);
+        Member member = Optional.ofNullable(memberRepository.findByEmail(email)).orElseThrow(() -> new IllegalArgumentException("존재하지 않는 회원 입니다."));
         MemberResponseDto responseDto = new MemberResponseDto(member);
         if (!password.equals(member.getPassword())) {
             throw new IllegalStateException("틀린 비밀번호 입니다.");

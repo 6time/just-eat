@@ -8,4 +8,7 @@
         insert into members(email, password, name, phone, address, gender, birth)
         values(#{email}, #{password}, #{name}, #{phone}, #{address}, #{gender}, #{birth})
     </insert>
+    <select id="findByEmail" parameterType="String" resultType="agaig.justeat.domain.Member">
+        select * from members where email = #{email}
+    </select>
 </mapper>

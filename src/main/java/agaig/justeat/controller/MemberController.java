@@ -27,6 +27,7 @@ public class MemberController {
 
     @PostMapping("")
     public String postSignIn(String email, String password, HttpSession session) {
+        System.out.println(email);
         MemberResponseDto responseDto = memberService.signIn(email, password);
         session.setAttribute("session", responseDto);
         return "/index";
@@ -39,6 +40,7 @@ public class MemberController {
 
     @PostMapping("signUp")
     public String postSignUp(MemberSaveRequestDto requestDto) {
+        System.out.println("radio test = " + requestDto.getGender());
         memberService.join(requestDto);
         return "/member/signIn";
     }
