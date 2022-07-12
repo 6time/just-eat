@@ -40,7 +40,6 @@ public class MemberController {
 
     @PostMapping("signUp")
     public String postSignUp(MemberSaveRequestDto requestDto) {
-        System.out.println("radio test = " + requestDto.getGender());
         memberService.join(requestDto);
         return "/member/signIn";
     }

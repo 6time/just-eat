@@ -27,7 +27,6 @@ public class MemberService {
     }
 
     public MemberResponseDto signIn(String email, String password) {
-        System.out.println(email);
         Member member = Optional.ofNullable(memberRepository.findByEmail(email)).orElseThrow(() -> new IllegalArgumentException("존재하지 않는 회원 입니다."));
         MemberResponseDto responseDto = new MemberResponseDto(member);
         if (!password.equals(member.getPassword())) {
