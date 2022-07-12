@@ -59,7 +59,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                   placeholder="생일"
                />
                <input type="text" id="name" name="gender" hidden />
-               <div class="select-gender" role="radiogroup">
+               <div class="select-gender" role="radio-group">
                   <input
                      type="radio"
                      id="man"
