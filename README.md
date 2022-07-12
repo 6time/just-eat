@@ -10,16 +10,16 @@
 
 ### 🏗️ 개발 인원 및 기간
 
-- 개발 기간 : 2022/06/20 ~ 2022/08/05 (6주간)
+- 개발 기간 : 2022/06/20 ~ 2022/07/29 (5주간)
 - 개발 인원 : Front-end & Back-end 5명
 
 ### 🛠️ 기술 스택
 
 > Back-end
 >
-- Language : Java
-- Framework : Spring, Spring Boot, Spring JDBC Template
-- Database : MySQL, Oracle
+- Language : Java 11
+- Framework : Spring Boot, MyBatis
+- Database : MySQL
 
 > Front-end
 >
@@ -27,8 +27,7 @@
 
 # 💡ERD
 
-![just-eat-erd](https://user-images.githubusercontent.com/82517133/175777838-09a3c6e7-5d22-4c0b-9a13-f0c83909e375.png)
-
+![just-eat-erd](https://user-images.githubusercontent.com/82517133/178319052-b9e5f178-4884-4771-bbcd-b06a4756b780.png)
 
 ## 📝 구현 기능 명세
 
@@ -53,13 +52,17 @@
 
 > Mission 4 | 로그인 기능
 >
-- 로그인 성공시 session을 통해 로그인 유지
+- 로그인 성공시 session 을 통해 로그인 유지
 - password 검증 구현
 
 > Mission 5 | 테스트 코드 작성
 >
 - 중복 email 로직에 대한 테스트 케이스 작성
 - password 로직에 대한 테스트 케이스 작성
+
+> Mission 6 | MyBatis 기본 설정
+>
+- MyBatis 설정 XML 파일 작성
 
 ### 기유진
 
