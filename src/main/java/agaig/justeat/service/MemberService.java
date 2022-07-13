@@ -7,6 +7,7 @@ import agaig.justeat.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
 @Service
@@ -35,5 +36,9 @@ public class MemberService {
         return responseDto;
     }
 
-
+    public void signInCheck(HttpSession session) {
+        Optional.ofNullable(session.getAttribute("session"))
+                .orElseThrow(() ->
+                        new IllegalStateException("로그인이 필요합니다."));
+    }
 }
