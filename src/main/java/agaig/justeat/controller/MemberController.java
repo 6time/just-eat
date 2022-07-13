@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -26,9 +29,15 @@ public class MemberController {
     }
 
     @PostMapping("")
-    public String postSignIn(String email, String password, HttpSession session) {
+    public String postSignIn(String email, String password, boolean rememberId, HttpServletRequest request, HttpServletResponse response) {
         System.out.println(email);
         MemberResponseDto responseDto = memberService.signIn(email, password);
+        Cookie cookie = new Cookie("email", email);
+        if (!rememberId) {
+            cookie.setMaxAge(0);
+        }
+        response.addCookie(cookie);
+        HttpSession session = request.getSession();
         session.setAttribute("session", responseDto);
         return "/index";
     }
@@ -49,4 +58,11 @@ public class MemberController {
     public String sns() {
         return "/member/sns";
     }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/";
+    }
+
 }

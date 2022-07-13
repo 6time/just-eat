@@ -10,7 +10,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       <link rel="stylesheet" href="/css/style.css" />
    </head>
    <body>
-      <form action="/members/signUp" method="post">
+      <form action="/members/signUp" method="post" onsubmit="return formCheck(this)">
          <div class="member-out-box">
             <div class="member-submit-box">
                <img
@@ -27,6 +27,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                   type="text"
                   name="email"
                   placeholder="이메일"
+                  autofocus
                />
                <input
                   class="member-input-text"
