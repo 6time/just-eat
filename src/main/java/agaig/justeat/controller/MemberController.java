@@ -29,8 +29,7 @@ public class MemberController {
     }
 
     @PostMapping("")
-    public String postSignIn(String email, String password, boolean rememberId, HttpServletRequest request, HttpServletResponse response) {
-        System.out.println(email);
+    public String postSignIn(String email, String password, boolean rememberId, String toURL, HttpServletRequest request, HttpServletResponse response) {
         MemberResponseDto responseDto = memberService.signIn(email, password);
         Cookie cookie = new Cookie("email", email);
         if (!rememberId) {
@@ -39,7 +38,8 @@ public class MemberController {
         response.addCookie(cookie);
         HttpSession session = request.getSession();
         session.setAttribute("session", responseDto);
-        return "/index";
+        toURL = toURL == null || toURL.equals("") ? "/" : toURL;
+        return "redirect:" + toURL;
     }
 
     @GetMapping("signUp")
