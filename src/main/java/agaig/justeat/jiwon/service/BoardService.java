@@ -1,43 +1,37 @@
 package agaig.justeat.jiwon.service;
 
 import agaig.justeat.jiwon.domain.Articles;
-import agaig.justeat.jiwon.repository.BoardRepository;
+import agaig.justeat.jiwon.model.aws.dao.BoardMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class BoardService {
-    BoardRepository boardRepository;
+    BoardMapper boardMapper;
 
     @Autowired
-    public BoardService(BoardRepository boardRepository) {
-        this.boardRepository = boardRepository;
+    public BoardService(BoardMapper boardMapper) {
+        this.boardMapper = boardMapper;
     }
 
-    public void test(Articles articles) {
-        boardRepository.save(articles);
+    public List<Articles> findAll(){
+        return boardMapper.findAll();
     }
 
-    public Articles findOne(Long id){
-      return boardRepository.findById(id);
+    public void create(Articles articles){ boardMapper.create(articles);}
 
-    }
+    public Articles findOne(Long id){ return boardMapper.findOne(id);  }
 
-    public Long join(Articles articles){
-        boardRepository.save(articles);
-        return articles.getArticle_id();
-    }
+    public void deleteList(Long article_id){  boardMapper.deleteList(article_id);}
 
-    public List<Articles> findList() {
-        return boardRepository.findAll();
-    }
+    //수정
+//    public void update(Long article_id){ boardMapper.update(article_id);}
 
-    public void deleteList(Long article_id){
-        boardRepository.delete(article_id);
-    }
+    public void update(Articles articles){ boardMapper.update(articles);}
 
 }
 
-// 1. 데이터베이스 연결 2. jstl forEach를 이용한 반복문 작성 3. jsp를 통한 게시판 틀 작성

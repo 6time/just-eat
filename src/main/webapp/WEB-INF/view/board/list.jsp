@@ -21,7 +21,7 @@
 
                 <td>${articles.article_id}</td>
                 <!-- 수정 -->
-                <td><a href="${path}/boards/view/${articles.article_id}">${articles.article_title}</a></td> <!-- 원래는 /boards/view/no -->
+                <td><a href="${path}/boards/view/${articles.article_id}">${articles.article_title}</a></td>
             <!-- <td>jiwon</td> -->
             <!-- <td>yyyy-mm-dd</td> -->
 
