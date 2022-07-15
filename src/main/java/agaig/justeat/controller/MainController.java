@@ -1,5 +1,6 @@
 package agaig.justeat.controller;
 
+import agaig.justeat.annotation.MemberSignInCheck;
 import agaig.justeat.domain.Member;
 import agaig.justeat.service.MemberService;
 import org.springframework.stereotype.Controller;
@@ -26,9 +27,9 @@ public class MainController {
         return "index";
     }
 
+    @MemberSignInCheck
     @GetMapping("/self")
     public String self(HttpServletRequest request, HttpSession session) {
-        memberService.signInCheck(session);
         return "/selftest/SelfTestFoundation";
     }
 
