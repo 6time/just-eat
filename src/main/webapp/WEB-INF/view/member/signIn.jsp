@@ -48,6 +48,7 @@ pageEncoding="UTF-8" %>
                   name="password"
                   placeholder="비밀번호"
                />
+               <input type="hidden" name="toURL" value="${param.toURL}"/>
                <button class="member-btn-a" type="submit">로그인</button>
                <label class="remember-id"><input type="checkbox" name="rememberId" ${empty cookie.email.value ? "" : "checked"}>ID 기억하기</label>
                <div>아직 회원이 아니신가요?</div>
