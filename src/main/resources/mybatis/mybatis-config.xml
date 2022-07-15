@@ -3,5 +3,6 @@
 <configuration>
     <mappers>
         <mapper resource="BoardMapper.xml"/>
+        <mapper resource="MemberMapper.xml"/>
     </mappers>
 </configuration>
