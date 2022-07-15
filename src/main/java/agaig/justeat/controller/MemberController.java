@@ -36,7 +36,6 @@ public class MemberController {
         MemberResponseDto responseDto = memberService.signIn(email, password);
 
         Cookie memberCookie = new Cookie("member_id", responseDto.getMember_id().toString());
-        memberCookie.setValue(responseDto.getMember_id().toString());
         response.addCookie(memberCookie);
 
         Cookie idCookie = new Cookie("email", email);
@@ -70,7 +69,10 @@ public class MemberController {
     }
 
     @GetMapping("/logout")
-    public String logout(HttpSession session) {
+    public String logout(@CookieValue(value = "member_id") Cookie memberCookie,HttpSession session, HttpServletResponse response) {
+        memberCookie.setMaxAge(0);
+        memberCookie.setPath("/");
+        response.addCookie(memberCookie);
         session.invalidate();
         return "redirect:/";
     }
