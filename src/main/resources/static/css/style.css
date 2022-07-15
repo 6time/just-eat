@@ -27,6 +27,12 @@ body {
    flex-direction: column;
    align-items: center;
 }
+.member-form {
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   align-items: center;
+}
 .member-title {
    font-family: "Pretendard";
    font-size: 24px;
@@ -37,6 +43,19 @@ body {
    width: 374px;
    height: 48px;
    color: #555;
+   font-size: 16px;
+   font-weight: 400;
+   margin-top: 15px;
+   display: block;
+   border: 1px solid #cacaca;
+   border-radius: 5px;
+}
+.member-input-text[type="text"]:disabled {
+   font-family: "Pretendard";
+   width: 374px;
+   height: 48px;
+   color: #999999;
+   background: #eaeaea;
    font-size: 16px;
    font-weight: 400;
    margin-top: 15px;
@@ -56,7 +75,22 @@ body {
    font-size: 16px;
    font-weight: 400;
    margin-top: 10px;
-   margin-bottom: 10px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.member-btn-b {
+   font-family: "Pretendard";
+   cursor: pointer;
+   width: 380px;
+   height: 50px;
+   border-radius: 5px;
+   border: 1px solid #000000;
+   background-color: #ffffff;
+   color: #000000;
+   font-size: 16px;
+   font-weight: 400;
+   margin-top: 10px;
    display: flex;
    justify-content: center;
    align-items: center;
@@ -114,6 +148,6 @@ body {
    color: #fff;
 }
 .remember-id {
-    margin-top: 5px;
-    margin-bottom: 25px;
+   margin-top: 5px;
+   margin-bottom: 25px;
 }

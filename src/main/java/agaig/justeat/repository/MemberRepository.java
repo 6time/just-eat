@@ -12,9 +12,9 @@ import java.util.Optional;
 public interface MemberRepository {
     Long save(Member member);
 
-    Member update(Member member);
+    Long update(Member member);
 
-    Optional<Member> findById(Long id);
+    Member findById(Long id);
 
     Member findByEmail(String email);
 

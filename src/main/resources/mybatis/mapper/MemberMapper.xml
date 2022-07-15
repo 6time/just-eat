@@ -11,4 +11,12 @@
     <select id="findByEmail" parameterType="String" resultType="agaig.justeat.domain.Member">
         select * from members where email = #{email}
     </select>
+    <select id="findById" parameterType="Long" resultType="agaig.justeat.domain.Member">
+        select * from members where member_id = #{member_id}
+    </select>
+    <update id="update" parameterType="agaig.justeat.domain.Member">
+        update members
+        set name = #{name}, phone = #{phone}, address = #{address}, birth = #{birth}
+        where member_id = #{member_id};
+    </update>
 </mapper>
