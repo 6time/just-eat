@@ -1,6 +1,6 @@
 package agaig.justeat.service;
 
-import agaig.justeat.dto.InfoBoardResponseDto;
+import agaig.justeat.domain.Information;
 import agaig.justeat.dto.InfoResponseDto;
 import agaig.justeat.dto.InfoSaveRequestDto;
 import agaig.justeat.repository.InformationRepository;
@@ -19,7 +19,7 @@ public class InformationService {
         this.informationRepository = informationRepository;
     }
 
-    public List<InfoBoardResponseDto> getBoardList() {
+    public List<Information> getBoardList() {
         return informationRepository.selectAll();
     }
 
@@ -32,16 +32,18 @@ public class InformationService {
     }
 
     public Long write(InfoSaveRequestDto requestDto) {
-        return informationRepository.insert(requestDto);
+        return informationRepository.insert(requestDto.toEntity());
     }
 
     public InfoResponseDto read(Long info_id) {
-        InfoResponseDto responseDto = informationRepository.select(info_id);
+        Information information = informationRepository.select(info_id);
+        InfoResponseDto responseDto = new InfoResponseDto(information);
         informationRepository.increaseViewCnt(info_id);
         return responseDto;
     }
 
-    public List<InfoBoardResponseDto> getPage(Map<String, Integer> map) {
-        return informationRepository.selectPage(map);
+    public List<Information> getPage(Map<String, Integer> map) {
+        List<Information> information = informationRepository.selectPage(map);
+        return information;
     }
 }

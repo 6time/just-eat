@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <typeAliases>
-        <typeAlias alias="Member" type="agaig.justeat.domain.Member"/>
-        <typeAlias alias="Information" type="agaig.justeat.domain.Information"/>
-        <typeAlias alias="InfoBoardResponseDto" type="agaig.justeat.dto.InfoBoardResponseDto"/>
-        <typeAlias alias="InfoResponseDto" type="agaig.justeat.dto.InfoResponseDto"/>
-        <typeAlias alias="InfoSaveRequestDto" type="agaig.justeat.dto.InfoSaveRequestDto"/>
-    </typeAliases>
     <mappers>
+        <mapper resource="MemberMapper.xml"/>
         <mapper resource="BoardMapper.xml"/>
         <mapper resource="InformationMapper.xml"/>
-        <mapper resource="MemberMapper.xml"/>
     </mappers>
 </configuration>

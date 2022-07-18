@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java"
-pageEncoding="UTF-8" %> <%@ taglib prefix="c"
-uri="http://java.sun.com/jsp/jstl/core"%>
+pageEncoding="UTF-8" %> <%@taglib prefix="c"
+uri="http://java.sun.com/jsp/jstl/core"%> <%@taglib prefix="fmt"
+uri="http://java.sun.com/jstl/fmt_rt"%>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
@@ -12,9 +13,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
   <body>
     <div class="box">
       <div class="article-box">
-        <div class="login-title">공지사항</div>
-        <div class="nav"></div>
-        <div class="login-text">게시글</div>
+        <div class="member-title">공지사항</div>
         <div class="nav"></div>
         <div class="member">
           <table class="article-table">
@@ -38,23 +37,25 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                     >
                   </td>
                   <td class="article-body-author">${board.writer}</td>
-                  <td>${board.reg_date}</td>
-                  <td>${board.count}</td>
+                  <td>
+                    <fmt:formatDate
+                      value="${board.reg_date}"
+                      pattern="yyyy-MM-dd"
+                      type="date"
+                    />
+                  </td>
+                  <td>${board.view_cnt}</td>
                   <td>추천</td>
                 </tr>
               </c:forEach>
             </tbody>
           </table>
           <c:if test="${sessionScope.session!=null}">
-            <a class="member-btn-a" href="<c:url value='/self'/>">글 작성</a>
+            <a class="member-btn-a" href="<c:url value='/info/write'/>"
+              >글 작성</a
+            >
           </c:if>
-          <button
-            class="member-btn-b"
-            onclick="location.href='/'"
-            type="button"
-          >
-            홈으로 돌아가기
-          </button>
+          <a class="member-btn-b" href="/"> 홈으로 돌아가기 </a>
         </div>
       </div>
     </div>

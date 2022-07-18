@@ -1,13 +1,18 @@
 package agaig.justeat.controller;
 
+import agaig.justeat.domain.Information;
 import agaig.justeat.dto.InfoBoardResponseDto;
 import agaig.justeat.dto.InfoResponseDto;
+import agaig.justeat.dto.InfoSaveRequestDto;
+import agaig.justeat.dto.MemberResponseDto;
 import agaig.justeat.service.InformationService;
+import agaig.justeat.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.HashMap;
@@ -19,10 +24,12 @@ import java.util.Map;
 public class InformationController {
 
     private final InformationService informationService;
+    private final MemberService memberService;
 
     @Autowired
-    public InformationController(InformationService informationService) {
+    public InformationController(InformationService informationService, MemberService memberService) {
         this.informationService = informationService;
+        this.memberService = memberService;
     }
 
     @GetMapping("/list")
@@ -32,7 +39,7 @@ public class InformationController {
         Map<String, Integer> map = new HashMap<>();
         map.put("offset", (page - 1) * pageSize);
         map.put("pageSize", pageSize);
-        List<InfoBoardResponseDto> boardList = informationService.getPage(map);
+        List<Information> boardList = informationService.getPage(map);
         model.addAttribute("infoBoardList", boardList);
         return "information/infoList";
     }
@@ -42,5 +49,19 @@ public class InformationController {
         InfoResponseDto responseDto = informationService.read(info_id);
         model.addAttribute("info", responseDto);
         return "/information/info";
+    }
+
+    @GetMapping("/write")
+    public String write() {
+        return "/information/infoWrite";
+    }
+
+    @PostMapping("/write/{member_id}")
+    public String writeSave(@PathVariable Long member_id, InfoSaveRequestDto requestDto) {
+        MemberResponseDto memberResponseDto = memberService.findInfoById(member_id);
+        requestDto.setWriter(memberResponseDto.getName());
+        requestDto.setMember_id(member_id);
+        informationService.write(requestDto);
+        return "redirect:/info/list";
     }
 }

@@ -151,3 +151,43 @@ body {
    margin-top: 5px;
    margin-bottom: 25px;
 }
+.article-table-header {
+   border-bottom: 3px solid black;
+}
+.article-table-title {
+   border-bottom: 3px solid #5d5d5d80;
+}
+.article-table thead > tr > th {
+   padding: 15px;
+}
+.article-table tbody > tr > td {
+   padding: 10px;
+}
+.article-table{
+   text-align: center;
+   margin: 10px;
+   width: 1000px;
+   border-collapse: collapse;
+   word-break: break-all;
+}
+.article-box {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   text-align: center;
+   width: 1000px;
+   height: 100vh;
+   background-color: white;
+   padding-left: 50px;
+   padding-right: 50px;
+}
+.box {
+   width: 100vw;
+   height: 100vh;
+   background-color: #f1f0ec;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   overflow: hidden;
+}

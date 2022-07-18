@@ -1,19 +1,22 @@
 package agaig.justeat.repository;
 
-import agaig.justeat.dto.InfoBoardResponseDto;
-import agaig.justeat.dto.InfoResponseDto;
+import agaig.justeat.domain.Information;
 import agaig.justeat.dto.InfoSaveRequestDto;
 import agaig.justeat.dto.InfoUpdateRequestDto;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
 
-@Repository
+@Mapper
 public interface InformationRepository {
-    InfoResponseDto select(Long info_id);
+
+    Information select(Long info_id);
+
+    Long insert(Information information);
+
+    Long update(Information information);
 
     Long insert(InfoSaveRequestDto saveRequestDto);
 
@@ -21,9 +24,9 @@ public interface InformationRepository {
 
     Long delete();
 
-    List<InfoBoardResponseDto> selectAll();
+    List<Information> selectAll();
 
-    List<InfoBoardResponseDto> selectPage(Map<String, Integer> map);
+    List<Information> selectPage(Map<String, Integer> map);
 
     Long count();
 

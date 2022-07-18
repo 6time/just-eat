@@ -4,18 +4,18 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="agaig.justeat.repository.InformationRepository">
-    <select id="select" parameterType="long" resultType="InfoResponseDto">
+    <select id="select" parameterType="long" resultType="Information">
         SELECT info_id, title, content, writer, view_cnt, comment_cnt, reg_date
         FROM information
         WHERE info_id = #{info_id}
     </select>
-    <insert id="insert" parameterType="InfoSaveRequestDto">
+    <insert id="insert" parameterType="Information">
         INSERT INTO information
-            (title, content, writer)
+            (title, content, writer, reg_date, up_date, member_id)
         VALUES
-            (#{title}, #{content}, #{writer})
+            (#{title}, #{content}, #{writer}, now(), now(), #{member_id})
     </insert>
-    <update id="update" parameterType="InfoUpdateRequestDto">
+    <update id="update" parameterType="Information">
         UPDATE information
         SET title = #{title}
             , content = #{content}
@@ -25,12 +25,12 @@
     <delete id="delete">
         DELETE FROM information WHERE info_id = #{info_id} and writer = #{writer}
     </delete>
-    <select id="selectAll" resultType="InfoBoardResponseDto">
+    <select id="selectAll" resultType="Information">
         SELECT info_id, title, content, writer, view_cnt, comment_cnt, reg_date
         FROM information
         ORDER BY reg_date DESC, info_id DESC
     </select>
-    <select id="selectPage" parameterType="map" resultType="InfoBoardResponseDto">
+    <select id="selectPage" parameterType="map" resultType="Information">
         SELECT info_id, title, content, writer, view_cnt, comment_cnt, reg_date
         FROM information
         ORDER BY reg_date DESC, info_id DESC

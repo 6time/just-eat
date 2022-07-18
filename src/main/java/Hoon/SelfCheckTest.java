@@ -16,7 +16,7 @@ public class SelfCheckTest {
         System.out.println("현재 몸무게를 입력하세요.");
         dayWeight = sc.nextInt();
 
-        System.out.println("오늘 활동량 단계를 입력하세요. (1~5단계)");
+        System.out.println("오늘 활동량 단계를 입력하세요. (InformationMapper.xml~5단계)");
         System.out.println("1단계 아주 가볍게 || 2단계 조금 가볍게  || 3단계 보통 || 4단계 조금 강하게 || 5단계 아주 강하게");
         System.out.println("자세한 설명을 원하시면 0번을 눌러주세요.");
         sc.nextLine();

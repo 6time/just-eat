@@ -12,22 +12,20 @@ uri="http://java.sun.com/jsp/jstl/core"%>
   <body>
     <div class="box">
       <div class="article-box">
-        <div class="login-title">공지사항</div>
-        <div class="nav"></div>
-        <div class="login-text">게시글</div>
+        <div class="member-title">공지사항</div>
         <div class="nav"></div>
         <div class="member">
-
+          <div class="member-title">${info.title}</div>
+          <div class="member-title">${info.content}</div>
           <c:if test="${sessionScope.session!=null}">
-            <a class="member-btn-a" href="<c:url value='/self'/>">글 작성</a>
+            <a class="member-btn-a" href="<c:url value='/self'/>"
+              >공지사항 수정</a
+            >
+            <a class="member-btn-a" href="<c:url value='/self'/>"
+              >공지사항 삭제</a
+            >
           </c:if>
-          <button
-            class="member-btn-b"
-            onclick="location.href='/'"
-            type="button"
-          >
-            홈으로 돌아가기
-          </button>
+          <a class="member-btn-b" href="/info/list"> 목록으로 돌아가기 </a>
         </div>
       </div>
     </div>

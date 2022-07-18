@@ -5,10 +5,8 @@ import agaig.justeat.dto.MemberResponseDto;
 import agaig.justeat.dto.MemberSaveRequestDto;
 import agaig.justeat.dto.MemberUpdateRequestDto;
 import agaig.justeat.repository.MemberRepository;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
@@ -16,6 +14,7 @@ import java.util.Optional;
 @Service
 public class MemberService {
     private final MemberRepository memberRepository;
+
     @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
@@ -26,7 +25,7 @@ public class MemberService {
                 .ifPresent((member -> {
                     throw new IllegalStateException("이미 존재하는 회원입니다.");
                 }));
-        return memberRepository.save(requestDto.toEntity());
+        return memberRepository.insert(requestDto.toEntity());
     }
 
     public MemberResponseDto signIn(String email, String password) {
