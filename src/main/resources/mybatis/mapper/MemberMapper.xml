@@ -4,11 +4,11 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="agaig.justeat.repository.MemberRepository">
-    <insert id="save" parameterType="agaig.justeat.domain.Member">
+    <insert id="save" parameterType="Member">
         insert into members(email, password, name, phone, address, gender, birth)
         values(#{email}, #{password}, #{name}, #{phone}, #{address}, #{gender}, #{birth})
     </insert>
-    <select id="findByEmail" parameterType="String" resultType="agaig.justeat.domain.Member">
+    <select id="findByEmail" parameterType="String" resultType="Member">
         select * from members where email = #{email}
     </select>
 </mapper>
