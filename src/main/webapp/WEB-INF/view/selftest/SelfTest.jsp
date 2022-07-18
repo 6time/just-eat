@@ -19,14 +19,18 @@ pageEncoding="UTF-8" %>
     <body>
 
         <fieldset style="max-width: 10cm">
-        <legend><p style="font-size: large">자가진단 결과</p></legend>
+        <legend><p style="font-size: large">${sessionScope.session.name}님의 자가진단 결과</p></legend>
         <%request.setCharacterEncoding("UTF-8");%>
 
         <div>
-        오늘 먹은 칼로리 : <b>${param.kcal}</b>kcal<br>
-        몸무게 : <b>${param.weight}</b>kg<br>
-        오늘 한 운동량은 : <b>${param.energy}</b>단계
+        오늘 먹은 칼로리 : <b>${param.kcal}kcal</b><br>
+        몸무게 : <b>${param.weight}kg</b><br>
+        오늘 한 운동량은 : <b>${param.exercise}단계</b>
         </div>
+
+
+
+
 
         <!--
         request.getParameter("name값") <- 데이터 입력 가져오기
@@ -36,6 +40,9 @@ pageEncoding="UTF-8" %>
         for(String * : *Arr){ }로 처리
         switch 문은 int 값만 취급 따라서 String 값을 int로 바꿔주기
         -->
+
+
+
 
         </fieldset>
         <br>

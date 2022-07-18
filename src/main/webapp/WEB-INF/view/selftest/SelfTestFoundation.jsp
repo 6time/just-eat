@@ -15,7 +15,7 @@ pageEncoding="UTF-8" %>
   <fieldset style="max-width: fit-content">
 <div>
 <h2>오늘 하루 자가진단</h2>
-<form action="/st" method="post">
+<form action="/selftest" method="post">
   <p></p>
   <fieldset style="max-width: 11cm">
 
@@ -42,11 +42,11 @@ pageEncoding="UTF-8" %>
   <fieldset style="max-width: 11cm">
     오늘 하루동안 한 운동량을 입력하세요.
     <br/><br/>
-    <input type="radio" name="energy" value="1" checked>1단계
-    <input type="radio" name="energy" value="2" >2단계
-    <input type="radio" name="energy" value="3" >3단계
-    <input type="radio" name="energy" value="4" >4단계
-    <input type="radio" name="energy" value="5" >5단계
+    <input type="radio" name="exercise" value="1" checked>1단계
+    <input type="radio" name="exercise" value="2" >2단계
+    <input type="radio" name="exercise" value="3" >3단계
+    <input type="radio" name="exercise" value="4" >4단계
+    <input type="radio" name="exercise" value="5" >5단계
   </fieldset>
   </div>
 
@@ -60,8 +60,8 @@ pageEncoding="UTF-8" %>
     <p>5단계 숨쉬기 매우 힘들고 극도록 힘이 드는 정도 <br>(전력 달리기)</p>
   </fieldset>
   </div>
-
-  <p></p>
+  <input type="hidden" name="member_id" value="${sessionScope.session.member_id}"/>
+  <p/>
   <input type="submit" value="제출" >
   <input type="reset" value="다시작성" >
   <p></p>
