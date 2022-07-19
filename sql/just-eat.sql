@@ -10,7 +10,7 @@
 );
 
 CREATE TABLE `health` (
-	`member_id`	BIGINT	NOT NULL,
+	`member_id`	BIGINT	NOT NULL PRIMARY KEY,
 	'health_flag' BOOLEAN NOT NULL DEFAULT 0,
 	`height` DOUBLE(4,1)	NULL,
 	`weight` DOUBLE(4,1)	NULL,
@@ -77,6 +77,7 @@ CREATE TABLE `orders` (
 ALTER TABLE `members` ADD CONSTRAINT `PK_MEMBERS` PRIMARY KEY (
 	`member_id`
 );
+
 
 ALTER TABLE `products` ADD CONSTRAINT `PK_PRODUCTS` PRIMARY KEY (
 	`product_id`
