@@ -13,11 +13,8 @@ public class SelfTestService { //service는 프레젠테이션(뷰)에서 직접
     @Autowired //필요한 의존 객체의 타입에 해당하는 빈을 찾아 주입
     public SelfTestService(SelfTestRepository selfTestRepository) {this.selfTestRepository = selfTestRepository;}
 
-
-    public void update(SelfTest selfTest) {
-        selfTestRepository.update(selfTest);
+    public Long update(SelfTest selfTest) {
+        return selfTestRepository.update(selfTest);
     }
 }
-
-    //비즈니스 로직이란 업무에 필요한 데이터처리를 수행하는 응용프로그램의 일부
 
