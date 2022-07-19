@@ -1,28 +1,30 @@
-//package agaig.justeat.aop;
-//
-//import org.aspectj.lang.ProceedingJoinPoint;
-//import org.aspectj.lang.annotation.Around;
-//import org.aspectj.lang.annotation.Aspect;
-//import org.springframework.stereotype.Component;
-//
-//import javax.servlet.http.HttpSession;
-//import java.util.Optional;
-//
-//@Aspect
-//@Component
-//public class SignInCheckAop {
-//
-//    @Around("execution(* agaig.justeat..*(..))")
-//    public Object execute(ProceedingJoinPoint proceedingJoinPoint, HttpSession session) throws Throwable{
-//        System.out.println("TEST");
-//        try {
-//            return proceedingJoinPoint.proceed();
-//        } finally {
-//            Optional.ofNullable(session.getAttribute("session"))
-//                    .orElseThrow(() ->
-//                            new IllegalStateException("로그인이 필요합니다."));
-//        }
-//
-//    }
-//
-//}
+package agaig.justeat.aop;
+
+import agaig.justeat.service.MemberService;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import javax.servlet.http.HttpSession;
+
+@Aspect
+@Component
+public class SignInCheckAop {
+
+    private final MemberService memberService;
+
+    @Autowired
+    public SignInCheckAop(MemberService memberService) {
+        this.memberService = memberService;
+    }
+
+//    @Before("execution(* agaig.justeat.controller.MainController.*(..))")
+    @Before("@annotation(agaig.justeat.annotation.MemberSignInCheck)")
+    public void execute() throws Throwable {
+        HttpSession session = ((ServletRequestAttributes)(RequestContextHolder.currentRequestAttributes())).getRequest().getSession();
+        memberService.signInCheck(session);
+    }
+}
