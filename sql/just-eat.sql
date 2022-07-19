@@ -5,13 +5,22 @@
 	`name`	VARCHAR(100)	NOT NULL,
 	`phone`	BIGINT	NULL,
 	`address`	VARCHAR(100)	NULL,
-	`height`	INT	NULL,
-	`weight`	INT	NULL,
 	`gender`	ENUM('man','woman')	NULL,
-	`birth`	INT	NULL,
-	`goal`	INT	NULL,
-	`nutrient`	INT	NULL,
-	`exercise`	INT	NULL
+    `birth`	INT	NULL
+);
+
+CREATE TABLE `health` (
+	`member_id`	BIGINT	NOT NULL,
+	'health_flag' BOOLEAN NOT NULL DEFAULT 0,
+	`height` DOUBLE(4,1)	NULL,
+	`weight` DOUBLE(4,1)	NULL,
+	`goal` DOUBLE(4,1)	NULL,
+	'compareWeight' VARCHAR(20)	NOT NULL,
+	'goal_week' INT NULL,
+	'daily_kcal' INT NULL,
+	'protein' INT NULL,
+	'carbo' INT NULL,
+	'fat' INT NULL
 );
 
 CREATE TABLE `products` (

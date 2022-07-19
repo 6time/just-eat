@@ -1,5 +1,6 @@
 package agaig.justeat.domain;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,12 +13,13 @@ public class Member {
     private String email;
     private String password;
     private String name;
-    private Long phone;
+    private String phone;
     private String address;
     private String gender;
     private String birth;
 
-    public Member(Long member_id, String email, String password, String name, Long phone, String address, String gender, String birth) {
+    @Builder
+    public Member(Long member_id, String email, String password, String name, String phone, String address, String gender, String birth) {
         this.member_id = member_id;
         this.email = email;
         this.password = password;
