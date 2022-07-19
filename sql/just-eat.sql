@@ -11,7 +11,7 @@
 	`birth`	VARCHAR(100)	NULL,
 	`goal`	INT	NULL,
 	`nutrient`	INT	NULL,
-	`exercise`	INT	NULL
+	`exercise`	INT	NULL,
 );
 
 CREATE TABLE `products` (

@@ -1,6 +1,6 @@
 /*package agaig.justeat.dto;
 
-import agaig.justeat.domain.SelfTest;
+import agaig.justeat.hoon.domain.SelfTest;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

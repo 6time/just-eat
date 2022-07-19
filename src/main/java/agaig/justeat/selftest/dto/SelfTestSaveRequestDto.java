@@ -1,6 +1,6 @@
-package agaig.justeat.dto;
+package agaig.justeat.selftest.dto;
 
-import agaig.justeat.domain.SelfTest;
+import agaig.justeat.selftest.domain.SelfTest;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -3,7 +3,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="agaig.justeat.repository.SelfTestRepository">
+<mapper namespace="agaig.justeat.selftest.repository.SelfTestRepository">
     <update id="update" >
         UPDATE members
         SET weight = #{weight}, exercise = #{exercise}
