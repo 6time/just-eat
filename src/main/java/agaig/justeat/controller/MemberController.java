@@ -25,8 +25,11 @@ public class MemberController {
     }
 
     @GetMapping("")
-    public String getSignIn() {
+    public String getSignIn(HttpSession session) {
+        if (session.getAttribute("session") == null) {
         return "/member/signIn";
+        }
+        return "redirect:/";
     }
 
     @PostMapping("")

@@ -18,10 +18,10 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           <div class="member-title">${info.title}</div>
           <div class="member-title">${info.content}</div>
           <c:if test="${sessionScope.session!=null}">
-            <a class="member-btn-a" href="<c:url value='/self'/>"
+            <a class="member-btn-a" href="<c:url value='/info/delete/${member_id}/${info_id}'/>"
               >공지사항 수정</a
             >
-            <a class="member-btn-a" href="<c:url value='/self'/>"
+            <a class="member-btn-a" href="<c:url value='/info/delete/${sessionScope.session.member_id}/${info.info_id}'/>"
               >공지사항 삭제</a
             >
           </c:if>

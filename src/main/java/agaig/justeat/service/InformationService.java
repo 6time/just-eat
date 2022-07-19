@@ -27,8 +27,8 @@ public class InformationService {
         return informationRepository.count();
     }
 
-    public Long remove(Long info_id, String writer) {
-        return informationRepository.delete();
+    public Long remove(Long info_id, Long member_id) {
+        return informationRepository.delete(info_id, member_id);
     }
 
     public Long write(InfoSaveRequestDto requestDto) {
@@ -43,7 +43,6 @@ public class InformationService {
     }
 
     public List<Information> getPage(Map<String, Integer> map) {
-        List<Information> information = informationRepository.selectPage(map);
-        return information;
+        return informationRepository.selectPage(map);
     }
 }

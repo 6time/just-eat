@@ -4,7 +4,6 @@ import agaig.justeat.domain.Information;
 import agaig.justeat.dto.InfoSaveRequestDto;
 import agaig.justeat.dto.InfoUpdateRequestDto;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
@@ -22,7 +21,7 @@ public interface InformationRepository {
 
     Long update(InfoUpdateRequestDto updateRequestDto);
 
-    Long delete();
+    Long delete(Long info_id, Long member_id);
 
     List<Information> selectAll();
 

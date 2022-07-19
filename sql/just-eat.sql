@@ -14,6 +14,18 @@
 	`exercise`	INT	NULL
 );
 
+CREATE TABLE `information` (
+	`info_id`	BIGINT	NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`writer`	VARCHAR(100)	NOT NULL,
+	`title`	VARCHAR(100)	NOT NULL,
+	`content`	TEXT	NOT NULL,
+	`reg_date`	DATE	NOT NULL	DEFAULT now(),
+	`up_date`	DATE	NOT NULL	DEFAULT now(),
+	`view_cnt`	BIGINT	NOT NULL	DEFAULT 0,
+	`comment_cnt`	BIGINT	NOT NULL	DEFAULT 0,
+	`member_id`	BIGINT	NOT NULL
+);
+
 CREATE TABLE `products` (
 	`product_id`	BIGINT	NOT NULL,
 	`product_name`	VARCHAR(100)	NOT NULL,

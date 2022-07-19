@@ -1,7 +1,7 @@
 package agaig.justeat.controller;
 
+import agaig.justeat.annotation.MemberSignInCheck;
 import agaig.justeat.domain.Information;
-import agaig.justeat.dto.InfoBoardResponseDto;
 import agaig.justeat.dto.InfoResponseDto;
 import agaig.justeat.dto.InfoSaveRequestDto;
 import agaig.justeat.dto.MemberResponseDto;
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,12 +46,13 @@ public class InformationController {
     }
 
     @GetMapping("/{info_id}")
-    public String info(@PathVariable Long info_id, Model model) {
+    public String infoRead(@PathVariable Long info_id, Model model) {
         InfoResponseDto responseDto = informationService.read(info_id);
         model.addAttribute("info", responseDto);
         return "/information/info";
     }
 
+    @MemberSignInCheck
     @GetMapping("/write")
     public String write() {
         return "/information/infoWrite";
@@ -62,6 +64,13 @@ public class InformationController {
         requestDto.setWriter(memberResponseDto.getName());
         requestDto.setMember_id(member_id);
         informationService.write(requestDto);
+        return "redirect:/info/list";
+    }
+
+    @GetMapping("/delete/{member_id}/{info_id}")
+    public String infoDelete(@PathVariable Long member_id, @PathVariable Long info_id, HttpSession session) {
+        memberService.verify(member_id, session);
+        informationService.remove(info_id, member_id);
         return "redirect:/info/list";
     }
 }

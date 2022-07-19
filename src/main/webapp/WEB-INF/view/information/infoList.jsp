@@ -50,13 +50,11 @@ uri="http://java.sun.com/jstl/fmt_rt"%>
               </c:forEach>
             </tbody>
           </table>
-          <c:if test="${sessionScope.session!=null}">
-            <a class="member-btn-a" href="<c:url value='/info/write'/>"
-              >글 작성</a
-            >
-          </c:if>
-          <a class="member-btn-b" href="/"> 홈으로 돌아가기 </a>
         </div>
+        <a class="member-btn-a" href="<c:url value='/info/write'/>"
+          >공지사항 작성</a
+        >
+        <a class="member-btn-b" href="/"> 홈으로 돌아가기 </a>
       </div>
     </div>
   </body>

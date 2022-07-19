@@ -23,7 +23,7 @@
         WHERE info_id = #{info_id}
     </update>
     <delete id="delete">
-        DELETE FROM information WHERE info_id = #{info_id} and writer = #{writer}
+        DELETE FROM information WHERE info_id = #{info_id} and member_id = #{member_id}
     </delete>
     <select id="selectAll" resultType="Information">
         SELECT info_id, title, content, writer, view_cnt, comment_cnt, reg_date
