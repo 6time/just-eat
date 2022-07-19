@@ -2,6 +2,7 @@ package agaig.justeat.controller;
 
 import agaig.justeat.annotation.MemberSignInCheck;
 import agaig.justeat.domain.Information;
+import agaig.justeat.domain.PageHandler;
 import agaig.justeat.dto.InfoResponseDto;
 import agaig.justeat.dto.InfoSaveRequestDto;
 import agaig.justeat.dto.MemberResponseDto;
@@ -37,11 +38,14 @@ public class InformationController {
     public String list(Integer page, Integer pageSize, Model model) {
         if (page == null) page = 1;
         if (pageSize == null) pageSize = 10;
+        long totalCnt = informationService.getCount();
+        PageHandler pageHandler = new PageHandler(totalCnt, page, pageSize);
         Map<String, Integer> map = new HashMap<>();
         map.put("offset", (page - 1) * pageSize);
         map.put("pageSize", pageSize);
         List<Information> boardList = informationService.getPage(map);
         model.addAttribute("infoBoardList", boardList);
+        model.addAttribute("pageHandler", pageHandler);
         return "information/infoList";
     }
 

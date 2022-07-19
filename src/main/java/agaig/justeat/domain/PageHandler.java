@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PageHandler {
-    private int totalCnt;
+    private long totalCnt;
     private int pageSize;
     private int naviSize = 10;
     private int totalPage;
@@ -16,11 +16,11 @@ public class PageHandler {
     private boolean showPrev;
     private boolean showNext;
 
-    public PageHandler(int totalCnt, int page) {
+    public PageHandler(long totalCnt, int page) {
         this(totalCnt, page, 10);
     }
 
-    public PageHandler(int totalCnt, int page, int pageSize) {
+    public PageHandler(long totalCnt, int page, int pageSize) {
         this.totalCnt = totalCnt;
         this.page = page;
         this.pageSize = pageSize;
