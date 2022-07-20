@@ -10,5 +10,6 @@ pageEncoding="UTF-8" %>
   </head>
   <body>
     메인 페이지
+    ${session.name}
   </body>
 </html>

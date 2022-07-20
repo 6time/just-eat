@@ -3,15 +3,15 @@
 	`email`	VARCHAR(100)	NOT NULL,
 	`password`	VARCHAR(30)	NOT NULL,
 	`name`	VARCHAR(100)	NOT NULL,
-	`phone`	BIGINT	NULL,
+	`phone`	VARCHAR(100)	NULL,
 	`address`	VARCHAR(100)	NULL,
 	`height`	INT	NULL,
 	`weight`	INT	NULL,
 	`gender`	ENUM('man','woman')	NULL,
-	`birth`	INT	NULL,
+	`birth`	VARCHAR(100)	NULL,
 	`goal`	INT	NULL,
 	`nutrient`	INT	NULL,
-	`exercise`	INT	NULL
+	`exercise`	INT	NULL,
 );
 
 CREATE TABLE `products` (
@@ -103,4 +103,6 @@ ALTER TABLE `carts` ADD CONSTRAINT `FK_members_TO_carts_1` FOREIGN KEY (
 REFERENCES `members` (
 	`member_id`
 );
+
+ALTER TABLE `members` CHANGE member_id member_id BIGINT AUTO_INCREMENT PRIMARY KEY;
 
