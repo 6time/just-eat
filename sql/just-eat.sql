@@ -5,13 +5,22 @@
 	`name`	VARCHAR(100)	NOT NULL,
 	`phone`	VARCHAR(100)	NULL,
 	`address`	VARCHAR(100)	NULL,
-	`height`	INT	NULL,
-	`weight`	INT	NULL,
 	`gender`	ENUM('man','woman')	NULL,
-	`birth`	VARCHAR(100)	NULL,
-	`goal`	INT	NULL,
-	`nutrient`	INT	NULL,
-	`exercise`	INT	NULL
+  `birth`	INT	NULL
+);
+
+CREATE TABLE `health` (
+	`member_id`	BIGINT	NOT NULL PRIMARY KEY,
+	'health_flag' BOOLEAN NOT NULL DEFAULT 0,
+	`height` DOUBLE(4,1)	NULL,
+	`weight` DOUBLE(4,1)	NULL,
+	`goal` DOUBLE(4,1)	NULL,
+	'compareWeight' VARCHAR(20)	NOT NULL,
+	'goal_week' INT NULL,
+	'daily_kcal' INT NULL,
+	'protein' INT NULL,
+	'carbo' INT NULL,
+	'fat' INT NULL
 );
 
 CREATE TABLE `information` (
@@ -80,6 +89,7 @@ CREATE TABLE `orders` (
 ALTER TABLE `members` ADD CONSTRAINT `PK_MEMBERS` PRIMARY KEY (
 	`member_id`
 );
+
 
 ALTER TABLE `products` ADD CONSTRAINT `PK_PRODUCTS` PRIMARY KEY (
 	`product_id`
