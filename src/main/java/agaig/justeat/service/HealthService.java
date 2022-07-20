@@ -20,10 +20,6 @@ public class HealthService {
         this.healthRepository = healthRepository;
     }
 
-    public void healthFlag(Health health) {
-
-    }
-
     public void healthTest(Health health,Member member) {
         compareWeight(health);
         dailyKcal(health, member);
