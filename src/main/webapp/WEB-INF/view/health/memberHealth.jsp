@@ -10,7 +10,9 @@ pageEncoding="UTF-8" %>
       <link rel="stylesheet" href="/css/style.css" />
    </head>
    <body>
-   목표까지 소요기간
-   <%="goalWeek"%>주
+   <p>※ 목표까지 소요기간
+   ${goalWeek}주<br></p>
+   <p>※ 하루동안 섭취해야할 칼로리
+   ${dailyKcal}kcal</p>
    </body>
 </html>

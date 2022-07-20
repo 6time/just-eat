@@ -1,13 +1,16 @@
 package agaig.justeat.repository;
 
 import agaig.justeat.domain.Health;
-import org.springframework.stereotype.Repository;
+import agaig.justeat.domain.Member;
 
-@Repository
+import java.util.List;
+import java.util.Optional;
+
 public interface HealthRepository {
+    Optional<Health> findByHealthFlag(boolean health_flag);
+    Optional<Member> findByName(String name);
+    Optional<Member> findByBirth(String birth);
+    Optional<Member> findByGender(String gender);
     Health save(Health health);
-    Boolean healthFlag();
-    Integer americanAge();
-    Health comepareWeight(Health health);
-    Integer amr();
+
 }
