@@ -17,32 +17,36 @@ pageEncoding="UTF-8" %>
        </style>
     </head>
     <body>
-        <h2>자가진단 결과</h2>
+
+        <fieldset style="max-width: 10cm">
+        <legend><p style="font-size: large">자가진단 결과</p></legend>
+        <%request.setCharacterEncoding("UTF-8");%>
+
+        <div>
+        오늘 먹은 칼로리 : <b>${param.kcal}</b>kcal<br>
+        몸무게 : <b>${param.weight}</b>kg<br>
+        오늘 한 운동량은 : <b>${param.energy}</b>단계
+        </div>
+
+        <!--
+        request.getParameter("name값") <- 데이터 입력 가져오기
+        getParameter는 String으로 결과값 리턴
+        getParameterValues는 여러개 리턴할때 사용 String 배열로 리턴
+        String *Arr[] = request.getParameterValues("name값")
+        for(String * : *Arr){ }로 처리
+        switch 문은 int 값만 취급 따라서 String 값을 int로 바꿔주기
+        -->
+
+        </fieldset>
+        <br>
+        <fieldset style="max-width: 10cm">
+        <div>
         <%
-        request.setCharacterEncoding("UTF-8");        //request.getParameter("name값") <- 데이터 입력 가져오기
-        String kcal = request.getParameter("kcal");  //getParameter는 String으로 결과값 리턴
-        out.println("오늘 먹은 칼로리 : <b>"+kcal+"</b><br>");
+        out.println("추천 식단 리스트");
 
-        String weight = request.getParameter("weight");
-        out.println("몸무게 : <b>"+weight+"</b><br>");
-
-        String energy = request.getParameter("energy"); //getParameterValues는 여러개 리턴할때 사용 String 배열로 리턴
-        out.println("오늘 한 운동량은");                  //String *Arr[] = request.getParameterValues("name값")
-                                                       //for(String * : *Arr){ }로 처리
-        int n = Integer.parseInt(energy);             //switch 문은 int 값만 취급 따라서 String 값을 int로 바꿔주기
-        switch(n){
-        case 1: out.println("<b>1단계</b>입니다.");
-                break;
-        case 2: out.println("<b>2단계</b>입니다.");
-                break;
-        case 3: out.println("<b>3단계</b>입니다.");
-                break;
-        case 4: out.println("<b>4단계</b>입니다.");
-                break;
-        case 5: out.println("<b>5단계</b>입니다.");
-                break;
-        }
         %>
+        </div>
+        </fieldset>
         <br>
         <b><a href='javascript:history.go(-1)'>처음으로</a></b>
     </body>

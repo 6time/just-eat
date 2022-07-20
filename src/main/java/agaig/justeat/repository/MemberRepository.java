@@ -1,18 +1,20 @@
 package agaig.justeat.repository;
 
 import agaig.justeat.domain.Member;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
-import java.util.Optional;
 
+@Mapper
 public interface MemberRepository {
-    Member save(Member member);
 
-    Member update(Member member);
+    Long insert(Member member);
 
-    Optional<Member> findById(Long id);
+    Long update(Member member);
 
-    Optional<Member> findByEmail(String email);
+    Member findById(Long id);
+
+    Member findByEmail(String email);
 
     List<Member> findAll();
 }

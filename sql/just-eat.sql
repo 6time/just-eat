@@ -1,12 +1,12 @@
 ﻿CREATE TABLE `members` (
-	`member_id`	BIGINT	NOT NULL,
+	`member_id`	BIGINT	NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	`email`	VARCHAR(100)	NOT NULL,
 	`password`	VARCHAR(30)	NOT NULL,
 	`name`	VARCHAR(100)	NOT NULL,
-	`phone`	BIGINT	NULL,
+	`phone`	VARCHAR(100)	NULL,
 	`address`	VARCHAR(100)	NULL,
 	`gender`	ENUM('man','woman')	NULL,
-    `birth`	INT	NULL
+  `birth`	INT	NULL
 );
 
 CREATE TABLE `health` (
@@ -21,6 +21,18 @@ CREATE TABLE `health` (
 	'protein' INT NULL,
 	'carbo' INT NULL,
 	'fat' INT NULL
+);
+
+CREATE TABLE `information` (
+	`info_id`	BIGINT	NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`writer`	VARCHAR(100)	NOT NULL,
+	`title`	VARCHAR(100)	NOT NULL,
+	`content`	TEXT	NOT NULL,
+	`reg_date`	DATE	NOT NULL	DEFAULT now(),
+	`up_date`	DATE	NOT NULL	DEFAULT now(),
+	`view_cnt`	BIGINT	NOT NULL	DEFAULT 0,
+	`comment_cnt`	BIGINT	NOT NULL	DEFAULT 0,
+	`member_id`	BIGINT	NOT NULL
 );
 
 CREATE TABLE `products` (
@@ -113,4 +125,6 @@ ALTER TABLE `carts` ADD CONSTRAINT `FK_members_TO_carts_1` FOREIGN KEY (
 REFERENCES `members` (
 	`member_id`
 );
+
+ALTER TABLE `members` CHANGE member_id member_id BIGINT AUTO_INCREMENT PRIMARY KEY;
 

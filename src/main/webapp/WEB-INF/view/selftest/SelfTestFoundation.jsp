@@ -10,42 +10,47 @@ pageEncoding="UTF-8" %>
   <title>자가진단</title>
   <link rel="stylesheet" href="/css/style.css" />
 </head>
+
 <body>
+  <fieldset style="max-width: fit-content">
+<div>
 <h2>오늘 하루 자가진단</h2>
 <form action="/st" method="post">
-  <fieldset style="max-width: fit-content">
   <p></p>
   <fieldset style="max-width: 11cm">
+
     오늘 하루동안 섭취한 칼로리를 입력하세요.
+    <br/><br/>
+    <input type="number" min='0' max='100000' name="kcal" size="20" required>
     <br/>
-    <br/>
-    <input type="text" name="kcal" size="20">
-    <br/>
+
   </fieldset>
+  </div><br/>
 
-  <br/>
-
+  <div>
   <fieldset style="max-width: 11cm">
+
     현재 몸무게를 입력하세요.
+    <br/><br/>
+    <input type="number" min='1' max='650' name="weight" size="20" required>
     <br/>
-    <br/>
-    <input type="text" name="weight" size="20">
-    <br/>
+
   </fieldset>
+  </div><br/>
 
-  <br/>
-
+  <div>
   <fieldset style="max-width: 11cm">
     오늘 하루동안 한 운동량을 입력하세요.
-    <br/>
-    <br/>
-    <input type="radio" name="energy" value="1" >1단계
+    <br/><br/>
+    <input type="radio" name="energy" value="1" checked>1단계
     <input type="radio" name="energy" value="2" >2단계
     <input type="radio" name="energy" value="3" >3단계
     <input type="radio" name="energy" value="4" >4단계
     <input type="radio" name="energy" value="5" >5단계
   </fieldset>
+  </div>
 
+  <div>
   <fieldset style="max-width: 11cm">
     <legend><p style="font-size: large">단계별 부가 설명</p></legend>
     <p>1단계 호흡의 변화 없음 (스트레칭)</p>
@@ -54,6 +59,7 @@ pageEncoding="UTF-8" %>
     <p>4단계 숨이 많이 차고 숨쉬기 힘든 정도 <br>(빠른 달리기)</p>
     <p>5단계 숨쉬기 매우 힘들고 극도록 힘이 드는 정도 <br>(전력 달리기)</p>
   </fieldset>
+  </div>
 
   <p></p>
   <input type="submit" value="제출" >

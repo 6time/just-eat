@@ -10,16 +10,16 @@
 
 ### 🏗️ 개발 인원 및 기간
 
-- 개발 기간 : 2022/06/20 ~ 2022/08/05 (6주간)
+- 개발 기간 : 2022/06/20 ~ 2022/07/29 (5주간)
 - 개발 인원 : Front-end & Back-end 5명
 
 ### 🛠️ 기술 스택
 
 > Back-end
 >
-- Language : Java
-- Framework : Spring, Spring Boot, Spring JDBC Template
-- Database : MySQL, Oracle
+- Language : Java 11
+- Framework : Spring Boot, MyBatis
+- Database : MySQL
 
 > Front-end
 >
@@ -27,12 +27,12 @@
 
 # 💡ERD
 
-![just-eat-erd](https://user-images.githubusercontent.com/82517133/175777838-09a3c6e7-5d22-4c0b-9a13-f0c83909e375.png)
-
+![just-eat-erd](https://user-images.githubusercontent.com/82517133/178319052-b9e5f178-4884-4771-bbcd-b06a4756b780.png)
 
 ## 📝 구현 기능 명세
 
 ### 이선우
+[![wakatime](https://wakatime.com/badge/user/9b088db3-8ede-4dad-9a4b-63489f41376c/project/c59f1a57-19aa-434d-98db-1538c29690c1.svg)](https://wakatime.com/badge/user/9b088db3-8ede-4dad-9a4b-63489f41376c/project/c59f1a57-19aa-434d-98db-1538c29690c1)
 
 > Mission 1 | 프로젝트 초기 세팅
 >
@@ -52,7 +52,7 @@
 
 > Mission 4 | 로그인 기능
 >
-- 로그인 성공시 session을 통해 로그인 유지
+- 로그인 성공시 session 을 통해 로그인 유지
 - password 검증 구현
 
 > Mission 5 | 테스트 코드 작성
@@ -60,6 +60,22 @@
 - 중복 email 로직에 대한 테스트 케이스 작성
 - password 로직에 대한 테스트 케이스 작성
 
+> Mission 6 | MyBatis 기본 설정
+>
+- MyBatis 설정 XML 파일 작성
+
+> Mission 7 | ID 기억하기 구현
+> 
+- Cookie 쿠키를 이용한 ID 기억하기 기능 구현
+
+> Mission 8 | 로그인 권한 접근 제한 기능
+> 
+- AOP 를 이용해 권한이 필요한 페이지는 로그인 페이지로 이동하도록 구현 
+
+> Mission 9 | 커스텀 어노테이션을 이용한 로그인 체크 기능
+> 
+- AOP join point 를 커스텀 어노테이션을 통해 지정
+- 다른 팀원이 코드를 작성하지 않아도 어노테이션만 사용해서 로그인 체크 구현 가능
 ### 기유진
 
 > Mission 1 | 메인 페이지
