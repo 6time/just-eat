@@ -6,7 +6,7 @@
 	`phone`	VARCHAR(100)	NULL,
 	`address`	VARCHAR(100)	NULL,
 	`gender`	ENUM('man','woman')	NULL,
-        `birth`	INT	NULL
+    `birth`	INT	NULL
 );
 
 CREATE TABLE `health` (
@@ -14,19 +14,19 @@ CREATE TABLE `health` (
 	`height` DOUBLE(4,1)	NULL,
 	`weight` DOUBLE(4,1)	NULL,
 	`goal` DOUBLE(4,1)	NULL,
-	'compareWeight' VARCHAR(20)	NOT NULL,
-	'goal_week' INT NULL,
-	'daily_kcal' INT NULL,
-	'protein' INT NULL,
-	'carb' INT NULL,
-	'fat' INT NULL
+	`compareWeight` VARCHAR(20)	NOT NULL,
+	`goal_week` INT NULL,
+	`daily_kcal` INT NULL,
+	`protein` INT NULL,
+	`carb` INT NULL,
+	`fat` INT NULL
 );
 
 CREATE TABLE `diets` (
 	`diet_id`	BIGINT	NOT NULL,
 	`member_id`	BIGINT	NOT NULL,
 	`product_id`	BIGINT	NOT NULL,
-	'health_flag' BOOLEAN NOT NULL DEFAULT 0,
+	`health_flag` BOOLEAN NOT NULL DEFAULT 0,
 	`day_of_week`	INT	NOT NULL
 );
 
@@ -36,9 +36,9 @@ CREATE TABLE `products` (
 	`description`	TEXT	NOT NULL,
 	`price`	INT	NOT NULL,
 	`kcal`	INT	NOT NULL,
-	'protein' INT NULL,
-   	'carb' INT NULL,
-    	'fat' INT NULL
+	`protein` INT NULL,
+   	`carb` INT NULL,
+    `fat` INT NULL
 );
 
 CREATE TABLE `information` (
