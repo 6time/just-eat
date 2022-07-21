@@ -17,8 +17,6 @@ public interface BoardMapper {
 
     void deleteList(Long article_id);
 
-    //수정
-//    void update(Long article_id);
-
     void update(Articles articles);
+
 }

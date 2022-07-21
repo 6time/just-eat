@@ -33,5 +33,6 @@ public class BoardService {
 
     public void update(Articles articles){ boardMapper.update(articles);}
 
+
 }
 

@@ -19,6 +19,10 @@
         <td>${Article.article_title}</td>
    </tr>
    <tr>
+    <th>작성자 :</th>
+    <td>${Article.article_writer}</td>
+  </tr>
+   <tr>
         <th>내용 : </th>
        <td>${Article.article_text}</td>
    </tr>
@@ -28,8 +32,11 @@
     <tr>
         <td></td>
         <td>
+        <!--수정/삭제 권한 부여-->
+        <c:if test="${Article.member_id == session.member_id}">
             <input type="button" value="수정" onclick="location.href='/boards/view/${Article.article_id}/update'">
             <input type="button" value="삭제" onclick="location.href='/boards/view/${Article.article_id}/delete'">
+        </c:if>
             <input type="button" value="취소" onclick="location.href='/boards'">
         </td>
     </tr>
