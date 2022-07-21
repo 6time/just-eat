@@ -2,10 +2,12 @@ package agaig.justeat.repository;
 
 import agaig.justeat.domain.Health;
 import agaig.justeat.domain.Member;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 import java.util.Optional;
 
+@Mapper
 public interface HealthRepository {
     Optional<Health> findByHealthFlag(boolean health_flag);
     Optional<Member> findByName(String name);
