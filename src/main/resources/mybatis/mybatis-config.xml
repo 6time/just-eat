@@ -4,5 +4,7 @@
     <mappers>
         <mapper resource="MemberMapper.xml"/>
         <mapper resource="SelfTestMapper.xml"/>
+        <mapper resource="BoardMapper.xml"/>
+        <mapper resource="InformationMapper.xml"/>
     </mappers>
 </configuration>

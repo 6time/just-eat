@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="agaig.justeat.repository.InformationRepository">
+    <select id="select" parameterType="long" resultType="Information">
+        SELECT info_id, title, content, writer, view_cnt, comment_cnt, reg_date
+        FROM information
+        WHERE info_id = #{info_id}
+    </select>
+    <insert id="insert" parameterType="Information">
+        INSERT INTO information
+            (title, content, writer, reg_date, up_date, member_id)
+        VALUES
+            (#{title}, #{content}, #{writer}, now(), now(), #{member_id})
+    </insert>
+    <update id="update" parameterType="Information">
+        UPDATE information
+        SET title = #{title}
+            , content = #{content}
+            , up_date = now()
+        WHERE info_id = #{info_id}
+    </update>
+    <delete id="delete">
+        DELETE FROM information WHERE info_id = #{info_id} and member_id = #{member_id}
+    </delete>
+    <select id="selectAll" resultType="Information">
+        SELECT info_id, title, content, writer, view_cnt, comment_cnt, reg_date
+        FROM information
+        ORDER BY reg_date DESC, info_id DESC
+    </select>
+    <select id="selectPage" parameterType="map" resultType="Information">
+        SELECT info_id, title, content, writer, view_cnt, comment_cnt, reg_date
+        FROM information
+        ORDER BY reg_date DESC, info_id DESC
+        LIMIT #{offset}, #{pageSize}
+    </select>
+    <select id="count" resultType="long">
+        SELECT count(*) FROM information
+    </select>
+    <update id="increaseViewCnt" parameterType="long">
+        UPDATE information
+        SET view_cnt = view_cnt + 1
+        WHERE info_id = #{info_id}
+    </update>
+    <delete id="deleteALl">
+        DELETE FROM information
+    </delete>
+</mapper>
