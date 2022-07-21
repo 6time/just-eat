@@ -1,9 +1,9 @@
 package agaig.justeat.jiwon.controller;
 
-import agaig.justeat.dto.MemberResponseDto;
+import agaig.justeat.member.dto.MemberResponseDto;
 import agaig.justeat.jiwon.domain.Articles;
 import agaig.justeat.jiwon.service.BoardService;
-import agaig.justeat.service.MemberService;
+import agaig.justeat.member.service.MemberService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

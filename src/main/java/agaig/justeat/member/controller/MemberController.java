@@ -1,10 +1,10 @@
-package agaig.justeat.controller;
+package agaig.justeat.member.controller;
 
-import agaig.justeat.annotation.MemberSignInCheck;
-import agaig.justeat.dto.MemberResponseDto;
-import agaig.justeat.dto.MemberSaveRequestDto;
-import agaig.justeat.dto.MemberUpdateRequestDto;
-import agaig.justeat.service.MemberService;
+import agaig.justeat.member.annotation.MemberSignInCheck;
+import agaig.justeat.member.dto.MemberResponseDto;
+import agaig.justeat.member.dto.MemberSaveRequestDto;
+import agaig.justeat.member.dto.MemberUpdateRequestDto;
+import agaig.justeat.member.service.MemberService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

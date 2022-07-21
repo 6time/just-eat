@@ -1,6 +1,6 @@
-package agaig.justeat.aop;
+package agaig.justeat.member.aop;
 
-import agaig.justeat.service.MemberService;
+import agaig.justeat.member.service.MemberService;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class SignInCheckAop {
         this.memberService = memberService;
     }
 
-//    @Before("execution(* agaig.justeat.controller.MainController.*(..))")
+//    @Before("execution(* agaig.justeat.member.controller.MainController.*(..))")
     @Before("@annotation(agaig.justeat.annotation.MemberSignInCheck)")
     public void execute() throws Throwable {
         HttpSession session = ((ServletRequestAttributes)(RequestContextHolder.currentRequestAttributes())).getRequest().getSession();

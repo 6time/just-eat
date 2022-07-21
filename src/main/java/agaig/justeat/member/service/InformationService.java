@@ -1,9 +1,9 @@
-package agaig.justeat.service;
+package agaig.justeat.member.service;
 
-import agaig.justeat.domain.Information;
-import agaig.justeat.dto.InfoResponseDto;
-import agaig.justeat.dto.InfoSaveRequestDto;
-import agaig.justeat.repository.InformationRepository;
+import agaig.justeat.member.domain.Information;
+import agaig.justeat.member.dto.InfoResponseDto;
+import agaig.justeat.member.dto.InfoSaveRequestDto;
+import agaig.justeat.member.repository.InformationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

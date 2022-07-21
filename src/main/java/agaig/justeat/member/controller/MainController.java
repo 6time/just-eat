@@ -1,8 +1,8 @@
-package agaig.justeat.controller;
+package agaig.justeat.member.controller;
 
-import agaig.justeat.annotation.MemberSignInCheck;
-import agaig.justeat.domain.Member;
-import agaig.justeat.service.MemberService;
+import agaig.justeat.member.annotation.MemberSignInCheck;
+import agaig.justeat.member.domain.Member;
+import agaig.justeat.member.service.MemberService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;

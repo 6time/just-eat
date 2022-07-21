@@ -1,12 +1,12 @@
-package agaig.justeat.service;
+package agaig.justeat.member.service;
 
-import agaig.justeat.domain.Member;
-import agaig.justeat.dto.MemberResponseDto;
-import agaig.justeat.dto.MemberSaveRequestDto;
-import agaig.justeat.dto.MemberUpdateRequestDto;
-import agaig.justeat.exception.ErrorCode;
-import agaig.justeat.exception.SignInException;
-import agaig.justeat.repository.MemberRepository;
+import agaig.justeat.member.domain.Member;
+import agaig.justeat.member.dto.MemberResponseDto;
+import agaig.justeat.member.dto.MemberSaveRequestDto;
+import agaig.justeat.member.dto.MemberUpdateRequestDto;
+import agaig.justeat.member.exception.ErrorCode;
+import agaig.justeat.member.exception.SignInException;
+import agaig.justeat.member.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

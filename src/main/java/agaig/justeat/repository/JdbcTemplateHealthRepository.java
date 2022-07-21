@@ -1,15 +1,11 @@
 package agaig.justeat.repository;
 
 import agaig.justeat.domain.Health;
-import agaig.justeat.domain.Member;
+import agaig.justeat.member.domain.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
-import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
-import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
-import java.util.List;
 import java.util.Optional;
 
 public class JdbcTemplateHealthRepository implements HealthRepository {
