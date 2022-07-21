@@ -6,7 +6,7 @@
 	`phone`	VARCHAR(100)	NULL,
 	`address`	VARCHAR(100)	NULL,
 	`gender`	ENUM('man','woman')	NULL,
-    `birth`	INT	NULL
+  	`birth`	INT	NULL
 );
 
 CREATE TABLE `health` (
