@@ -1,9 +1,9 @@
 package agaig.justeat.jiwon.controller;
 
+import agaig.justeat.dto.MemberResponseDto;
 import agaig.justeat.jiwon.domain.Articles;
 import agaig.justeat.jiwon.service.BoardService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import agaig.justeat.service.MemberService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,38 +11,49 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
-@RequiredArgsConstructor
 @RequestMapping("/boards")
 public class BoardController {
     BoardService boardService;
+    MemberService memberService;
 
-    @Autowired
-    public BoardController(BoardService boardService) {
+    public BoardController(BoardService boardService, MemberService memberService) {
         this.boardService = boardService;
+        this.memberService = memberService;
     }
 
     @GetMapping("")
-    public String List(Model model){ // 외부 호출 메서드명과 상관 없음
+    public String List(Model model){ // Criteria cri 제거
         List<Articles> articles = boardService.findAll();
-        model.addAttribute("Articles", articles);
+        model.addAttribute("Articles", articles); //boardService.getListPaging(cri) -> articles
+
+
+
         return "board/list";
     }
 
     @GetMapping("write")
-    public String writeArticle(){
+    public String writeArticle(HttpSession session){
+        try {
+            memberService.signInCheck(session);
+        } catch (Exception e) {
+            return "/member/signIn";
+        }
         return "board/write";
     }
 
-    @PostMapping("write") // 수정 ("")
-    public String create(Articles articles){
-
-
+    @PostMapping("write")
+    public String create(Articles articles, HttpSession session){ //HttpSession session 추가
+        MemberResponseDto memberResponseDto = (MemberResponseDto) session.getAttribute("session"); // 추가
+        articles.setArticle_writer(memberResponseDto.getName()); //추가
+        articles.setMember_id(memberResponseDto.getMember_id()); // 이상있으면 바로 삭제해야 할 추가
+        System.out.println(articles.getArticle_writer()); // 추가
        boardService.create(articles);
 
-        return "redirect:/boards"; // "redirect:/boards"
+        return "redirect:/boards";
     }
 
         @GetMapping("/view/{article_id}")
@@ -71,13 +82,7 @@ public class BoardController {
 
 
 
-//    @PostMapping("/view/{article_id}/update_action")
-//    public String update(@PathVariable Long article_id,Model model){
-//        Articles article = boardService.findOne(article_id);
-//        boardService.update(article);
-//        model.addAttribute("Article", article);
-//        return "redirect:/boards";
-//    }
+
 
     @PostMapping("/view/{article_id}/update")
     public String update(Articles articles){

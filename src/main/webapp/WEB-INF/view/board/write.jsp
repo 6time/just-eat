@@ -17,10 +17,13 @@
             <td><input type="text" placeholder="제목을 입력하세요." id="article_title" name="article_title" required></td>
         </tr>
         <tr>
+            <th>작성자 : </th>
+            <td><input type="hidden" readonly>${session.name}</td> <!-- 추가 -->
+        </tr>
+        <tr>
             <th>내용 : </th>
             <td><textarea id="article_text" name="article_text" cols="30" rows="10" placeholder="내용을 입력하세요." required></textarea></td>
         </tr>
-
         <tr>
             <th></th>
         </tr>
@@ -36,3 +39,11 @@
 </form>
 </body>
 </html>
+        
+
+
+
+
+
+
+

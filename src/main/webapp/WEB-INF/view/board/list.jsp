@@ -12,22 +12,28 @@
     <table>
         <tr>
            <th>번호</th>
-                <th>제목</th>
-           <!-- <th>작성자</th> -->
-           <!-- <th>날짜</th> -->
+           <th>제목</th>
+           <th>작성자</th>
+           <th>작성일</th>
         </tr>
          <c:forEach var="articles" items="${Articles}">
         <tr>
-
-                <td>${articles.article_id}</td>
-                <!-- 수정 -->
-                <td><a href="${path}/boards/view/${articles.article_id}">${articles.article_title}</a></td>
-            <!-- <td>jiwon</td> -->
-            <!-- <td>yyyy-mm-dd</td> -->
-
+            <td>${articles.article_id}</td>
+            <td><a href="${path}/boards/view/${articles.article_id}">${articles.article_title}</a></td>
+            <td>${articles.article_writer}</td>
+            <td>${articles.article_time}</td>
         </tr>
         </c:forEach>
         </table>
-        <a href="/boards/write">글쓰기</a>
+       <a href="/boards/write">글쓰기</a>
 </body>
 </html>
+           
+            
+
+
+
+
+
+
+

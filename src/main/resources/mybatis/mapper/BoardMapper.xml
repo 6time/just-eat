@@ -6,13 +6,15 @@
 <mapper namespace="agaig.justeat.jiwon.model.aws.dao.BoardMapper">
 
     <select id="findAll" resultType="agaig.justeat.jiwon.domain.Articles">
+        SELECT *
+        FROM articles
 
-        SELECT * FROM articles;
+
     </select>
-
+<!-- create 수정-->
     <insert id="create" >
-        INSERT INTO articles(article_title,article_text,member_id)
-        VALUES(#{article_title},#{article_text},#{member_id});
+        INSERT INTO articles(article_title,article_text,member_id,article_writer)
+        VALUES(#{article_title},#{article_text},#{member_id},#{article_writer});
     </insert>
 
     <select id="findOne" resultType="agaig.justeat.jiwon.domain.Articles">
@@ -28,4 +30,5 @@
         SET article_title=#{article_title}, article_text=#{article_text}
         WHERE article_id=#{article_id} ;
     </update>
+
 </mapper>
