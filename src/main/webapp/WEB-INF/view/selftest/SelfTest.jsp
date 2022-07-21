@@ -23,9 +23,9 @@ pageEncoding="UTF-8" %>
         <%request.setCharacterEncoding("UTF-8");%>
 
         <div>
-        오늘 먹은 칼로리 : <b>${param.kcal}kcal</b><br>
-        몸무게 : <b>${param.weight}kg</b><br>
-        오늘 한 운동량은 : <b>${param.exercise}단계</b>
+        오늘 먹은 칼로리 : <b>${param.daykcal}kcal</b><br>
+        몸무게 : <b>${param.dayweight}kg</b><br>
+        오늘 한 운동량은 : <b>${param.dayexercise}단계</b>
         </div>
 
 

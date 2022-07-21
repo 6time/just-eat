@@ -4,9 +4,11 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="agaig.justeat.selftest.repository.SelfTestRepository">
-    <update id="update" >
-        UPDATE members
-        SET weight = #{weight}, exercise = #{exercise}
-        WHERE member_id = #{member_id} ;
-    </update>
+    <insert id="save" parameterType="agaig.justeat.selftest.domain.SelfTest">
+        insert into selftest(daykcal, dayweight, dayexercise, member_id, name)
+        values(#{daykcal}, #{dayweight}, #{dayexercise}, #{member_id}, #{name})
+    </insert>
+    <select id="findAll" resultType="agaig.justeat.selftest.domain.SelfTest">
+        select * from selftest
+    </select>
 </mapper>
