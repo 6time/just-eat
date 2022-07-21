@@ -9,7 +9,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Health {
     private Long member_id;
-    private Boolean health_flag;
     private Double height;
     private Double weight;
     private Double goal;
@@ -22,9 +21,8 @@ public class Health {
     private Double carb;
     private Double fat;
 
-    public Health(Long member_id, Boolean health_flag, Double height, Double weight, Double goal, Double exercise, Double exerciseNumber, String compareWeight, Integer goalWeek, Integer dailyKcal, Double protein, Double carb, Double fat) {
+    public Health(Long member_id, Double height, Double weight, Double goal, Double exercise, Double exerciseNumber, String compareWeight, Integer goalWeek, Integer dailyKcal, Double protein, Double carb, Double fat) {
         this.member_id = member_id;
-        this.health_flag = health_flag;
         this.height = height;
         this.weight = weight;
         this.goal = goal;

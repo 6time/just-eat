@@ -23,6 +23,24 @@ CREATE TABLE `health` (
 	'fat' INT NULL
 );
 
+CREATE TABLE `diets` (
+	`diet_id`	BIGINT	NOT NULL,
+	`member_id`	BIGINT	NOT NULL,
+	`product_id`	BIGINT	NOT NULL,
+	`day_of_week`	INT	NOT NULL
+);
+
+CREATE TABLE `products` (
+	`product_id`	BIGINT	NOT NULL,
+	`product_name`	VARCHAR(100) NOT NULL,
+	`description`	TEXT	NOT NULL,
+	`price`	INT	NOT NULL,
+	`kcal`	INT	NOT NULL,
+	'protein' INT NULL,
+    'carb' INT NULL,
+    'fat' INT NULL
+);
+
 CREATE TABLE `information` (
 	`info_id`	BIGINT	NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	`writer`	VARCHAR(100)	NOT NULL,
@@ -33,22 +51,6 @@ CREATE TABLE `information` (
 	`view_cnt`	BIGINT	NOT NULL	DEFAULT 0,
 	`comment_cnt`	BIGINT	NOT NULL	DEFAULT 0,
 	`member_id`	BIGINT	NOT NULL
-);
-
-CREATE TABLE `products` (
-	`product_id`	BIGINT	NOT NULL,
-	`product_name`	VARCHAR(100)	NOT NULL,
-	`description`	TEXT	NOT NULL,
-	`price`	INT	NOT NULL,
-	`kcal`	INT	NOT NULL,
-	`product_nutrient`	INT	NOT NULL
-);
-
-CREATE TABLE `diets` (
-	`diet_id`	BIGINT	NOT NULL,
-	`day_of_week`	INT	NOT NULL,
-	`member_id`	BIGINT	NOT NULL,
-	`product_id`	BIGINT	NOT NULL
 );
 
 CREATE TABLE `reviews` (
