@@ -15,13 +15,13 @@ pageEncoding="UTF-8" %>
   <fieldset style="max-width: fit-content">
 <div>
 <h2>오늘 하루 자가진단</h2>
-<form action="/selftest" method="post">
+<form action="selftest" method="post">
   <p></p>
   <fieldset style="max-width: 11cm">
 
     오늘 하루동안 섭취한 칼로리를 입력하세요.
     <br/><br/>
-    <input type="number" min='0' max='100000' name="kcal" size="20" required>
+    <input type="number" min='0' max='100000' name="daykcal" size="20" required>
     <br/>
 
   </fieldset>
@@ -32,7 +32,7 @@ pageEncoding="UTF-8" %>
 
     현재 몸무게를 입력하세요.
     <br/><br/>
-    <input type="number" min='1' max='650' name="weight" size="20" required>
+    <input type="number" min='1' max='650' name="dayweight" size="20" required>
     <br/>
 
   </fieldset>
@@ -42,11 +42,11 @@ pageEncoding="UTF-8" %>
   <fieldset style="max-width: 11cm">
     오늘 하루동안 한 운동량을 입력하세요.
     <br/><br/>
-    <input type="radio" name="exercise" value="1" checked>1단계
-    <input type="radio" name="exercise" value="2" >2단계
-    <input type="radio" name="exercise" value="3" >3단계
-    <input type="radio" name="exercise" value="4" >4단계
-    <input type="radio" name="exercise" value="5" >5단계
+    <input type="radio" name="dayexercise" value="1" checked>1단계
+    <input type="radio" name="dayexercise" value="2" >2단계
+    <input type="radio" name="dayexercise" value="3" >3단계
+    <input type="radio" name="dayexercise" value="4" >4단계
+    <input type="radio" name="dayexercise" value="5" >5단계
   </fieldset>
   </div>
 
@@ -61,9 +61,10 @@ pageEncoding="UTF-8" %>
   </fieldset>
   </div>
   <input type="hidden" name="member_id" value="${sessionScope.session.member_id}"/>
+  <input type="hidden" name="name" value="${sessionScope.session.name}"/>
   <p/>
   <input type="submit" value="제출" >
-  <input type="reset" value="다시작성" >
+  <input type="reset" value="다시작성">
   <p></p>
 
 </fieldset>
