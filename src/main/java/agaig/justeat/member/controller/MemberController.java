@@ -5,6 +5,7 @@ import agaig.justeat.member.dto.MemberResponseDto;
 import agaig.justeat.member.dto.MemberSaveRequestDto;
 import agaig.justeat.member.dto.MemberUpdateRequestDto;
 import agaig.justeat.member.service.MemberService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,14 +16,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("/members")
 public class MemberController {
 
     private final MemberService memberService;
-
-    public MemberController(MemberService memberService) {
-        this.memberService = memberService;
-    }
 
     @GetMapping("")
     public String getSignIn(HttpSession session) {

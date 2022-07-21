@@ -1,9 +1,9 @@
 package agaig.justeat.member.aop;
 
 import agaig.justeat.member.service.MemberService;
+import lombok.RequiredArgsConstructor;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -12,14 +12,10 @@ import javax.servlet.http.HttpSession;
 
 @Aspect
 @Component
+@RequiredArgsConstructor
 public class SignInCheckAop {
 
     private final MemberService memberService;
-
-    @Autowired
-    public SignInCheckAop(MemberService memberService) {
-        this.memberService = memberService;
-    }
 
 //    @Before("execution(* agaig.justeat.member.controller.MainController.*(..))")
     @Before("@annotation(agaig.justeat.annotation.MemberSignInCheck)")
