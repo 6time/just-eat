@@ -6,12 +6,11 @@
 	`phone`	VARCHAR(100)	NULL,
 	`address`	VARCHAR(100)	NULL,
 	`gender`	ENUM('man','woman')	NULL,
-  `birth`	INT	NULL
+    `birth`	INT	NULL
 );
 
 CREATE TABLE `health` (
 	`member_id`	BIGINT	NOT NULL PRIMARY KEY,
-	'health_flag' BOOLEAN NOT NULL DEFAULT 0,
 	`height` DOUBLE(4,1)	NULL,
 	`weight` DOUBLE(4,1)	NULL,
 	`goal` DOUBLE(4,1)	NULL,
@@ -27,6 +26,7 @@ CREATE TABLE `diets` (
 	`diet_id`	BIGINT	NOT NULL,
 	`member_id`	BIGINT	NOT NULL,
 	`product_id`	BIGINT	NOT NULL,
+	'health_flag' BOOLEAN NOT NULL DEFAULT 0,
 	`day_of_week`	INT	NOT NULL
 );
 
