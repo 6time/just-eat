@@ -19,7 +19,7 @@ CREATE TABLE `health` (
 	'goal_week' INT NULL,
 	'daily_kcal' INT NULL,
 	'protein' INT NULL,
-	'carbo' INT NULL,
+	'carb' INT NULL,
 	'fat' INT NULL
 );
 
