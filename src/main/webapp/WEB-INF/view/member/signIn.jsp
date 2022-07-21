@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java"
 pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="ko">
    <head>
       <meta charset="UTF-8" />
@@ -10,7 +11,7 @@ pageEncoding="UTF-8" %>
    </head>
    <body>
       <div class="member-out-box">
-         <form action="/members" method="post">
+         <form action="<c:url value="/members"/>" method="post">
             <div class="member-submit-box">
                <img
                   class="icon"
@@ -38,6 +39,7 @@ pageEncoding="UTF-8" %>
                   class="member-input-text"
                   type="text"
                   name="email"
+                  value="${cookie.email.value}"
                   placeholder="이메일"
                />
                <input
@@ -46,9 +48,11 @@ pageEncoding="UTF-8" %>
                   name="password"
                   placeholder="비밀번호"
                />
+               <input type="hidden" name="toURL" value="${param.toURL}"/>
                <button class="member-btn-a" type="submit">로그인</button>
-               <div>아직 회원이 아니신가...?</div>
-               <a href="/members/signUp">회원 가입 하기</a>
+               <label class="remember-id"><input type="checkbox" name="rememberId" ${empty cookie.email.value ? "" : "checked"}>ID 기억하기</label>
+               <div>아직 회원이 아니신가요?</div>
+               <a href="/members/signUp">계정 생성</a>
             </div>
          </form>
       </div>
