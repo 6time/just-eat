@@ -6,7 +6,7 @@
 	`phone`	VARCHAR(100)	NULL,
 	`address`	VARCHAR(100)	NULL,
 	`gender`	ENUM('man','woman')	NULL,
-  `birth`	INT	NULL
+  	`birth`	INT	NULL
 );
 
 CREATE TABLE `health` (
@@ -37,8 +37,8 @@ CREATE TABLE `products` (
 	`price`	INT	NOT NULL,
 	`kcal`	INT	NOT NULL,
 	'protein' INT NULL,
-    'carb' INT NULL,
-    'fat' INT NULL
+    	'carb' INT NULL,
+    	'fat' INT NULL
 );
 
 CREATE TABLE `information` (
