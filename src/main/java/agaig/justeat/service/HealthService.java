@@ -80,7 +80,7 @@ public class HealthService {
 
     }
 
-    public void carb() {
+    public void carbo() {
 
     }
 
