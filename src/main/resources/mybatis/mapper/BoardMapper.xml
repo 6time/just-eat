@@ -35,6 +35,16 @@
         WHERE article_id=#{article_id} ;
     </update>
     <!-- 페이징 -->
+    <!-- 댓글 기능 -->
+    <select id="findAllComments" resultType="agaig.justeat.jiwon.domain.Comments">
+        SELECT *
+        FROM comments
+        WHERE article_id = #{article_id};
+    </select>
+    <insert id="commentsWrite">
+        INSERT INTO comments(comment_text,comment_writer,member_id,article_id)
+        VALUES(#{comment_text},#{comment_writer},#{member_id},#{article_id});
+    </insert>
 
 
 </mapper>

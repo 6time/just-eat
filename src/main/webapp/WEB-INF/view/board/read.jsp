@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<c:set var="comment" value="${sessionScope.session == null ? '로그인이 필요합니다.' : '댓글을 입력하세요.'}"/>
+<c:set var="disable" value="${sessionScope.session == null ? 'disabled' : 'required'}"/>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -42,6 +43,39 @@
     </tr>
 </table>
 </form>
+<!-- 댓글 기능 -->
+<h2>comments</h2>
+<form action="/boards/view/${Article.article_id}/commentsWrite" method="post">
+<table>
+    <!-- 댓글쓰기 자체를 로그인 했을 떄만 보이게 하기 ( 미구현 ) -->
+
+   <tr>
+        <th>${session.name}</th>
+        <td><input type="text" placeholder="${comment}" id="comment_text" name="comment_text" ${disable}></td>
+    </tr>
+        <tr>
+            <td>
+
+            </td>
+            <td>
+                <input type="submit" value="등록">
+            </td>    
+        </tr>
+</table>
+</form>
+<!-- 댓글 리스트 -->
+<table>
+    <c:forEach var="comments" items="${Comments}">
+    <tr>
+        <th> ${comments.comment_id}번 댓글 </th>
+        <td> ${comments.comment_writer} </td>
+        <td></td>
+        <td> ${comments.comment_text}</td>
+    <!-- 댓글 삭제기능 권한 부여 -->
+        
+    </tr>
+    </c:forEach>
+</table>
 </body>
 </html>
 

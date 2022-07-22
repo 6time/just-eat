@@ -1,6 +1,7 @@
 package agaig.justeat.jiwon.service;
 
 import agaig.justeat.jiwon.domain.Articles;
+import agaig.justeat.jiwon.domain.Comments;
 import agaig.justeat.jiwon.model.aws.dao.BoardMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +31,11 @@ public class BoardService {
 
     public void updateCnt(Long article_id){ boardMapper.updateCnt(article_id); }
 
+    // 댓글 기능
+    public List<Comments> findAllComments(Long id) { return boardMapper.findAllComments(id);}
 
+    public void commentsWrite(Comments comments){ boardMapper.commentsWrite(comments);}
 
-
+    public Comments findCommentsOne(Long id){ return boardMapper.findCommentsOne(id);}
 }
 
