@@ -9,7 +9,6 @@
         SELECT *
         FROM articles
 
-
     </select>
 <!-- create 수정-->
     <insert id="create" >

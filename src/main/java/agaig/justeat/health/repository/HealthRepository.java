@@ -13,5 +13,6 @@ public interface HealthRepository {
     Optional<Member> findByBirth(String birth);
     Optional<Member> findByGender(String gender);
     Long insert(Health health);
+
     List<Health> findAll();
 }
