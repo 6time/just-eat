@@ -16,12 +16,12 @@ public class Health {
     private Double exerciseNumber;
     private String compareWeight;
     private Integer goalWeek;
-    private Integer dailyKcal;
+    private Integer kcal;
     private Double protein;
     private Double carb;
     private Double fat;
 
-    public Health(Long member_id, Double height, Double weight, Double goal, Double exercise, Double exerciseNumber, String compareWeight, Integer goalWeek, Integer dailyKcal, Double protein, Double carb, Double fat) {
+    public Health(Long member_id, Double height, Double weight, Double goal, Double exercise, Double exerciseNumber, String compareWeight, Integer goalWeek, Integer kcal, Double protein, Double carb, Double fat) {
         this.member_id = member_id;
         this.height = height;
         this.weight = weight;
@@ -30,7 +30,7 @@ public class Health {
         this.exerciseNumber = exerciseNumber;
         this.compareWeight = compareWeight;
         this.goalWeek = goalWeek;
-        this.dailyKcal = dailyKcal;
+        this.kcal = kcal;
         this.protein = protein;
         this.carb = carb;
         this.fat = fat;

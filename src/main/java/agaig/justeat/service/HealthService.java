@@ -19,21 +19,14 @@ public class HealthService {
         this.healthRepository = healthRepository;
     }
 
-    public void healthTest(Health health,Member member) {
+    public void save(Health health,Member member) {
         compareWeight(health);
         dailyKcal(health, member);
+        healthRepository.insert(health);
     }
-    private int americanAge(Member member) {
-        int age;
-        LocalDate now = LocalDate.now();
-        LocalDate birth = LocalDate.parse(member.getBirth(), DateTimeFormatter.ofPattern("yyyyMMdd"));
 
-        age = now.minusYears(birth.getYear()).getYear();
-
-        if (birth.plusYears(age).isAfter(now)) {
-            age = age -1;
-        }
-        return age;
+    public List<Health> memberHealth() {
+        return healthRepository.findAll();
     }
 
     public void compareWeight(Health health) {
@@ -52,6 +45,19 @@ public class HealthService {
         }
     }
 
+    private int americanAge(Member member) {
+        int age;
+        LocalDate now = LocalDate.now();
+        LocalDate birth = LocalDate.parse(member.getBirth(), DateTimeFormatter.ofPattern("yyyyMMdd"));
+
+        age = now.minusYears(birth.getYear()).getYear();
+
+        if (birth.plusYears(age).isAfter(now)) {
+            age = age -1;
+        }
+        return age;
+    }
+
     private double amr(Health health, Member member) {
         double amr = 0;
         if (member.getGender().equals("남")) {
@@ -65,13 +71,26 @@ public class HealthService {
     public void dailyKcal(Health health, Member member) {
         double amr = amr(health, member);
         double bmr = health.getExercise() + health.getExerciseNumber();
-
+        /*switch (health.getCompareWeight()) {
+            case "감량" :
+                health.setKcal((int) (amr * bmr - 500.0));
+                if(health.getKcal() == 1000) {
+                    health.setKcal(1000);
+                }
+            case "유지" :
+                health.setKcal((int) (amr * bmr));
+            case "증량" :
+                health.setKcal((int) (amr * bmr + 300.0));
+        }*/
         if(health.getCompareWeight().equals("감량")) {
-            health.setDailyKcal((int) (amr * bmr - 500.0));
+            health.setKcal((int) (amr * bmr - 500.0));
+            if(health.getKcal() == 1000) {
+                health.setKcal(1000);
+            }
         } else if(health.getCompareWeight().equals("유지")) {
-            health.setDailyKcal((int) (amr * bmr));
+            health.setKcal((int) (amr * bmr));
         } else if(health.getCompareWeight().equals("증량")) {
-            health.setDailyKcal((int) (amr * bmr + 300.0));
+            health.setKcal((int) (amr * bmr + 300.0));
         }
     }
 
@@ -86,5 +105,4 @@ public class HealthService {
     public void fat() {
 
     }
-
 }

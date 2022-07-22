@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="agaig.justeat.repository.HealthRepository">
+    <insert id="insert" parameterType="Health">
+        insert into health(height, weight, goal, compare_weight, goal_week, kcal, protein, carb, fat)
+        values(#{height}, #{weight}, #{goal}, #{compareWeight}, #{goalWeek}, #{kcal}, #{protein}, #{carb}, #{fat})
+    </insert>
+    <select id="findAll" resultType="Health">
+        select height as height,
+        weight as weight,
+        goal as goal,
+        compare_weight as compareWeight,
+        goal_week as goalWeek,
+        kcal as kcal,
+        protein as protein,
+        carb as carb,
+        fat as fat,
+        from health;
+    </select>
+</mapper>
