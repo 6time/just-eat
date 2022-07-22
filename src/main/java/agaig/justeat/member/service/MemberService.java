@@ -7,20 +7,16 @@ import agaig.justeat.member.dto.MemberUpdateRequestDto;
 import agaig.justeat.member.exception.ErrorCode;
 import agaig.justeat.member.exception.SignInException;
 import agaig.justeat.member.repository.MemberRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class MemberService {
     private final MemberRepository memberRepository;
-
-    @Autowired
-    public MemberService(MemberRepository memberRepository) {
-        this.memberRepository = memberRepository;
-    }
 
     public Long join(MemberSaveRequestDto requestDto) {
         Optional.ofNullable(memberRepository.findByEmail(requestDto.getEmail()))
