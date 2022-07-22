@@ -3,7 +3,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="agaig.justeat.repository.HealthRepository">
+<mapper namespace="agaig.justeat.health.repository.HealthRepository">
     <insert id="insert" parameterType="Health">
         insert into health(height, weight, goal, compare_weight, goal_week, kcal, protein, carb, fat)
         values(#{height}, #{weight}, #{goal}, #{compareWeight}, #{goalWeek}, #{kcal}, #{protein}, #{carb}, #{fat})

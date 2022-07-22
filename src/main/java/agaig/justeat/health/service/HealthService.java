@@ -1,13 +1,14 @@
-package agaig.justeat.service;
+package agaig.justeat.health.service;
 
-import agaig.justeat.domain.Health;
+import agaig.justeat.health.domain.Health;
+import agaig.justeat.health.repository.HealthRepository;
 import agaig.justeat.member.domain.Member;
-import agaig.justeat.repository.HealthRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @Service
 public class HealthService {
@@ -19,7 +20,7 @@ public class HealthService {
         this.healthRepository = healthRepository;
     }
 
-    public void save(Health health,Member member) {
+    public void save(Health health, Member member) {
         compareWeight(health);
         dailyKcal(health, member);
         healthRepository.insert(health);

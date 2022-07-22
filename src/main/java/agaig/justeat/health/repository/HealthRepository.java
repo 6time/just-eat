@@ -1,9 +1,10 @@
-package agaig.justeat.repository;
+package agaig.justeat.health.repository;
 
-import agaig.justeat.domain.Health;
+import agaig.justeat.health.domain.Health;
 import agaig.justeat.member.domain.Member;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
 import java.util.Optional;
 
 @Mapper
