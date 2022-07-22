@@ -19,4 +19,7 @@ public interface BoardMapper {
 
     void update(Articles articles);
 
+    void updateCnt(Long article_id); // 문제시 삭제
+
+
 }

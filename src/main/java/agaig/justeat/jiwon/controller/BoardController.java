@@ -1,9 +1,9 @@
 package agaig.justeat.jiwon.controller;
 
-import agaig.justeat.annotation.MemberSignInCheck;
-import agaig.justeat.member.dto.MemberResponseDto;
 import agaig.justeat.jiwon.domain.Articles;
 import agaig.justeat.jiwon.service.BoardService;
+import agaig.justeat.member.annotation.MemberSignInCheck;
+import agaig.justeat.member.dto.MemberResponseDto;
 import agaig.justeat.member.service.MemberService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,10 +27,9 @@ public class BoardController {
     }
 
     @GetMapping("")
-    public String List(Model model) { // Criteria cri 제거
+    public String List(Model model) {
         List<Articles> articles = boardService.findAll();
         model.addAttribute("Articles", articles); //boardService.getListPaging(cri) -> articles
-
 
         return "board/list";
     }
@@ -57,9 +56,9 @@ public class BoardController {
     }
 
     @GetMapping("/view/{article_id}")
-    public String viewId(@PathVariable Long article_id, Model model) {
+    public String viewId(@PathVariable Long article_id, Model model) { //Long reNum 문제시 삭제
         Articles article = boardService.findOne(article_id);
-
+        boardService.updateCnt(article_id);
         model.addAttribute("Article", article);
 
         return "board/read";
