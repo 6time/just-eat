@@ -1,15 +1,13 @@
 package agaig.justeat.controller;
 
 import agaig.justeat.domain.Health;
-import agaig.justeat.domain.Member;
+import agaig.justeat.member.domain.Member;
 import agaig.justeat.service.HealthService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/health")
