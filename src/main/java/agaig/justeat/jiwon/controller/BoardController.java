@@ -1,5 +1,6 @@
 package agaig.justeat.jiwon.controller;
 
+import agaig.justeat.annotation.MemberSignInCheck;
 import agaig.justeat.dto.MemberResponseDto;
 import agaig.justeat.jiwon.domain.Articles;
 import agaig.justeat.jiwon.service.BoardService;
@@ -26,17 +27,16 @@ public class BoardController {
     }
 
     @GetMapping("")
-    public String List(Model model){ // Criteria cri 제거
+    public String List(Model model) { // Criteria cri 제거
         List<Articles> articles = boardService.findAll();
         model.addAttribute("Articles", articles); //boardService.getListPaging(cri) -> articles
-
 
 
         return "board/list";
     }
 
     @GetMapping("write")
-    public String writeArticle(HttpSession session){
+    public String writeArticle(HttpSession session) {
         try {
             memberService.signInCheck(session);
         } catch (Exception e) {
@@ -46,17 +46,17 @@ public class BoardController {
     }
 
     @PostMapping("write")
-    public String create(Articles articles, HttpSession session){ //HttpSession session 추가
+    public String create(Articles articles, HttpSession session) { //HttpSession session 추가
         MemberResponseDto memberResponseDto = (MemberResponseDto) session.getAttribute("session"); // 추가
         articles.setArticle_writer(memberResponseDto.getName()); //추가
         articles.setMember_id(memberResponseDto.getMember_id()); // 이상있으면 바로 삭제해야 할 추가
         System.out.println(articles.getArticle_writer()); // 추가
-       boardService.create(articles);
+        boardService.create(articles);
 
         return "redirect:/boards";
     }
 
-        @GetMapping("/view/{article_id}")
+    @GetMapping("/view/{article_id}")
     public String viewId(@PathVariable Long article_id, Model model) {
         Articles article = boardService.findOne(article_id);
 
@@ -65,45 +65,32 @@ public class BoardController {
         return "board/read";
     }
 
-
-        @GetMapping("/view/{article_id}/delete")
-    public String delete(@PathVariable Long article_id){
+    @MemberSignInCheck
+    @GetMapping("/view/{article_id}/delete")
+    public String delete(@PathVariable Long article_id, HttpSession session) {
+        Articles articles = boardService.findOne(article_id);
+        memberService.verify(articles.getMember_id(), session);
         boardService.deleteList(article_id);
         return "redirect:/boards";
     }
 
+    @MemberSignInCheck
     @GetMapping("/view/{article_id}/update")
-    public String updateForm(@PathVariable Long article_id,Model model){
-      Articles article = boardService.findOne(article_id);
-      model.addAttribute("Article", article);
+    public String updateForm(@PathVariable Long article_id, Model model, HttpSession session) {
+        Articles article = boardService.findOne(article_id);
+        memberService.verify(article.getMember_id(), session);
+        model.addAttribute("Article", article);
         return "board/update";
     }
 
-
-
-
-
-
+    @MemberSignInCheck
     @PostMapping("/view/{article_id}/update")
-    public String update(Articles articles){
+    public String update(Articles articles, HttpSession session) {
+        Articles article = boardService.findOne(articles.getArticle_id());
+        memberService.verify(article.getMember_id(), session);
         boardService.update(articles);
-
         return "redirect:/boards";
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //    @GetMapping("")
@@ -163,7 +150,6 @@ public class BoardController {
 //        boardService.deleteList(article_id);
 //        return "board/list";
 //    }
-
 
 
 }
