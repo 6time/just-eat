@@ -31,11 +31,9 @@ public class HealthController {
         member.setName("기유진");
         member.setBirth("19931217");
         member.setGender("여");
-        healthService.healthTest(health,member);
-        int goalWeek = health.getGoalWeek();
-        int dailyKcal = health.getDailyKcal();
-        model.addAttribute("goalWeek", goalWeek);
-        model.addAttribute("dailyKcal", dailyKcal);
+        healthService.save(health,member);
+        List<Health> memberHealth = healthService.memberHealth();
+        model.addAttribute("health", memberHealth);
         return "/health/memberHealth";
     }
 }
