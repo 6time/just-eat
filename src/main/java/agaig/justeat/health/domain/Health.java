@@ -1,4 +1,4 @@
-package agaig.justeat.domain;
+package agaig.justeat.health.domain;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

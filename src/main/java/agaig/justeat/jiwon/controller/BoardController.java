@@ -1,6 +1,6 @@
 package agaig.justeat.jiwon.controller;
 
-import agaig.justeat.annotation.MemberSignInCheck;
+import agaig.justeat.member.annotation.MemberSignInCheck;
 import agaig.justeat.member.dto.MemberResponseDto;
 import agaig.justeat.jiwon.domain.Articles;
 import agaig.justeat.jiwon.service.BoardService;
