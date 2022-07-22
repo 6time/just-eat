@@ -18,7 +18,7 @@ public class SignInCheckAop {
     private final MemberService memberService;
 
 //    @Before("execution(* agaig.justeat.member.controller.MainController.*(..))")
-    @Before("@annotation(agaig.justeat.annotation.MemberSignInCheck)")
+    @Before("@annotation(agaig.justeat.member.annotation.MemberSignInCheck)")
     public void execute() throws Throwable {
         HttpSession session = ((ServletRequestAttributes)(RequestContextHolder.currentRequestAttributes())).getRequest().getSession();
         memberService.signInCheck(session);

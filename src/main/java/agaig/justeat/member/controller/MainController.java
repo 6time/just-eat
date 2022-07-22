@@ -19,17 +19,22 @@ public class MainController {
     private final MemberService memberService;
 
     @GetMapping("")
-    public String main(Model model) {
-        Member member = new Member();
-        model.addAttribute("member", member);
+    public String main() {
         return "index";
     }
 
     @MemberSignInCheck
-    @GetMapping("/self")
-    public String self(HttpServletRequest request, HttpSession session) {
-        return "/selftest/SelfTestFoundation";
+    @GetMapping("/selflogin")
+    public String self() {
+        return "redirect:/selftest";
     }
+
+    @MemberSignInCheck
+    @GetMapping("/healthlogin")
+    public String health() {
+        return "redirect:/health";
+    }
+
 
     @ExceptionHandler(IllegalStateException.class)
     public String loginCatcher(Exception e, HttpServletRequest request) {
