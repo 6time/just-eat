@@ -22,11 +22,9 @@ public class MemberController {
 
     private final MemberService memberService;
 
+    @MemberSignInCheck
     @GetMapping("")
-    public String getSignIn(HttpSession session) {
-        if (session.getAttribute("session") == null) {
-        return "/member/signIn";
-        }
+    public String getSignIn() {
         return "redirect:/";
     }
 

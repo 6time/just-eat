@@ -2,6 +2,7 @@ package agaig.justeat.member.controller;
 
 import agaig.justeat.member.annotation.MemberSignInCheck;
 import agaig.justeat.member.domain.Member;
+import agaig.justeat.member.exception.SignInException;
 import agaig.justeat.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -26,17 +27,17 @@ public class MainController {
     @MemberSignInCheck
     @GetMapping("/selflogin")
     public String self() {
-        return "redirect:/selftest";
+        return "/selftest/SelfTestFoundation";
     }
 
     @MemberSignInCheck
     @GetMapping("/healthlogin")
     public String health() {
-        return "redirect:/health";
+        return "/health/healthTest";
     }
 
 
-    @ExceptionHandler(IllegalStateException.class)
+    @ExceptionHandler(SignInException.class)
     public String loginCatcher(Exception e, HttpServletRequest request) {
         return "redirect:/members/?toURL=" + request.getRequestURL();
 
