@@ -12,7 +12,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 />
 <c:set
   var="userName"
-  value="${sessionScope.session==null ? '' : sessionScope.session.name}"
+  value="${sessionScope.session==null ? '' : memberName}"
 />
 <html lang="ko">
   <head>
@@ -41,7 +41,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         <c:if test="${sessionScope.session != null}">
           <a
             class="member-btn-a"
-            href="<c:url value='/members/${sessionScope.session.member_id}'/>"
+            href="<c:url value='/members/${sessionScope.session}'/>"
             >회원 정보 수정</a
           >
         </c:if>
