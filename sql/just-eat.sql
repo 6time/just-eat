@@ -1,7 +1,7 @@
 ﻿CREATE TABLE `members` (
 	`member_id`	BIGINT	NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	`email`	VARCHAR(100)	NOT NULL,
-	`password`	VARCHAR(30)	NOT NULL,
+	`password`	VARCHAR(500)	NOT NULL,
 	`name`	VARCHAR(100)	NOT NULL,
 	`phone`	VARCHAR(100)	NULL,
 	`address`	VARCHAR(100)	NULL,
