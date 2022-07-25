@@ -1,7 +1,7 @@
 package agaig.justeat.jiwon.controller;
 
 import agaig.justeat.member.annotation.MemberSignInCheck;
-import agaig.justeat.member.dto.MemberResponseDto;
+import agaig.justeat.member.dto.MemberUpdateResponseDto;
 import agaig.justeat.jiwon.domain.Articles;
 import agaig.justeat.jiwon.service.BoardService;
 import agaig.justeat.member.service.MemberService;
@@ -47,7 +47,7 @@ public class BoardController {
 
     @PostMapping("write")
     public String create(Articles articles, HttpSession session) { //HttpSession session 추가
-        MemberResponseDto memberResponseDto = (MemberResponseDto) session.getAttribute("session"); // 추가
+        MemberUpdateResponseDto memberResponseDto = (MemberUpdateResponseDto) session.getAttribute("session"); // 추가
         articles.setArticle_writer(memberResponseDto.getName()); //추가
         articles.setMember_id(memberResponseDto.getMember_id()); // 이상있으면 바로 삭제해야 할 추가
         System.out.println(articles.getArticle_writer()); // 추가
