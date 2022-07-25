@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
-@RequestMapping("/health")
 public class HealthController {
 
     private final HealthService healthService;
@@ -23,21 +22,26 @@ public class HealthController {
         this.healthService = healthService;
     }
 
-    @GetMapping("")
+    @GetMapping("/health")
+    public String memberHealth(Model model) {
+        List<Health> memberHealth = healthService.findAll();
+        model.addAttribute("health", memberHealth);
+
+        return "/health/memberHealth";
+    }
+
+    @GetMapping("/health/new")
     public String healthTest() {
         return "/health/healthTest";
     }
 
-    @PostMapping("")
-    public String health(HttpSession session, Health health, Model model, Member member, MemberResponseDto responseDto) {
+    @PostMapping("/health/new")
+    public String save(HttpSession session, MemberResponseDto responseDto, Member member, Health health, String gender) {
         responseDto = (MemberResponseDto) session.getAttribute("session");
-        member.setName("기유진");
-        member.setBirth("19931217");
-        member.setGender("여");
         health.setMember_id(responseDto.getMember_id());
-        healthService.save(health,member);
-        List<Health> memberHealth = healthService.memberHealth();
-        model.addAttribute("health", memberHealth);
-        return "/health/memberHealth";
+        healthService.save(health, member,gender);
+        return "redirect:/health";
     }
+
+
 }

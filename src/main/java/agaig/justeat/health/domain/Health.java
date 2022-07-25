@@ -1,5 +1,6 @@
 package agaig.justeat.health.domain;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,31 +10,32 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Health {
     private Long member_id;
-    private Double height;
-    private Double weight;
-    private Double goal;
-    private Double exercise;
-    private Double exerciseNumber;
+    private double height;
+    private double weight;
+    private double goal;
     private String compareWeight;
-    private Integer goalWeek;
-    private Integer kcal;
-    private Double protein;
-    private Double carb;
-    private Double fat;
+    private int goalWeek;
+    private int kcal;
+    private double protein;
+    private double carb;
+    private double fat;
+    private double exercise;
+    private double exerciseNumber;
 
-    public Health(Long member_id, Double height, Double weight, Double goal, Double exercise, Double exerciseNumber, String compareWeight, Integer goalWeek, Integer kcal, Double protein, Double carb, Double fat) {
+    @Builder
+    public Health(Long member_id, double height, double weight, double goal, String compareWeight, int goalWeek, int kcal, double protein, double carb, double fat, double exercise, double exerciseNumber) {
         this.member_id = member_id;
         this.height = height;
         this.weight = weight;
         this.goal = goal;
-        this.exercise = exercise;
-        this.exerciseNumber = exerciseNumber;
         this.compareWeight = compareWeight;
         this.goalWeek = goalWeek;
         this.kcal = kcal;
         this.protein = protein;
         this.carb = carb;
         this.fat = fat;
+        this.exerciseNumber = exerciseNumber;
+        this.exercise = exercise;
 
     }
 }

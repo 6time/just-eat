@@ -11,4 +11,8 @@
     <select id="findAll" resultType="agaig.justeat.health.domain.Health">
         select * from health;
     </select>
+
+    <select id="findByGender" parameterType="String" resultType="agaig.justeat.member.domain.Member">
+        select * from members where gender = #{gender}
+    </select>
 </mapper>
