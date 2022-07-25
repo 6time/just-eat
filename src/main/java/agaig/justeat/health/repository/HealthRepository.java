@@ -10,8 +10,7 @@ import java.util.Optional;
 @Mapper
 public interface HealthRepository {
 
-    Member findByGender(String gender);
     Long insert(Health health);
-    List<Health> findAll();
+    Health findHealth(Long id);
 
 }

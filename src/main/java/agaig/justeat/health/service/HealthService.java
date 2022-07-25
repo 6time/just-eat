@@ -3,9 +3,13 @@ package agaig.justeat.health.service;
 import agaig.justeat.health.domain.Health;
 import agaig.justeat.health.repository.HealthRepository;
 import agaig.justeat.member.domain.Member;
+import agaig.justeat.member.dto.MemberUpdateResponseDto;
+import agaig.justeat.member.repository.MemberRepository;
+import agaig.justeat.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -13,32 +17,34 @@ import java.util.List;
 @Service
 public class HealthService {
     private final HealthRepository healthRepository;
+    private final MemberRepository memberRepository;
 
     @Autowired
-    public HealthService(HealthRepository healthRepository) {
+    public HealthService(HealthRepository healthRepository, MemberRepository memberRepository) {
 
         this.healthRepository = healthRepository;
+        this.memberRepository = memberRepository;
     }
 
-    public Member findGender(String gender) {
-        Member member = healthRepository.findByGender(gender);
+    public Member findMember(Long id) {
+        Member member = memberRepository.findById(id);
         return member;
     }
 
     public void Calculation(Health health, Member member) {
         compareWeight(health);
         dailyKcal(health, member);
-
+        health.setHealthFlag(true);
     }
 
-    public void save(Health health,Member member,String gender) {
-        findGender(gender);
+    public void save(Health health,Member member) {
         Calculation(health, member);
         healthRepository.insert(health);
     }
 
-    public List<Health> findAll() {
-        return healthRepository.findAll();
+    public Health findHealth(Long id) {
+        Health health = healthRepository.findHealth(id);
+        return health;
     }
 
     public void compareWeight(Health health) {
