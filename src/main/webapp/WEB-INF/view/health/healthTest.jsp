@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java"
-pageEncoding="UTF-8" %>
+pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="ko">
    <head>
@@ -10,7 +10,7 @@ pageEncoding="UTF-8" %>
       <link rel="stylesheet" href="/css/style.css" />
    </head>
    <body>
-      <form action="/health" method="post">
+      <form action="/health/new" method="post">
          <p>키를 입력하세요.<br>
          <input type="number" id="health" name="height" placeholder="예) 160.0" step="0.1" min="100" max="300"></p>
 

@@ -10,6 +10,7 @@ pageEncoding="UTF-8" %>
       <link rel="stylesheet" href="/css/style.css" />
    </head>
    <body>
+   <h4>${member.name}님의 진단정보</h4>
    <p>※ 목표까지 소요기간<br>
       ${health.goalWeek}주</p>
    <p>※ 하루동안 섭취해야할 칼로리<br>
