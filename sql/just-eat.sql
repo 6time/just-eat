@@ -11,6 +11,7 @@
 
 CREATE TABLE `health` (
 	`member_id`	BIGINT	NOT NULL PRIMARY KEY,
+	`health_flag` BOOLEAN NOT NULL DEFAULT 0,
 	`height` DOUBLE	NULL,
 	`weight` DOUBLE	NULL,
 	`goal` DOUBLE NULL,
@@ -26,7 +27,6 @@ CREATE TABLE `diets` (
 	`diet_id`	BIGINT	NOT NULL,
 	`member_id`	BIGINT	NOT NULL,
 	`product_id` BIGINT	NOT NULL,
-	`health_flag` BOOLEAN NOT NULL DEFAULT 0,
 	`day_of_week`	INT	NOT NULL
 );
 
