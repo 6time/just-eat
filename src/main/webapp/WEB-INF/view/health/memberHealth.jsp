@@ -14,7 +14,7 @@ pageEncoding="UTF-8" %>
    <p>※ 목표까지 소요기간<br>
       ${health.goalWeek}주</p>
    <p>※ 하루동안 섭취해야할 칼로리<br>
-      ${health.dailyKcal}kcal</p>
+      ${health.kcal}kcal</p>
       <!-- <p>※ 탄수화물<br>
                  ${carb}g</p>
               <p>※ 단백질<br>
