@@ -21,8 +21,8 @@ public class SelfTestService { //service는 프레젠테이션(뷰)에서 직접
         selfTestRepository.save(selfTest);
     }
 
-    public List<SelfTest> findMembers() {
-        return selfTestRepository.findAll();
+    public List<SelfTest> findMembers(Long member_id) {
+        return selfTestRepository.findById(member_id);
     }
 }
 

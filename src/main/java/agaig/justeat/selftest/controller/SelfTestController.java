@@ -1,5 +1,6 @@
 package agaig.justeat.selftest.controller;
 
+import agaig.justeat.member.dto.MemberUpdateResponseDto;
 import agaig.justeat.selftest.domain.SelfTest;
 import agaig.justeat.selftest.dto.SelfTestSaveRequestDto;
 import agaig.justeat.selftest.service.SelfTestService;
@@ -9,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 
@@ -34,8 +36,9 @@ public class SelfTestController { //controller 프레젠테이션 계층으로 �
     }
 
     @GetMapping("list")
-    public String list(Model model) {
-        List<SelfTest> selfTests = selfTestService.findMembers();
+    public String list(HttpSession session, Model model) {
+        MemberUpdateResponseDto responseDto = (MemberUpdateResponseDto)session.getAttribute("session");
+        List<SelfTest> selfTests = selfTestService.findMembers(responseDto.getMember_id());
         model.addAttribute("selfTests", selfTests); //model에 담기
         return "selftest/SelfTestList";
     }

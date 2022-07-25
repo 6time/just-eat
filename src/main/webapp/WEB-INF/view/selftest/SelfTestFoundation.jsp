@@ -61,7 +61,7 @@ pageEncoding="UTF-8" %>
   </fieldset>
   </div>
   <input type="hidden" name="member_id" value="${sessionScope.session.member_id}"/>
-  <input type="hidden" name="name" value="${sessionScope.session.name}"/>
+  <!-- <input type="hidden" name="name" value="${sessionScope.session.name}"/> -->
   <p/>
   <input type="submit" value="제출" >
   <input type="reset" value="다시작성">

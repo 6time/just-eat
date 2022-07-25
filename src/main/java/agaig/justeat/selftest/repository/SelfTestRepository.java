@@ -9,6 +9,6 @@ import java.util.List;
 public interface SelfTestRepository {
 //    Long update(SelfTest selfTest); //숫자형만 가능 Long
     Long save(SelfTest selfTest);
-    List<SelfTest> findAll();
+    List<SelfTest> findById(Long member_id);
 
 }
