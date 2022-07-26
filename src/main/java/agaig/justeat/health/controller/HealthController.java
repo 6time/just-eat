@@ -8,9 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import javax.servlet.http.HttpSession;
-import java.util.List;
+
 
 @Controller
 @RequestMapping("/health")
@@ -26,10 +25,13 @@ public class HealthController {
     public String memberHealth(HttpSession session, Health health, Model model) {
         health.setMember_id((Long) session.getAttribute("session"));
         health = healthService.findHealth(health.getMember_id());
-        System.out.println(health.getKcal());
-        model.addAttribute("health", health);
 
-        return "/health/memberHealth";
+        if (health.isHealthFlag()) {
+            model.addAttribute("health", health); 
+            return "/health/memberHealth";
+        } else {
+            return "redirect:/new";
+        }
     }
 
     @GetMapping("new")
