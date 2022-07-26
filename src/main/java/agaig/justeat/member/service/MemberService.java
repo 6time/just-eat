@@ -44,9 +44,7 @@ public class MemberService {
     }
 
     public void verify(Long member_id, HttpSession session) {
-        Object sessionAttribute = session.getAttribute("session");
-        MemberUpdateResponseDto sessionMember = (MemberUpdateResponseDto) sessionAttribute;
-        if (!member_id.equals(sessionMember.getMember_id())) {
+        if (!member_id.equals(session.getAttribute("session"))) {
             throw new SignInException("잘못된 접근입니다.", ErrorCode.ADMIN_NOT_FOUND);
         }
     }
