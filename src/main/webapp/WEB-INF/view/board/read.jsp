@@ -11,6 +11,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>게시글 읽기</title>
 </head>
+<style>
+    body{
+    margin: 0 auto;
+    width: 300px;
+}
+</style>
 <body>
 <h1>read</h1>
 <form action="/boards/view/{Article.article_id}/update" method="get">
@@ -34,7 +40,7 @@
         <td></td>
         <td>
         <!--수정/삭제 권한 부여-->
-        <c:if test="${Article.member_id == session.member_id}">
+        <c:if test="${Article.member_id == session}">
             <input type="button" value="수정" onclick="location.href='/boards/view/${Article.article_id}/update'">
             <input type="button" value="삭제" onclick="location.href='/boards/view/${Article.article_id}/delete'">
         </c:if>
@@ -47,10 +53,8 @@
 <h2>comments</h2>
 <form action="/boards/view/${Article.article_id}/commentsWrite" method="post">
 <table>
-    <!-- 댓글쓰기 자체를 로그인 했을 떄만 보이게 하기 ( 미구현 ) -->
-
-   <tr>
-        <th>${session.name}</th>
+    <tr>
+        <th>${Member.name}</th>
         <td><input type="text" placeholder="${comment}" id="comment_text" name="comment_text" ${disable}></td>
     </tr>
         <tr>
