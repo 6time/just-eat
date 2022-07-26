@@ -9,6 +9,6 @@
         values(#{daykcal}, #{dayweight}, #{dayexercise}, #{member_id}, #{name})
     </insert>
     <select id="findAll" resultType="agaig.justeat.selftest.domain.SelfTest">
-        select * from selftest
+        select * from selftest where member_id = #{member_id}
     </select>
 </mapper>

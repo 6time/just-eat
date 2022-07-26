@@ -31,8 +31,7 @@ pageEncoding="UTF-8" %>
     </c:if>
 
     <tbody>
-    <c:forEach var="result" items="${selftest}" varStatus="status">
-    <tr>
+    <c:forEach var="result" items="${selfTests}" varStatus="status">
     <td><c:out value="${result.name}"/></td>
     <td><c:out value="${result.member_id}"/></td>
     <td><c:out value="${result.daykcal}"/></td>

@@ -1,7 +1,7 @@
 package agaig.justeat.member.controller;
 
 import agaig.justeat.member.annotation.MemberSignInCheck;
-import agaig.justeat.member.dto.MemberResponseDto;
+import agaig.justeat.member.dto.MemberUpdateResponseDto;
 import agaig.justeat.member.dto.MemberSaveRequestDto;
 import agaig.justeat.member.dto.MemberUpdateRequestDto;
 import agaig.justeat.member.service.MemberService;
@@ -31,9 +31,9 @@ public class MemberController {
     @PostMapping("")
     public String postSignIn(String email, String password, boolean rememberId, String toURL, HttpServletRequest request, HttpServletResponse response) {
 
-        MemberResponseDto responseDto = memberService.signIn(email, password);
+        Long member_id = memberService.signIn(email, password);
 
-        Cookie memberCookie = new Cookie("member_id", responseDto.getMember_id().toString());
+        Cookie memberCookie = new Cookie("member_id", member_id.toString());
         response.addCookie(memberCookie);
 
         Cookie idCookie = new Cookie("email", email);
@@ -43,7 +43,7 @@ public class MemberController {
         response.addCookie(idCookie);
 
         HttpSession session = request.getSession();
-        session.setAttribute("session", responseDto);
+        session.setAttribute("session", member_id);
 
         toURL = toURL == null || toURL.equals("") ? "/" : toURL;
         return "redirect:" + toURL;
@@ -78,7 +78,7 @@ public class MemberController {
     @MemberSignInCheck
     @GetMapping("/{id}")
     public String memberInfo(@PathVariable Long id, Model model) {
-        MemberResponseDto responseDto = memberService.findInfoById(id);
+        MemberUpdateResponseDto responseDto = memberService.findInfoById(id);
         model.addAttribute("updateMember", responseDto);
         return "/member/memberUpdate";
     }
@@ -88,7 +88,7 @@ public class MemberController {
     public String update(@PathVariable Long id, String password,MemberUpdateRequestDto requestDto, Model model) {
         memberService.passwordCheck(id, password);
         memberService.update(id, requestDto);
-        MemberResponseDto responseDto = memberService.findInfoById(id);
+        MemberUpdateResponseDto responseDto = memberService.findInfoById(id);
         model.addAttribute("updateMember", responseDto);
         return "/member/memberUpdate";
     }

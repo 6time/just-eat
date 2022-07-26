@@ -5,7 +5,7 @@ import agaig.justeat.member.domain.Information;
 import agaig.justeat.member.domain.PageHandler;
 import agaig.justeat.member.dto.InfoResponseDto;
 import agaig.justeat.member.dto.InfoSaveRequestDto;
-import agaig.justeat.member.dto.MemberResponseDto;
+import agaig.justeat.member.dto.MemberUpdateResponseDto;
 import agaig.justeat.member.service.InformationService;
 import agaig.justeat.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -59,8 +59,8 @@ public class InformationController {
 
     @PostMapping("/write/{member_id}")
     public String writeSave(@PathVariable Long member_id, InfoSaveRequestDto requestDto) {
-        MemberResponseDto memberResponseDto = memberService.findInfoById(member_id);
-        requestDto.setWriter(memberResponseDto.getName());
+        MemberUpdateResponseDto memberUpdateResponseDto = memberService.findInfoById(member_id);
+        requestDto.setWriter(memberUpdateResponseDto.getName());
         requestDto.setMember_id(member_id);
         informationService.write(requestDto);
         return "redirect:/info/list";

@@ -1,7 +1,7 @@
 package agaig.justeat.member.service;
 
 import agaig.justeat.member.domain.Member;
-import agaig.justeat.member.dto.MemberResponseDto;
+import agaig.justeat.member.dto.MemberUpdateResponseDto;
 import agaig.justeat.member.dto.MemberSaveRequestDto;
 import agaig.justeat.member.dto.MemberUpdateRequestDto;
 import agaig.justeat.member.exception.ErrorCode;
@@ -26,12 +26,12 @@ public class MemberService {
         return memberRepository.insert(requestDto.toEntity());
     }
 
-    public MemberResponseDto signIn(String email, String password) {
+    public Long signIn(String email, String password) {
         Member member = Optional.ofNullable(memberRepository.findByEmail(email)).orElseThrow(() -> new SignInException("존재하지 않는 회원 입니다.", ErrorCode.ADMIN_NOT_FOUND));
         if (!password.equals(member.getPassword())) {
             throw new SignInException("틀린 비밀번호 입니다.", ErrorCode.ADMIN_NOT_FOUND);
         }
-        return new MemberResponseDto(member);
+        return member.getMember_id();
     }
 
     public void signInCheck(HttpSession session) {
@@ -42,7 +42,7 @@ public class MemberService {
 
     public void verify(Long member_id, HttpSession session) {
         Object sessionAttribute = session.getAttribute("session");
-        MemberResponseDto sessionMember = (MemberResponseDto) sessionAttribute;
+        MemberUpdateResponseDto sessionMember = (MemberUpdateResponseDto) sessionAttribute;
         if (!member_id.equals(sessionMember.getMember_id())) {
             throw new SignInException("잘못된 접근입니다.", ErrorCode.ADMIN_NOT_FOUND);
         }
@@ -60,8 +60,8 @@ public class MemberService {
         return memberRepository.update(requestDto.toEntity());
     }
 
-    public MemberResponseDto findInfoById(Long member_id) {
+    public MemberUpdateResponseDto findInfoById(Long member_id) {
         Member member = Optional.ofNullable(memberRepository.findById(member_id)).orElseThrow(()->new SignInException("존재하지 않는 회원 입니다.", ErrorCode.ADMIN_NOT_FOUND));
-        return new MemberResponseDto(member);
+        return new MemberUpdateResponseDto(member);
     }
 }

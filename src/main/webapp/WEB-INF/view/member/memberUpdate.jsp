@@ -14,7 +14,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
          <div class="member-submit-box">
             <form
                class="member-form"
-               action="/members/${sessionScope.session.member_id}"
+               action="/members/${sessionScope.session}"
                method="post"
                onsubmit="return formCheck(this)"
             >
