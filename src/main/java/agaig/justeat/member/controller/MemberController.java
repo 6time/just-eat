@@ -76,7 +76,7 @@ public class MemberController {
     }
 
     @MemberSignInCheck
-    @GetMapping("/{id}")
+    @GetMapping("/info/{id}")
     public String memberInfo(@PathVariable Long id, Model model) {
         MemberUpdateResponseDto responseDto = memberService.findInfoById(id);
         model.addAttribute("updateMember", responseDto);
@@ -84,7 +84,7 @@ public class MemberController {
     }
 
     @MemberSignInCheck
-    @PostMapping("/{id}")
+    @PostMapping("/info/{id}")
     public String update(@PathVariable Long id, String password,MemberUpdateRequestDto requestDto, Model model) {
         memberService.passwordCheck(id, password);
         memberService.update(id, requestDto);

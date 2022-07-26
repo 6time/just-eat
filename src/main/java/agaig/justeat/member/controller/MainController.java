@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -22,7 +23,12 @@ public class MainController {
 
     @GetMapping("")
     public String main(Model model, HttpSession session) {
-        MemberUpdateResponseDto responseDto = memberService.findInfoById((Long) session.getAttribute("session"));
+        Object member_id = Optional.ofNullable(session.getAttribute("session")).orElse("회원");
+        if (member_id == "회원") {
+            model.addAttribute("memberName", member_id);
+            return "index";
+        }
+        MemberUpdateResponseDto responseDto = memberService.findInfoById((Long) member_id);
         model.addAttribute("memberName", responseDto.getName());
         return "index";
     }
