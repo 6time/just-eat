@@ -1,14 +1,13 @@
 package agaig.justeat.health.controller;
 
 import agaig.justeat.health.domain.Health;
-import agaig.justeat.member.domain.Member;
 import agaig.justeat.health.service.HealthService;
-import agaig.justeat.member.dto.MemberResponseDto;
+import agaig.justeat.member.domain.Member;
+import agaig.justeat.member.dto.MemberUpdateResponseDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -36,8 +35,8 @@ public class HealthController {
     }
 
     @PostMapping("/health/new")
-    public String save(HttpSession session, MemberResponseDto responseDto, Member member, Health health, String gender) {
-        responseDto = (MemberResponseDto) session.getAttribute("session");
+    public String save(HttpSession session, MemberUpdateResponseDto responseDto, Member member, Health health, String gender) {
+        responseDto = (MemberUpdateResponseDto) session.getAttribute("session");
         health.setMember_id(responseDto.getMember_id());
         healthService.save(health, member,gender);
         return "redirect:/health";

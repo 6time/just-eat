@@ -1,6 +1,5 @@
 package agaig.justeat.selftest.controller;
 
-import agaig.justeat.member.dto.MemberUpdateResponseDto;
 import agaig.justeat.selftest.domain.SelfTest;
 import agaig.justeat.selftest.dto.SelfTestSaveRequestDto;
 import agaig.justeat.selftest.service.SelfTestService;
@@ -19,13 +18,14 @@ public class SelfTestController { //controller 프레젠테이션 계층으로 �
 
 
     public final SelfTestService selfTestService;
+
     @Autowired
     public SelfTestController(SelfTestService selfTestService) {
         this.selfTestService = selfTestService;
     }
 
     @PostMapping("selftest")
-    public String SelfTest(SelfTestSaveRequestDto requestDto, double daykcal, double dayweight, int dayexercise) {
+    public String SelfTest(SelfTestSaveRequestDto requestDto, int daykcal, int dayweight, int dayexercise) {
         selfTestService.save(requestDto.toEntity());
         return "/selftest/SelfTest";
     }
@@ -37,9 +37,8 @@ public class SelfTestController { //controller 프레젠테이션 계층으로 �
 
     @GetMapping("list")
     public String list(HttpSession session, Model model) {
-        MemberUpdateResponseDto responseDto = (MemberUpdateResponseDto)session.getAttribute("session");
-        List<SelfTest> selfTests = selfTestService.findMembers(responseDto.getMember_id());
-        model.addAttribute("selfTests", selfTests); //model에 담기
+        List<SelfTest> selfTests = selfTestService.findMembers((Long) session.getAttribute("session"));
+        model.addAttribute("selfTests", selfTests);
         return "selftest/SelfTestList";
     }
 

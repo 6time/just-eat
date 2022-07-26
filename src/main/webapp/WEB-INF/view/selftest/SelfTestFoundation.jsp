@@ -60,8 +60,7 @@ pageEncoding="UTF-8" %>
     <p>5단계 숨쉬기 매우 힘들고 극도록 힘이 드는 정도 <br>(전력 달리기)</p>
   </fieldset>
   </div>
-  <input type="hidden" name="member_id" value="${sessionScope.session.member_id}"/>
-  <!-- <input type="hidden" name="name" value="${sessionScope.session.name}"/> -->
+  <input type="hidden" name="member_id" value="${sessionScope.session}"/>
   <p/>
   <input type="submit" value="제출" >
   <input type="reset" value="다시작성">

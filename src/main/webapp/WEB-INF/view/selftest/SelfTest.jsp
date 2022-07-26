@@ -19,7 +19,7 @@ pageEncoding="UTF-8" %>
     <body>
 
         <fieldset style="max-width: 10cm">
-        <legend><p style="font-size: large">${sessionScope.session.name}님의 자가진단 결과</p></legend>
+        <legend><p style="font-size: large">회원님의 자가진단 결과</p></legend>
         <%request.setCharacterEncoding("UTF-8");%>
 
         <div>
