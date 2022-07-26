@@ -1,9 +1,13 @@
 package agaig.justeat.jiwon.controller;
 
+
 import agaig.justeat.member.annotation.MemberSignInCheck;
 import agaig.justeat.member.dto.MemberUpdateResponseDto;
 import agaig.justeat.jiwon.domain.Articles;
+import agaig.justeat.jiwon.domain.Comments;
 import agaig.justeat.jiwon.service.BoardService;
+import agaig.justeat.member.annotation.MemberSignInCheck;
+import agaig.justeat.member.dto.MemberResponseDto;
 import agaig.justeat.member.service.MemberService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,10 +31,9 @@ public class BoardController {
     }
 
     @GetMapping("")
-    public String List(Model model) { // Criteria cri 제거
+    public String List(Model model) {
         List<Articles> articles = boardService.findAll();
         model.addAttribute("Articles", articles); //boardService.getListPaging(cri) -> articles
-
 
         return "board/list";
     }
@@ -50,20 +53,35 @@ public class BoardController {
         MemberUpdateResponseDto memberResponseDto = (MemberUpdateResponseDto) session.getAttribute("session"); // 추가
         articles.setArticle_writer(memberResponseDto.getName()); //추가
         articles.setMember_id(memberResponseDto.getMember_id()); // 이상있으면 바로 삭제해야 할 추가
-        System.out.println(articles.getArticle_writer()); // 추가
         boardService.create(articles);
 
         return "redirect:/boards";
     }
 
     @GetMapping("/view/{article_id}")
-    public String viewId(@PathVariable Long article_id, Model model) {
+    public String viewId(@PathVariable Long article_id, Model model) { //Long reNum 문제시 삭제
         Articles article = boardService.findOne(article_id);
-
+        boardService.updateCnt(article_id);
         model.addAttribute("Article", article);
+        List<Comments> comments = boardService.findAllComments(article_id);// 댓글 기능
+        model.addAttribute("Comments", comments); // 댓글 기능
 
         return "board/read";
     }
+
+    //댓글 기능
+    @MemberSignInCheck
+    @PostMapping("/view/{article_id}/commentsWrite")
+    public String commentsWrite(@PathVariable Long article_id, HttpSession session,Comments comments){
+        MemberResponseDto memberResponseDto = (MemberResponseDto) session.getAttribute("session");
+//        Comments comments = boardService.findCommentsOne(article_id);
+        comments.setComment_writer(memberResponseDto.getName());
+        comments.setMember_id(memberResponseDto.getMember_id());
+        comments.setArticle_id(article_id);
+        boardService.commentsWrite(comments);
+        return "redirect:/boards/view/{article_id}";
+    }
+
 
     @MemberSignInCheck
     @GetMapping("/view/{article_id}/delete")
@@ -91,65 +109,6 @@ public class BoardController {
         boardService.update(articles);
         return "redirect:/boards";
     }
-
-
-//    @GetMapping("")
-//    public String list(Model model) {
-//       List<Articles> articles = boardService.findList();
-//       model.addAttribute("Articles", articles);
-//
-//        return "/board/list";
-//    }
-//
-//    @GetMapping("/view/no")
-//    public String readArticle() {
-//        Long id = 1L;
-//        boardService.findOne(id);
-//        return "/board/read";
-//    }
-//
-//    @GetMapping("/write")
-//    public String writeArticle() {
-//        return "/board/write";
-//    }
-//
-//    @GetMapping("/update")
-//    public String updateArticle() {
-//        return "/board/write/no";
-//    }
-//
-//    @GetMapping("/delete")
-//    public String deleteArticle() {
-//        return "/board/list";
-//    }
-//
-//
-//    //BoardForm
-//    @PostMapping("")
-//    public String create(BoardForm form){
-//        Articles articles = new Articles();
-//        articles.setArticle_title(form.getArticle_title());
-//        articles.setArticle_text(form.getArticle_text());
-//
-//        boardService.join(articles);
-//
-//        return "redirect:/boards";
-//    }
-//
-//    @GetMapping("/view/{article_id}")
-//    public String viewId(@PathVariable Long article_id, Model model) {
-//        Articles article = boardService.findOne(article_id);
-//
-//        model.addAttribute("Article", article);
-//
-//        return "board/read";
-//    }
-//
-//    @GetMapping("/view/{article_id}/delete")
-//    public String delete(@PathVariable Long article_id){
-//        boardService.deleteList(article_id);
-//        return "board/list";
-//    }
 
 
 }
