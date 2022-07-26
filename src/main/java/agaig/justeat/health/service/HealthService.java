@@ -31,10 +31,9 @@ public class HealthService {
         return member;
     }
 
-    public void Calculation(Health health, Member member) {
-        compareWeight(health);
-        dailyKcal(health, member);
-        health.setHealthFlag(true);
+    public Health findHealth(Long id) {
+        Health health = healthRepository.findHealth(id);
+        return health;
     }
 
     public void save(Health health,Member member) {
@@ -42,9 +41,10 @@ public class HealthService {
         healthRepository.insert(health);
     }
 
-    public Health findHealth(Long id) {
-        Health health = healthRepository.findHealth(id);
-        return health;
+    public void Calculation(Health health, Member member) {
+        compareWeight(health);
+        dailyKcal(health, member);
+        health.setHealthFlag(true);
     }
 
     public void compareWeight(Health health) {
@@ -98,9 +98,10 @@ public class HealthService {
         } else if(health.getCompareWeight().equals("증량")) {
             health.setKcal((int) (amr * bmr + 300.0));
         }
-        /*if (health.getKcal() == 1000 && health.getKcal() < 1000) {
+
+        if (health.getKcal() == 1000 || health.getKcal() < 1000) {
             health.setKcal(1000);
-        }*/
+        }
     }
 
     public void protein() {

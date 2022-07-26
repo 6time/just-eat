@@ -23,8 +23,8 @@ public class Health {
     private double exercise;
     private double exerciseNumber;
 
-    @Builder
-    public Health(Long member_id, boolean healthFlag, double height, double weight, double goal, String compareWeight, int goalWeek, int kcal, double protein, double carb, double fat, double exercise, double exerciseNumber) {
+
+    public Health(Long member_id,boolean healthFlag, double height, double weight, double goal, String compareWeight, int goalWeek, int kcal, double protein, double carb, double fat, double exercise, double exerciseNumber) {
         this.member_id = member_id;
         this.healthFlag = healthFlag;
         this.height = height;
