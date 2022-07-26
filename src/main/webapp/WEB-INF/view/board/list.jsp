@@ -9,7 +9,10 @@
     <title>게시판 작성</title>
 </head>
 <style>
-
+body{
+    margin: 0 auto;
+    width: 300px;
+}
 </style>
 <body>
     <h1>게시글</h1>
