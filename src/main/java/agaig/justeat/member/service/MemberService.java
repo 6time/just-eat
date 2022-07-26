@@ -7,6 +7,7 @@ import agaig.justeat.member.dto.MemberUpdateRequestDto;
 import agaig.justeat.member.exception.ErrorCode;
 import agaig.justeat.member.exception.SignInException;
 import agaig.justeat.member.repository.MemberRepository;
+import agaig.justeat.member.util.MemberSha256;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -23,12 +24,14 @@ public class MemberService {
                 .ifPresent((member -> {
                     throw new SignInException("이미 존재하는 회원입니다.", ErrorCode.ADMIN_NOT_FOUND);
                 }));
+        requestDto.setPassword(MemberSha256.encrypt(requestDto.getPassword()));
         return memberRepository.insert(requestDto.toEntity());
     }
 
     public Long signIn(String email, String password) {
         Member member = Optional.ofNullable(memberRepository.findByEmail(email)).orElseThrow(() -> new SignInException("존재하지 않는 회원 입니다.", ErrorCode.ADMIN_NOT_FOUND));
-        if (!password.equals(member.getPassword())) {
+        String encryptPassword = MemberSha256.encrypt(password);
+        if (!encryptPassword.equals(member.getPassword())) {
             throw new SignInException("틀린 비밀번호 입니다.", ErrorCode.ADMIN_NOT_FOUND);
         }
         return member.getMember_id();
@@ -41,9 +44,7 @@ public class MemberService {
     }
 
     public void verify(Long member_id, HttpSession session) {
-        Object sessionAttribute = session.getAttribute("session");
-        MemberUpdateResponseDto sessionMember = (MemberUpdateResponseDto) sessionAttribute;
-        if (!member_id.equals(sessionMember.getMember_id())) {
+        if (!member_id.equals(session.getAttribute("session"))) {
             throw new SignInException("잘못된 접근입니다.", ErrorCode.ADMIN_NOT_FOUND);
         }
     }
