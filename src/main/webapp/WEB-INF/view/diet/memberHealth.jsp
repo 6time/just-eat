@@ -10,17 +10,16 @@ pageEncoding="UTF-8" %>
       <link rel="stylesheet" href="/css/style.css" />
    </head>
    <body>
-   <h4>${member.name}님의 진단정보</h4>
+   <h4>${name}님의 진단정보</h4>
    <p>※ 목표까지 소요기간<br>
       ${health.goalWeek}주</p>
    <p>※ 하루동안 섭취해야할 칼로리<br>
       ${health.kcal}kcal</p>
-      <!-- <p>※ 탄수화물<br>
-                 ${carb}g</p>
-              <p>※ 단백질<br>
-                 ${protein}g</p>
-              <p>※ 지방<br>
-                 ${fat}g</p> -->
-
+   <p>※ 단백질<br>
+      ${health.proteinMin}g~${health.proteinMax}g</p>
+   <p>※ 탄수화물<br>
+      ${health.carbMin}g~${health.carbMax}g</p>
+   <p>※ 지방<br>
+      ${health.fatMin}g~${health.fatMax}g</p>
    </body>
 </html>
