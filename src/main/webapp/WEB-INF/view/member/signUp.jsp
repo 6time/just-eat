@@ -22,6 +22,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                <div class="member-title" style="font-size: 16px">
                   Just Eat 에 오신 것을 환영합니다.
                </div>
+               <div class="warning-msg" id="msg"></div>
                <input
                   class="member-input-text"
                   type="text"
@@ -38,7 +39,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                <input
                   class="member-input-text"
                   type="text"
-                  name="name"
+                  name="nickname"
                   placeholder="이름"
                />
                <input
@@ -78,5 +79,6 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             </div>
          </div>
       </form>
+      <script src="/js/app.js"></script>
    </body>
 </html>
