@@ -9,10 +9,36 @@
     <title>Document</title>
 </head>
 <style>
-    body{
-    margin: 0 auto;
-    width: 300px;
-}
+ body {
+                width: 500px;
+                margin-left:auto;
+                margin-right:auto;
+                
+            }
+            table{
+                white-space: nowrap;
+                overflow:hidden;
+                text-overflow:ellipsis;
+                border: 1px solid #666666;
+                border-collapse: collapse
+            }
+        
+            td  {
+                padding: 10px;
+                
+                
+                
+            }
+        th  {
+                background-color: #B3DBF2;
+                padding: 10px;
+                
+                
+                
+            }
+            tr{
+                border-bottom: 1px solid #666666;
+            }
 </style>
 <body>
 <h1>write</h1>
@@ -29,9 +55,6 @@
         <tr>
             <th>내용 : </th>
             <td><textarea id="article_text" name="article_text" cols="30" rows="10" placeholder="내용을 입력하세요." required></textarea></td>
-        </tr>
-        <tr>
-            <th></th>
         </tr>
         <tr>
             <td></td>
