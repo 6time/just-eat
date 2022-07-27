@@ -4,7 +4,9 @@ import agaig.justeat.member.annotation.MemberSignInCheck;
 import agaig.justeat.member.dto.MemberUpdateResponseDto;
 import agaig.justeat.member.dto.MemberSaveRequestDto;
 import agaig.justeat.member.dto.MemberUpdateRequestDto;
+import agaig.justeat.member.exception.SignInException;
 import agaig.justeat.member.service.MemberService;
+import agaig.justeat.member.util.MemberSha256;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 
 @Controller
 @RequiredArgsConstructor
@@ -35,9 +38,6 @@ public class MemberController {
     public String postSignIn(String email, String password, boolean rememberId, String toURL, HttpServletRequest request, HttpServletResponse response) {
 
         Long member_id = memberService.signIn(email, password);
-
-        Cookie memberCookie = new Cookie("member_id", member_id.toString());
-        response.addCookie(memberCookie);
 
         Cookie idCookie = new Cookie("email", email);
         if (!rememberId) {
@@ -65,22 +65,36 @@ public class MemberController {
     }
 
     @GetMapping("/kakao")
-    public String sns() {
-        return "/member/sns";
+    public String sns(@RequestParam(value = "code", required = false) String code, HttpSession session) {
+        String access_Token = memberService.getAccessToken(code);
+        HashMap<String, Object> userInfo = memberService.getUserInfo(access_Token);
+        String encryptPassword = null;
+        try {
+            encryptPassword = MemberSha256.encrypt(String.valueOf(userInfo.get("id")));
+            session.setAttribute("session", memberService.signIn((String) userInfo.get("email"), encryptPassword));
+            return "redirect:/";
+        } catch (SignInException e) {
+            MemberSaveRequestDto memberSaveRequestDto = new MemberSaveRequestDto();
+            memberSaveRequestDto.setEmail((String) userInfo.get("email"));
+            memberSaveRequestDto.setName((String) userInfo.get("nickname"));
+            memberSaveRequestDto.setPassword(encryptPassword);
+            memberSaveRequestDto.setGender((String) userInfo.get("gender"));
+            memberService.join(memberSaveRequestDto);
+            session.setAttribute("session", memberService.signIn((String) userInfo.get("email"), encryptPassword));
+            return "redirect:/";
+        }
     }
 
     @GetMapping("/logout")
-    public String logout(@CookieValue(value = "member_id") Cookie memberCookie, HttpSession session, HttpServletResponse response) {
-        memberCookie.setMaxAge(0);
-        memberCookie.setPath("/");
-        response.addCookie(memberCookie);
+    public String logout(HttpSession session) {
         session.invalidate();
         return "redirect:/";
     }
 
     @MemberSignInCheck
     @GetMapping("/info/{id}")
-    public String memberInfo(@PathVariable Long id, Model model) {
+    public String memberInfo(@PathVariable Long id, Model model, HttpSession session) {
+        memberService.verify(id, session);
         MemberUpdateResponseDto responseDto = memberService.findInfoById(id);
         model.addAttribute("updateMember", responseDto);
         return "/member/memberUpdate";
@@ -89,7 +103,12 @@ public class MemberController {
     @MemberSignInCheck
     @PostMapping("/info/{id}")
     public String update(@PathVariable Long id, String password, MemberUpdateRequestDto requestDto, Model model) {
-        memberService.passwordCheck(id, password);
+        try {
+            memberService.passwordCheck(id, password);
+        } catch (SignInException e) {
+            System.out.println("접근 권한이 필요합니다.");
+            return "redirect:/members/info/" + id + "?error=1";
+        }
         memberService.update(id, requestDto);
         MemberUpdateResponseDto responseDto = memberService.findInfoById(id);
         model.addAttribute("updateMember", responseDto);
