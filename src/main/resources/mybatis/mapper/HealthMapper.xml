@@ -3,14 +3,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="agaig.justeat.health.repository.HealthRepository">
+<mapper namespace="agaig.justeat.diet.repository.HealthRepository">
 
-    <insert id="insert" parameterType="agaig.justeat.health.domain.Health">
-        insert into health(member_id, health_flag, height, weight, goal, compare_weight, goal_week, kcal, protein, carb, fat)
-        values(#{member_id}, #{healthFlag}, #{height}, #{weight}, #{goal}, #{compareWeight}, #{goalWeek}, #{kcal}, #{protein}, #{carb}, #{fat})
+    <insert id="insert" parameterType="agaig.justeat.diet.domain.Health">
+        insert into health(member_id, health_flag, height, weight, goal, compare_weight, goal_week, kcal, protein_max, protein_min, carb_max, carb_min, fat_max, fat_min)
+        values(#{member_id}, #{healthFlag}, #{height}, #{weight}, #{goal}, #{compareWeight}, #{goalWeek}, #{kcal}, #{proteinMax}, #{proteinMin}, #{carbMax}, #{carbMin}, #{fatMax}, #{fatMin})
     </insert>
 
-    <select id="findHealth" parameterType="Long" resultType="agaig.justeat.health.domain.Health">
+    <select id="findHealth" parameterType="Long" resultType="agaig.justeat.diet.domain.Health">
         select * from health where member_id = #{member_id}
     </select>
 

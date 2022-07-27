@@ -15,12 +15,15 @@ CREATE TABLE `health` (
 	`height` DOUBLE	NULL,
 	`weight` DOUBLE	NULL,
 	`goal` DOUBLE NULL,
-	`compare_weight` VARCHAR(20)	NOT NULL,
+	`compare_weight` VARCHAR(20) NOT NULL,
 	`goal_week` INT NULL,
 	`kcal` INT NULL,
-	`protein` INT NULL,
-	`carb` INT NULL,
-	`fat` INT NULL
+	`protein_max` INT NULL,
+    `protein_min` INT NULL,
+	`carb_max` INT NULL,
+    `carb_min` INT NULL,
+	`fat_max` INT NULL,
+    `fat_min` INT NULL
 );
 
 CREATE TABLE `diets` (
