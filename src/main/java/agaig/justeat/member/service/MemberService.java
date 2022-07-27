@@ -51,7 +51,8 @@ public class MemberService {
 
     public void passwordCheck(Long member_id, String password) {
         Member member = memberRepository.findById(member_id);
-        if (!password.equals(member.getPassword())) {
+        String encryptPassword = MemberSha256.encrypt(password);
+        if (!encryptPassword.equals(member.getPassword())) {
             throw new SignInException("틀린 비밀번호 입니다.", ErrorCode.ADMIN_NOT_FOUND);
         }
     }

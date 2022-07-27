@@ -2,6 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"
 pageEncoding="UTF-8" %> <%@ taglib prefix="c"
 uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="error" value="${param.error == 1 ? '⚠️ 비밀번호가 일치하지 않습니다.' : '' }"/>
 <html lang="ko">
    <head>
       <meta charset="UTF-8" />
@@ -14,7 +15,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
          <div class="member-submit-box">
             <form
                class="member-form"
-               action="/members/${sessionScope.session}"
+               action="/members/info/${sessionScope.session}"
                method="post"
                onsubmit="return formCheck(this)"
             >
@@ -27,6 +28,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                <div class="member-title" style="font-size: 16px">
                   회원 정보 수정
                </div>
+               <div class="warning-msg" id="msg">${error}</div>
                <input
                   class="member-input-text"
                   type="text"
@@ -78,5 +80,6 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             </button>
          </div>
       </div>
+      <script src="/js/app.js"></script>
    </body>
 </html>
