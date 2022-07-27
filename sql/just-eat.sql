@@ -5,7 +5,7 @@
 	`name`	VARCHAR(100)	NOT NULL,
 	`phone`	VARCHAR(100)	NULL,
 	`address`	VARCHAR(100)	NULL,
-	`gender`	ENUM('man','woman')	NULL,
+	`gender`	ENUM('male','female')	NULL,
   	`birth`	INT	NULL
 );
 
