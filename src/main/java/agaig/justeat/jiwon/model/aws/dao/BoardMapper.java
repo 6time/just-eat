@@ -1,6 +1,7 @@
 package agaig.justeat.jiwon.model.aws.dao;
 
 import agaig.justeat.jiwon.domain.Articles;
+import agaig.justeat.jiwon.domain.Comments;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -18,5 +19,15 @@ public interface BoardMapper {
     void deleteList(Long article_id);
 
     void update(Articles articles);
+
+    void updateCnt(Long article_id); // 문제시 삭제
+
+    //댓글 기능
+    List<Comments> findAllComments(Long id);
+
+    void commentsWrite(Comments comments);
+
+    Comments findCommentsOne(Long id);
+
 
 }

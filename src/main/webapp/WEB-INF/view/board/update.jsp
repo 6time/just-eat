@@ -9,6 +9,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+<style>
+    body{
+    margin: 0 auto;
+    width: 300px;
+}
+</style>
 <body>
 <h1>update</h1>
 <form action="/boards/view/${Article.article_id}/update" method="post"> <!-- 수정 /boards -->

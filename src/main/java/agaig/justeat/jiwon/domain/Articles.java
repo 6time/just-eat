@@ -20,5 +20,6 @@ public class Articles {
     private Long member_id;
     private String article_writer;
     private Timestamp article_time; //타임스탬프 추가
+    private Long reNum; //조회수 증가
 
 }

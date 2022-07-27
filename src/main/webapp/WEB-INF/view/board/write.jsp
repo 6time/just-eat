@@ -8,6 +8,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+<style>
+    body{
+    margin: 0 auto;
+    width: 300px;
+}
+</style>
 <body>
 <h1>write</h1>
 <form action="/boards/write" method="post"> <!-- 수정 /boards-->
@@ -18,7 +24,7 @@
         </tr>
         <tr>
             <th>작성자 : </th>
-            <td><input type="hidden" readonly>${session.name}</td> <!-- 추가 -->
+            <td><input type="hidden" readonly>${Member.name}</td> <!-- 추가 -->
         </tr>
         <tr>
             <th>내용 : </th>
@@ -31,7 +37,6 @@
             <td></td>
             <td>
                 <input type="submit" value="등록">
-
                 <input type="button" value="취소" onclick="location.href='/boards'">
             </td>
         </tr>

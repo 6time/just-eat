@@ -1,44 +1,47 @@
-package agaig.justeat.health.service;
+package agaig.justeat.diet.service;
 
-import agaig.justeat.health.domain.Health;
-import agaig.justeat.health.repository.HealthRepository;
+import agaig.justeat.diet.domain.Health;
+import agaig.justeat.diet.repository.HealthRepository;
 import agaig.justeat.member.domain.Member;
+import agaig.justeat.member.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 @Service
 public class HealthService {
     private final HealthRepository healthRepository;
+    private final MemberRepository memberRepository;
 
     @Autowired
-    public HealthService(HealthRepository healthRepository) {
+    public HealthService(HealthRepository healthRepository, MemberRepository memberRepository) {
 
         this.healthRepository = healthRepository;
+        this.memberRepository = memberRepository;
     }
 
-    public Member findGender(String gender) {
-        Member member = healthRepository.findByGender(gender);
+    public Member findMember(Long id) {
+        Member member = memberRepository.findById(id);
         return member;
+    }
+
+    public Health findHealth(Long id) {
+        Health health = healthRepository.findHealth(id);
+        return health;
+    }
+
+    public void save(Health health,Member member) {
+        Calculation(health, member);
+        healthRepository.insert(health);
     }
 
     public void Calculation(Health health, Member member) {
         compareWeight(health);
         dailyKcal(health, member);
-
-    }
-
-    public void save(Health health,Member member,String gender) {
-        findGender(gender);
-        Calculation(health, member);
-        healthRepository.insert(health);
-    }
-
-    public List<Health> findAll() {
-        return healthRepository.findAll();
+        calculationPCF(health);
+        health.setHealthFlag(true);
     }
 
     public void compareWeight(Health health) {
@@ -92,20 +95,20 @@ public class HealthService {
         } else if(health.getCompareWeight().equals("증량")) {
             health.setKcal((int) (amr * bmr + 300.0));
         }
-        /*if (health.getKcal() == 1000 && health.getKcal() < 1000) {
+
+        if (health.getKcal() == 1000 || health.getKcal() < 1000) {
             health.setKcal(1000);
-        }*/
+        }
     }
 
-    public void protein() {
-
-    }
-
-    public void carb() {
-
-    }
-
-    public void fat() {
+    public void calculationPCF(Health health) {
+        int kcal = health.getKcal();
+        health.setProteinMax((int) (kcal * 0.4));
+        health.setProteinMin((int) (kcal * 0.3));
+        health.setCarbMax((int) (kcal * 0.55));
+        health.setCarbMin((int) (kcal * 0.45));
+        health.setFatMax((int) (kcal * 0.25));
+        health.setFatMin((int) (kcal * 0.1));
 
     }
 }

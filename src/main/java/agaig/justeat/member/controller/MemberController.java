@@ -22,9 +22,12 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    @MemberSignInCheck
     @GetMapping("")
-    public String getSignIn() {
+    public String getSignIn(HttpSession session) {
+        Object sessionAttribute = session.getAttribute("session");
+        if (sessionAttribute == null) {
+            return "/member/signIn";
+        }
         return "redirect:/";
     }
 
@@ -55,11 +58,11 @@ public class MemberController {
     }
 
     @PostMapping("signUp")
-    public String postSignUp(MemberSaveRequestDto requestDto) {
+    public String postSignUp(String nickname, MemberSaveRequestDto requestDto) {
+        requestDto.setName(nickname);
         memberService.join(requestDto);
         return "/member/signIn";
     }
-
 
     @GetMapping("/kakao")
     public String sns() {
@@ -76,7 +79,7 @@ public class MemberController {
     }
 
     @MemberSignInCheck
-    @GetMapping("/{id}")
+    @GetMapping("/info/{id}")
     public String memberInfo(@PathVariable Long id, Model model) {
         MemberUpdateResponseDto responseDto = memberService.findInfoById(id);
         model.addAttribute("updateMember", responseDto);
@@ -84,13 +87,12 @@ public class MemberController {
     }
 
     @MemberSignInCheck
-    @PostMapping("/{id}")
-    public String update(@PathVariable Long id, String password,MemberUpdateRequestDto requestDto, Model model) {
+    @PostMapping("/info/{id}")
+    public String update(@PathVariable Long id, String password, MemberUpdateRequestDto requestDto, Model model) {
         memberService.passwordCheck(id, password);
         memberService.update(id, requestDto);
         MemberUpdateResponseDto responseDto = memberService.findInfoById(id);
         model.addAttribute("updateMember", responseDto);
         return "/member/memberUpdate";
     }
-
 }
