@@ -26,7 +26,7 @@ public class SelfTestSaveRequestDto { //DTO 계층 간에 데이터교환을 위
         this.name=name;
     }
 
-    // SelfTestRequest DTO 로 받은 Member 객체를 Entity 화하여 저장하는 용도 / Client -> DB
+    // SelfTestSaveRequest DTO 로 받은 Member 객체를 Entity 화하여 저장하는 용도 / Client -> DB
     public SelfTest toEntity() { //builder 패턴을 통해 어떤 필드에 어떤 값을 넣어주는지 눈으로 확인 가능
         return SelfTest.builder()
                 .daykcal(daykcal)

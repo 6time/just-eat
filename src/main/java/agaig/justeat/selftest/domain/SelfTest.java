@@ -13,13 +13,16 @@ public class SelfTest {
     private int daykcal;
     private int dayweight;
     private int dayexercise;
+    
+    private String regDate;
 
     @Builder
-    public SelfTest(Long member_id, int daykcal, int dayweight, int dayexercise, String name) {
+    public SelfTest(Long member_id, int daykcal, int dayweight, int dayexercise, String name, String regDate) {
         this.member_id=member_id;
         this.daykcal=daykcal;
         this.dayweight=dayweight;
         this.dayexercise=dayexercise;
         this.name=name;
+        this.regDate=regDate;
     }
 }

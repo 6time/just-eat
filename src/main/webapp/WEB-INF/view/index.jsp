@@ -29,7 +29,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           <div class="member-title">안녕하세요. ${memberName} 님</div>
         <div class="member-title">Just Eat 에 오신 것을 환영합니다.</div>
         <a class="member-btn-a" href="<c:url value='/info/list'/>">공지사항</a>
-        <a class="member-btn-a" href="<c:url value='/selflogin'/>">셀프 테스트</a>
+        <a class="member-btn-a" href="<c:url value='/selftest'/>">셀프 테스트</a>
         <a class="member-btn-a" href="<c:url value='/boards'/>">게시판</a>
         <a class="member-btn-a" href="<c:url value='/healthlogin'/>">건강 정보</a>
         <c:if test="${sessionScope.session != null}">
