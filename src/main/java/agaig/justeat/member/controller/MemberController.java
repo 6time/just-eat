@@ -4,6 +4,7 @@ import agaig.justeat.member.annotation.MemberSignInCheck;
 import agaig.justeat.member.dto.MemberUpdateResponseDto;
 import agaig.justeat.member.dto.MemberSaveRequestDto;
 import agaig.justeat.member.dto.MemberUpdateRequestDto;
+import agaig.justeat.member.exception.SignInException;
 import agaig.justeat.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -80,7 +81,8 @@ public class MemberController {
 
     @MemberSignInCheck
     @GetMapping("/info/{id}")
-    public String memberInfo(@PathVariable Long id, Model model) {
+    public String memberInfo(@PathVariable Long id, Model model, HttpSession session) {
+        memberService.verify(id, session);
         MemberUpdateResponseDto responseDto = memberService.findInfoById(id);
         model.addAttribute("updateMember", responseDto);
         return "/member/memberUpdate";
@@ -89,7 +91,12 @@ public class MemberController {
     @MemberSignInCheck
     @PostMapping("/info/{id}")
     public String update(@PathVariable Long id, String password, MemberUpdateRequestDto requestDto, Model model) {
-        memberService.passwordCheck(id, password);
+        try {
+            memberService.passwordCheck(id, password);
+        } catch (SignInException e) {
+            System.out.println("접근 권한이 필요합니다.");
+            return "redirect:/members/info/" + id + "?error=1";
+        }
         memberService.update(id, requestDto);
         MemberUpdateResponseDto responseDto = memberService.findInfoById(id);
         model.addAttribute("updateMember", responseDto);

@@ -1,7 +1,6 @@
 package agaig.justeat.member.controller;
 
 import agaig.justeat.member.annotation.MemberSignInCheck;
-import agaig.justeat.member.domain.Member;
 import agaig.justeat.member.dto.MemberUpdateResponseDto;
 import agaig.justeat.member.exception.SignInException;
 import agaig.justeat.member.service.MemberService;
