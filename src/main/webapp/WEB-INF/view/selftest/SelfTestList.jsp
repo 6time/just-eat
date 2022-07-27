@@ -7,18 +7,18 @@ pageEncoding="UTF-8" %>
 
 <html lang="ko">
 <body>
-<div class="container">
-  <div>
+<link rel="stylesheet" href="/css/style.css" />
+<div class="member-out-box">
+  <center>
     <table summary="목록">
     <caption>
     </caption>
     <thead>
     <tr>
-    <th>#</th>
-    <th>이름</th>
-    <th>칼로리</th>
-    <th>몸무게</th>
-    <th>운동량</th>
+    <th><h3>날짜</h3></th>
+    <th><h3>칼로리</h3></th>
+    <th><h3>몸무게</h3></th>
+    <th><h3>운동량</h3></th>
     </tr>
     </thead>
 
@@ -31,23 +31,21 @@ pageEncoding="UTF-8" %>
     </c:if>
     <tr>
     <tbody>
-
-    <fieldset style="max-width: 10cm">
-            <legend><p style="font-size: large">회원님의 일일 변화 !</p></legend>
-            <%request.setCharacterEncoding("UTF-8");%>
+    <div class="member-btn-a">
+    <h1>${name}님의 일일 변화 !</h1>
+    </div>
+    <%request.setCharacterEncoding("UTF-8");%>
 
     <c:forEach var="result" items="${selfTests}" varStatus="status">
-    <td><c:out value="${result.reg_data}"/></td>
-    <td><c:out value="${result.name}"/></td>
-    <td><c:out value="${result.daykcal}"/></td>
-    <td><c:out value="${result.dayweight}"/></td>
-    <td><c:out value="${result.dayexercise}"/></td>
+    <td><c:out value="| ${result.regDate} | "/></td>
+    <td><c:out value="| ${result.daykcal}kcal | "/></td>
+    <td><c:out value="| ${result.dayweight}kg | "/></td>
+    <td><c:out value="| ${result.dayexercise}단계 |"/></td>
     </tr>
     </c:forEach>
-    </fieldset>
     </tbody>
     </table>
-  </div>
-</div> <!-- /container -->
+
+</div>
 </body>
 </html>>
