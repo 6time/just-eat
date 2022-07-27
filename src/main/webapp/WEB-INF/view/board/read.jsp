@@ -12,12 +12,39 @@
     <title>게시글 읽기</title>
 </head>
 <style>
-    body{
-    margin: 0 auto;
-    width: 300px;
-}
+    body {
+                width: 500px;
+                margin-left:auto;
+                margin-right:auto;
+                
+            }
+            table{
+                white-space: nowrap;
+                overflow:hidden;
+                text-overflow:ellipsis;
+                border: 1px solid #666666;
+                border-collapse: collapse
+            }
+        
+            td  {
+                padding: 10px;
+                
+                
+                
+            }
+        th  {
+                background-color: #B3DBF2;
+                padding: 10px;
+                
+                
+                
+            }
+            tr{
+                border-bottom: 1px solid #666666;
+            }
 </style>
 <body>
+<!-- 게시글 상세보기 -->
 <h1>read</h1>
 <form action="/boards/view/{Article.article_id}/update" method="get">
 <table>
@@ -33,9 +60,6 @@
         <th>내용 : </th>
        <td>${Article.article_text}</td>
    </tr>
-    <tr>
-        <th></th>
-    </tr>
     <tr>
         <td></td>
         <td>
