@@ -83,6 +83,9 @@
 > Mission 11 | Interceptor 를 통한 로그인 체크 기능
 >
 - 커스텀 어노테이션을 통한 로그인 체크뿐만 아니라 스프링 인터셉터를 통해 URL 기준으로도 체크 구현
+> Mission 12 | SNS Kakao 계정을 통한 로그인 및 회원가입 구현
+>
+- Kakao API 를 사용해 SNS 로그인 및 회원가입 구현
 ### 기유진
 
 > Mission 1 | 메인 페이지
