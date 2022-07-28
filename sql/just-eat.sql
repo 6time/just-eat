@@ -77,18 +77,24 @@ CREATE TABLE `carts` (
 );
 
 CREATE TABLE `articles` (
-	`article_id`	BIGINT	NOT NULL,
-	`article_title`	VARCHAR(100)	NOT NULL,
-	`article_text`	TEXT	NOT NULL,
-	`member_id`	BIGINT	NOT NULL
-);
+  `article_id` int NOT NULL AUTO_INCREMENT,
+  `article_title` varchar(100) NOT NULL,
+  `article_text` varchar(500) NOT NULL,
+  `member_id` int DEFAULT NULL,
+  `article_writer` varchar(45) DEFAULT NULL,
+  `article_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `reNum` bigint DEFAULT NULL,
+  PRIMARY KEY (`article_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `comments` (
-	`comment_id`	BIGINT	NOT NULL,
-	`comment_text`	TEXT	NOT NULL,
-	`member_id`	BIGINT	NOT NULL,
-	`article_id`	BIGINT	NOT NULL
-);
+  `comment_id` bigint NOT NULL AUTO_INCREMENT,
+  `comment_text` varchar(100) DEFAULT NULL,
+  `comment_writer` varchar(45) DEFAULT NULL,
+  `member_id` bigint DEFAULT NULL,
+  `article_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`comment_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `orders` (
 	`order_id`	BIGINT	NOT NULL,

@@ -43,6 +43,10 @@
                 text-decoration: none;
                 color: black;
         }
+        button{
+                background-color:#B3DBF2;
+                border-color:#f1f1f1;
+            }
 </style>
 <body>
     <h1>게시글</h1>
