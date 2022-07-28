@@ -31,7 +31,7 @@ pageEncoding="UTF-8" %>
     </c:if>
     <tr>
     <tbody>
-    <div class="member-btn-a">
+    <div class="member-btn-c">
     <h1>${name}님의 일일 변화 !</h1>
     </div>
     <%request.setCharacterEncoding("UTF-8");%>
