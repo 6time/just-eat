@@ -45,7 +45,7 @@
 </style>
 <body>
 <!-- 게시글 상세보기 -->
-<h1>read</h1>
+<h1>게시글 상세보기</h1>
 <form action="/boards/view/{Article.article_id}/update" method="get">
 <table>
     <tr>
@@ -68,13 +68,13 @@
             <input type="button" value="수정" onclick="location.href='/boards/view/${Article.article_id}/update'">
             <input type="button" value="삭제" onclick="location.href='/boards/view/${Article.article_id}/delete'">
         </c:if>
-            <input type="button" value="취소" onclick="location.href='/boards'">
+            <input type="button" value="목록으로" onclick="location.href='/boards'">
         </td>
     </tr>
 </table>
 </form>
 <!-- 댓글 기능 -->
-<h2>comments</h2>
+<h2>댓글</h2>
 <form action="/boards/view/${Article.article_id}/commentsWrite" method="post">
 <table>
     <tr>

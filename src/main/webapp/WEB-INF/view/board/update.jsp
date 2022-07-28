@@ -42,7 +42,7 @@
             }
 </style>
 <body>
-<h1>update</h1>
+<h1>게시글 수정</h1>
 <form action="/boards/view/${Article.article_id}/update" method="post"> <!-- 수정 /boards -->
     <table>
         <tr>
