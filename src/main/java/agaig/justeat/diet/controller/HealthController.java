@@ -26,21 +26,22 @@ public class HealthController {
         health.setMember_id((Long) session.getAttribute("session"));
         health = healthService.findHealth(health.getMember_id());
 
-        if (health.isHealthFlag()) {
+        if (health == null) {
+
+            return "redirect:/health/new";
+        } else {
             member.setMember_id(health.getMember_id());
             member = healthService.findMember(member.getMember_id());
             model.addAttribute("health", health);
             model.addAttribute("name", member.getName());
 
-            return "/health/memberHealth";
-        } else {
-            return "redirect:/new";
+            return "/diet/memberHealth";
         }
     }
 
     @GetMapping("new")
     public String healthTest() {
-        return "/health/healthTest";
+        return "/diet/healthTest";
     }
 
     @PostMapping("new")

@@ -29,11 +29,29 @@ public class DietController {
         health.setMember_id((Long) session.getAttribute("session"));
         health = healthService.findHealth(health.getMember_id());
 
-        if (health.isHealthFlag()) {
+        if (health == null) {
+            return "redirect:/health/new";
+        } else {
             diet.setDiet_id(health.getMember_id());
             dietService.save(product, health, diet);
             diet = dietService.findDiet(diet.getDiet_id());
             model.addAttribute("diet", diet);
+
+            Product product1 = dietService.findMonday(diet.getMonday());
+            Product product2 = dietService.findTuesday(diet.getTuesday());
+            Product product3 = dietService.findWednesday(diet.getWednesday());
+            Product product4 = dietService.findThursday(diet.getThursday());
+            Product product5 = dietService.findFriday(diet.getFriday());
+            Product product6 = dietService.findSaturday(diet.getSaturday());
+            Product product7 = dietService.findSunday(diet.getSunday());
+            model.addAttribute("product1", product1);
+            model.addAttribute("product2", product2);
+            model.addAttribute("product3", product3);
+            model.addAttribute("product4", product4);
+            model.addAttribute("product5", product5);
+            model.addAttribute("product6", product6);
+            model.addAttribute("product7", product7);
+
 
             member.setMember_id(health.getMember_id());
             member = healthService.findMember(member.getMember_id());
@@ -41,8 +59,6 @@ public class DietController {
             model.addAttribute("name", member.getName());
 
             return "/diet/diets";
-        } else {
-            return "redirect:/health/new";
         }
 
 

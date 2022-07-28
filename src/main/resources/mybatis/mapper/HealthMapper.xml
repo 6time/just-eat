@@ -6,8 +6,8 @@
 <mapper namespace="agaig.justeat.diet.repository.HealthRepository">
 
     <insert id="insert" parameterType="agaig.justeat.diet.domain.Health">
-        insert into health(member_id, health_flag, height, weight, goal, compare_weight, goal_week, kcal, protein_max, protein_min, carb_max, carb_min, fat_max, fat_min)
-        values(#{member_id}, #{healthFlag}, #{height}, #{weight}, #{goal}, #{compareWeight}, #{goalWeek}, #{kcal}, #{proteinMax}, #{proteinMin}, #{carbMax}, #{carbMin}, #{fatMax}, #{fatMin})
+        insert into health(member_id, height, weight, goal, compare_weight, goal_week, kcal_max, kcal_min, protein_max, protein_min, carb_max, carb_min, fat_max, fat_min)
+        values(#{member_id}, #{height}, #{weight}, #{goal}, #{compare_weight}, #{goal_week}, #{kcal_max}, #{kcal_min}, #{protein_max}, #{protein_min}, #{carb_max}, #{carb_min}, #{fat_max}, #{fat_min})
     </insert>
 
     <select id="findHealth" parameterType="Long" resultType="agaig.justeat.diet.domain.Health">
