@@ -60,7 +60,7 @@
             <td></td>
             <td>
                 <input type="submit" value="등록">
-                <input type="button" value="취소" onclick="location.href='/boards'">
+                <input type="button" value="목록으로" onclick="location.href='/boards'">
             </td>
         </tr>
     </table>

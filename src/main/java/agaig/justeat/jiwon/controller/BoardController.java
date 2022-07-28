@@ -5,7 +5,6 @@ import agaig.justeat.jiwon.domain.Articles;
 import agaig.justeat.jiwon.domain.Comments;
 import agaig.justeat.jiwon.service.BoardService;
 import agaig.justeat.member.annotation.MemberSignInCheck;
-import agaig.justeat.member.domain.Member;
 import agaig.justeat.member.dto.MemberUpdateResponseDto;
 import agaig.justeat.member.service.MemberService;
 import org.springframework.stereotype.Controller;
@@ -31,16 +30,18 @@ public class BoardController {
 
     }
 
+    // 게시글 리스트
     @GetMapping("")
     public String List(Model model) {
         List<Articles> articles = boardService.findAll();
-        model.addAttribute("Articles", articles); //boardService.getListPaging(cri) -> articles
+        model.addAttribute("Articles", articles);
 
         return "board/list";
     }
 
+
     @GetMapping("write")
-    public String writeArticle(HttpSession session, Member member,Model model) {
+    public String writeArticle(HttpSession session, Model model) {
         try {
             memberService.signInCheck(session);
         } catch (Exception e) {
@@ -51,36 +52,36 @@ public class BoardController {
         return "board/write";
     }
 
+    // 게시글 작성
     @PostMapping("write")
-    public String create(Articles articles, HttpSession session, Member member) { //HttpSession session 추가
-//        MemberUpdateResponseDto memberResponseDto = (MemberUpdateResponseDto) session.getAttribute("session");
-//        articles.setArticle_writer();
+    public String create(Articles articles, HttpSession session) {
         MemberUpdateResponseDto responseDto = memberService.findInfoById((Long) session.getAttribute("session"));
         articles.setMember_id(responseDto.getMember_id()); // 이상있으면 바로 삭제해야 할 추가
         articles.setArticle_writer(responseDto.getName());
         boardService.create(articles);
-
         return "redirect:/boards";
     }
 
+    // 게시글 상세보기
     @GetMapping("/view/{article_id}")
-    public String viewId(@PathVariable Long article_id, Model model,HttpSession session) { //Long reNum 문제시 삭제
+    public String viewId(@PathVariable Long article_id, Model model,HttpSession session) {
         Articles article = boardService.findOne(article_id);
         boardService.updateCnt(article_id);
         model.addAttribute("Article", article);
         List<Comments> comments = boardService.findAllComments(article_id);// 댓글 기능
         model.addAttribute("Comments", comments); // 댓글 기능
-        MemberUpdateResponseDto responseDto = memberService.findInfoById((Long) session.getAttribute("session"));
+        MemberUpdateResponseDto responseDto = null;
+        if (session.getAttribute("session") != null) {
+            responseDto = memberService.findInfoById((Long) session.getAttribute("session"));
+        }
         model.addAttribute("Member", responseDto);
         return "board/read";
     }
 
-    //댓글 기능
+    // 댓글 작성
     @MemberSignInCheck
     @PostMapping("/view/{article_id}/commentsWrite")
     public String commentsWrite(@PathVariable Long article_id, HttpSession session,Comments comments){
-//        MemberUpdateResponseDto memberResponseDto = (MemberUpdateResponseDto) session.getAttribute("session");
-//        Comments comments = boardService.findCommentsOne(article_id);
         MemberUpdateResponseDto responseDto = memberService.findInfoById((Long) session.getAttribute("session"));
         comments.setComment_writer(responseDto.getName());
         comments.setMember_id(responseDto.getMember_id());
@@ -89,7 +90,7 @@ public class BoardController {
         return "redirect:/boards/view/{article_id}";
     }
 
-
+    // 게시글 삭제
     @MemberSignInCheck
     @GetMapping("/view/{article_id}/delete")
     public String delete(@PathVariable Long article_id, HttpSession session) {
@@ -108,6 +109,7 @@ public class BoardController {
         return "board/update";
     }
 
+    // 게시글 수정
     @MemberSignInCheck
     @PostMapping("/view/{article_id}/update")
     public String update(Articles articles, HttpSession session) {

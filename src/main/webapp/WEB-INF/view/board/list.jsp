@@ -64,8 +64,8 @@
         </tr>
         </c:forEach>
       </table>
-      <a class="member-btn-a" href="/boards/write">글쓰기</a>
-      <a href="/">메인</a>
+      <button type="button" onclick="location.href='/boards/write'">글쓰기</button>
+      <button type="button" onclick="location.href='/'">메인화면</button>
 </body>
 </html>
            
