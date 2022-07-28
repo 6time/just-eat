@@ -13,9 +13,10 @@
 </head>
 <style>
     body {
-                width: 500px;
+                width: 500px; 
                 margin-left:auto;
                 margin-right:auto;
+                
                 
             }
             table{
@@ -23,12 +24,14 @@
                 overflow:hidden;
                 text-overflow:ellipsis;
                 border: 1px solid #666666;
-                border-collapse: collapse
+                border-collapse: collapse;
+                
+                
+                
             }
         
             td  {
                 padding: 10px;
-                
                 
                 
             }
@@ -42,6 +45,11 @@
             tr{
                 border-bottom: 1px solid #666666;
             }
+            .button{
+                background-color: #B3DBF2;
+                border-color:#f1f1f1;
+            }
+           
 </style>
 <body>
 <!-- 게시글 상세보기 -->
@@ -65,28 +73,28 @@
         <td>
         <!--수정/삭제 권한 부여-->
         <c:if test="${Article.member_id == session}">
-            <input type="button" value="수정" onclick="location.href='/boards/view/${Article.article_id}/update'">
-            <input type="button" value="삭제" onclick="location.href='/boards/view/${Article.article_id}/delete'">
+            <input class="button" type="button" value="수정" onclick="location.href='/boards/view/${Article.article_id}/update'">
+            <input class="button" type="button" value="삭제" onclick="location.href='/boards/view/${Article.article_id}/delete'">
         </c:if>
-            <input type="button" value="목록으로" onclick="location.href='/boards'">
+            <input class="button" type="button" value="목록으로" onclick="location.href='/boards'">
         </td>
     </tr>
 </table>
 </form>
 <!-- 댓글 기능 -->
 <h2>댓글</h2>
-<form action="/boards/view/${Article.article_id}/commentsWrite" method="post">
+<form action="/boards/view/${Article.article_id}/commentsWrite" method="post" autocomplete="off">
 <table>
     <tr>
         <th>${Member.name}</th>
-        <td><input type="text" placeholder="${comment}" id="comment_text" name="comment_text" ${disable}></td>
+        <td><input type="text" placeholder="${comment}" id="comment_text" name="comment_text" maxlength="30" ${disable}></td>
     </tr>
         <tr>
             <td>
 
             </td>
             <td>
-                <input type="submit" value="등록">
+                <input class="button" type="submit" value="등록">
             </td>    
         </tr>
 </table>
@@ -99,7 +107,7 @@
         <td> ${comments.comment_writer} </td>
         <td></td>
         <td> ${comments.comment_text}</td>
-    <!-- 댓글 삭제기능 권한 부여 -->
+    
         
     </tr>
     </c:forEach>
