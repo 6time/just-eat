@@ -11,6 +11,13 @@ pageEncoding="UTF-8"%>
    </head>
    <body>
       <form action="/health/new" method="post">
+        <div class="member-out-box">
+          <div class="member-submit-box">
+             <img
+               class="icon"
+               src="/img/just-eat-r-1280.png"
+               style="height: 120px"
+             />
          <p>키를 입력하세요.<br>
          <input type="number" id="health" name="height" placeholder="예) 160.0" step="0.1" min="100" max="300"></p>
 
@@ -21,6 +28,13 @@ pageEncoding="UTF-8"%>
          <input type="number" id="health" name="goal" placeholder="예) 40.0" step="0.1" min="1" max="200"></p>
 
          <b>평소 어떤 강도로 운동하시나요?</b><br>
+            <div class="select-gender" role="radio-group">
+                <input
+                    type="radio"
+                    id="health"
+                    name="exercise"
+                    onclick="document.querySelector('#name').value = 'man'"
+                /><label for="man">남성</label>
          <p><input type="radio" id="health" name="exercise" value="1.2">아주 가볍게<br>
             <font size="2">&nbsp; &nbsp; &nbsp;호흡에 변함이 없는 정도<br>
                 &nbsp; &nbsp; &nbsp;스트레칭</font></p>

@@ -40,22 +40,21 @@ public class HealthService {
     public void Calculation(Health health, Member member) {
         compareWeight(health);
         dailyKcal(health, member);
-        calculationPCF(health);
-        health.setHealthFlag(true);
+        calculationPCF(health, member);
     }
 
     public void compareWeight(Health health) {
         double weight = health.getWeight();
         double goal = health.getGoal();
         if(weight > goal) {
-            health.setCompareWeight("감량");
-            health.setGoalWeek((int)weight - (int)goal);
+            health.setCompare_weight("감량");
+            health.setGoal_week((int)weight - (int)goal);
         } else if(weight == goal) {
-            health.setCompareWeight("유지");
-            health.setGoalWeek((int)goal - (int)weight);
+            health.setCompare_weight("유지");
+            health.setGoal_week((int)goal - (int)weight);
         } else if(weight < goal) {
-            health.setCompareWeight("증량");
-            health.setGoalWeek((int)goal - (int)weight);
+            health.setCompare_weight("증량");
+            health.setGoal_week((int)goal - (int)weight);
         }
     }
 
@@ -87,28 +86,61 @@ public class HealthService {
     public void dailyKcal(Health health, Member member) {
         double amr = amr(health, member);
         double bmr = health.getExercise() + health.getExerciseNumber();
+        double kcal = amr * bmr;
 
-        if(health.getCompareWeight().equals("감량")) {
-            health.setKcal((int) (amr * bmr - 500.0));
-        } else if(health.getCompareWeight().equals("유지")) {
-            health.setKcal((int) (amr * bmr));
-        } else if(health.getCompareWeight().equals("증량")) {
-            health.setKcal((int) (amr * bmr + 300.0));
+        if(health.getCompare_weight().equals("감량")) {
+            health.setKcal_max((int) (kcal * 0.9));
+            health.setKcal_min((int) (kcal * 0.8));
+        } else if(health.getCompare_weight().equals("유지")) {
+            health.setKcal_max((int) (kcal * 0.9));
+            health.setKcal_min((int) (kcal * 0.8));
+        } else if(health.getCompare_weight().equals("증량")) {
+            health.setKcal_max((int) kcal + 1000);
+            health.setKcal_min((int) kcal + 500);
         }
 
-        if (health.getKcal() == 1000 || health.getKcal() < 1000) {
-            health.setKcal(1000);
+        if (health.getKcal_min() == 1000 || health.getKcal_min() < 1000) {
+            health.setKcal_min(1000);
+            health.setKcal_max(1200);
         }
     }
 
-    public void calculationPCF(Health health) {
-        int kcal = health.getKcal();
-        health.setProteinMax((int) (kcal * 0.4));
-        health.setProteinMin((int) (kcal * 0.3));
-        health.setCarbMax((int) (kcal * 0.55));
-        health.setCarbMin((int) (kcal * 0.45));
-        health.setFatMax((int) (kcal * 0.25));
-        health.setFatMin((int) (kcal * 0.1));
+    public void calculationPCF(Health health, Member member) {
+        protein(health);
+        fat(health);
+        carb(health);
+    }
 
+    public void protein(Health health){
+        double weight = health.getWeight();
+
+        if(health.getCompare_weight().equals("감량")) {
+            health.setProtein_max((int) (weight * 2.2));
+            health.setProtein_min((int) (weight * 1.6));
+        } else if(health.getCompare_weight().equals("유지")) {
+            health.setProtein_max((int) (weight * 2.2));
+            health.setProtein_min((int) (weight * 1.7));
+        } else if(health.getCompare_weight().equals("증량")) {
+            health.setProtein_max((int) (weight * 2.2));
+            health.setProtein_min((int) (weight * 1.8));
+        }
+    }
+
+    public void fat(Health health){
+        int kcal_min = health.getKcal_min();
+
+        health.setFat_max((int) (kcal_min * 0.3 / 9));
+        health.setFat_min((int) (kcal_min * 0.2 / 9));
+    }
+
+    public void carb(Health health){
+        int kcal_min = health.getKcal_min();
+        int p_max = health.getProtein_max();
+        int p_min = health.getProtein_min();
+        int f_max = health.getFat_max();
+        int f_min = health.getFat_min();
+
+        health.setCarb_max(kcal_min - ((p_min * 4) + (f_min * 9)));
+        health.setCarb_min(kcal_min - ((p_max * 4) + (f_max * 9)));
     }
 }

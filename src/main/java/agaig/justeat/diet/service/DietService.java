@@ -25,14 +25,15 @@ public class DietService {
     }
 
     public void matchingHealth(Product product, Health health, Diet diet) {
+        long[] id = new long[3];
         long[] productId = new long[7];
 
-        for (long i=0; i<7; i++) {
+        for (long i=0; i<3; i++) {
             do {
                 randomFindProduct(product);
+                id[(int) i] = product.getProduct_id();
             } while (compareProduct(product, health));
 
-            productId[(int) i] = product.getProduct_id();
         }
 
         diet.setMonday(productId[0]);
@@ -51,16 +52,18 @@ public class DietService {
     }
 
     public boolean compareProduct(Product p, Health h) {
-        int healthKcal = h.getKcal();
-        int healthMaxProtein = h.getProteinMax();
-        int healthMinProtein = h.getProteinMin();
-        int healthMaxCarb = h.getCarbMax();
-        int healthMinCarb = h.getCarbMin();
-        int healthMaxFat = h.getFatMax();
-        int healthMinFat = h.getFatMin();
+        int healthMaxKcal = h.getKcal_max();
+        int healthMinKcal = h.getKcal_min();
+        int healthMaxProtein = h.getProtein_max();
+        int healthMinProtein = h.getProtein_min();
+        int healthMaxCarb = h.getCarb_max();
+        int healthMinCarb = h.getCarb_min();
+        int healthMaxFat = h.getFat_max();
+        int healthMinFat = h.getFat_min();
         boolean result;
 
-        if(healthKcal > p.getKcal() && healthKcal == p.getKcal()
+        if(healthMaxKcal > p.getKcal() && healthMaxKcal == p.getKcal()
+           && healthMinKcal < p.getKcal() && healthMinKcal == p.getKcal()
            && healthMaxProtein > p.getProtein() && healthMaxProtein == p.getProtein()
            && healthMaxCarb > p.getCarb() && healthMaxCarb == p.getCarb()
            && healthMaxFat > p.getFat() && healthMaxFat == p.getFat()
@@ -79,4 +82,47 @@ public class DietService {
         Diet diet = dietRepository.findDiet(id);
         return diet;
     }
+
+    public Product findMonday(Long id) {
+        Product product1 = dietRepository.findProduct(id);
+
+        return product1;
+    }
+
+    public Product findTuesday(Long id) {
+        Product product2 = dietRepository.findProduct(id);
+
+        return product2;
+    }
+
+    public Product findWednesday(Long id) {
+        Product product3 = dietRepository.findProduct(id);
+
+        return product3;
+    }
+
+    public Product findThursday(Long id) {
+        Product product4 = dietRepository.findProduct(id);
+
+        return product4;
+    }
+
+    public Product findFriday(Long id) {
+        Product product5 = dietRepository.findProduct(id);
+
+        return product5;
+    }
+
+    public Product findSaturday(Long id) {
+        Product product6 = dietRepository.findProduct(id);
+
+        return product6;
+    }
+
+    public Product findSunday(Long id) {
+        Product product7 = dietRepository.findProduct(id);
+
+        return product7;
+    }
+
 }

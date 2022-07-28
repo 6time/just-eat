@@ -7,19 +7,18 @@ pageEncoding="UTF-8" %>
       <meta charset="UTF-8" />
       <link rel="icon" href="/img/just-eat-r-128.png" />
       <title>진단결과 | Just Eat</title>
-      <link rel="stylesheet" href="/css/style.css" />
    </head>
    <body>
    <h4>${name}님의 진단정보</h4>
    <p>※ 목표까지 소요기간<br>
-      ${health.goalWeek}주</p>
+      ${health.goal_week}주</p>
    <p>※ 하루동안 섭취해야할 칼로리<br>
-      ${health.kcal}kcal</p>
+      ${health.kcal_min}kcal~${health.kcal_max}kcal</p>
    <p>※ 단백질<br>
-      ${health.proteinMin}g~${health.proteinMax}g</p>
+      ${health.protein_min}g~${health.protein_max}g</p>
    <p>※ 탄수화물<br>
-      ${health.carbMin}g~${health.carbMax}g</p>
+      ${health.carb_min}g~${health.carb_max}g</p>
    <p>※ 지방<br>
-      ${health.fatMin}g~${health.fatMax}g</p>
+      ${health.fat_min}g~${health.fat_max}g</p>
    </body>
 </html>

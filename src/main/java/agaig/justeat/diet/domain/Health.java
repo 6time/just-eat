@@ -9,39 +9,39 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Health {
     private Long member_id;
-    private boolean healthFlag;
     private double height;
     private double weight;
     private double goal;
-    private String compareWeight;
-    private int goalWeek;
-    private int kcal;
-    private int proteinMax;
-    private int proteinMin;
-    private int carbMax;
-    private int carbMin;
-    private int fatMax;
-    private int fatMin;
+    private String compare_weight;
+    private int goal_week;
+    private int kcal_max;
+    private int kcal_min;
+    private int protein_max;
+    private int protein_min;
+    private int carb_max;
+    private int carb_min;
+    private int fat_max;
+    private int fat_min;
     private double exercise;
     private double exerciseNumber;
 
-    public Health(Long member_id,boolean healthFlag, double height, double weight, double goal, String compareWeight, int goalWeek,
-                  int kcal, int proteinMax, int proteinMin, int carbMax, int carbMin, int fatMax, int fatMin,
+    public Health(Long member_id, double height, double weight, double goal, String compare_weight, int goal_week,
+                  int kcal_max, int kcal_min, int protein_max, int protein_min, int carb_max, int carb_min, int fat_max, int fat_min,
                   double exercise, double exerciseNumber) {
         this.member_id = member_id;
-        this.healthFlag = healthFlag;
         this.height = height;
         this.weight = weight;
         this.goal = goal;
-        this.compareWeight = compareWeight;
-        this.goalWeek = goalWeek;
-        this.kcal = kcal;
-        this.proteinMax = proteinMax;
-        this.proteinMin = proteinMin;
-        this.carbMax = carbMax;
-        this.carbMin = carbMin;
-        this.fatMax = fatMax;
-        this.fatMin = fatMin;
+        this.compare_weight = compare_weight;
+        this.goal_week = goal_week;
+        this.kcal_max = kcal_max;
+        this.kcal_min = kcal_min;
+        this.protein_max = protein_max;
+        this.protein_min = protein_min;
+        this.carb_max = carb_max;
+        this.carb_min = carb_min;
+        this.fat_max = fat_max;
+        this.fat_min = fat_min;
         this.exerciseNumber = exerciseNumber;
         this.exercise = exercise;
 
