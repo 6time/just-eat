@@ -48,9 +48,17 @@ public class HealthController {
     public String save(HttpSession session, Member member, Health health) {
         member.setMember_id((Long) session.getAttribute("session"));
         health.setMember_id(member.getMember_id());
-        member = healthService.findMember(member.getMember_id());
-        healthService.save(health, member);
+        Health health1 = healthService.findHealth(health.getMember_id());
 
+        if (health1 != null) {
+            member = healthService.findMember(member.getMember_id());
+            healthService.calculation(health, member);
+            healthService.update(health);
+        } else {
+            member = healthService.findMember(member.getMember_id());
+            healthService.calculation(health, member);
+            healthService.save(health);
+        }
         return "redirect:/health";
     }
 

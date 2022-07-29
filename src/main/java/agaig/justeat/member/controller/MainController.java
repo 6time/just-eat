@@ -41,7 +41,13 @@ public class MainController {
     @MemberSignInCheck
     @GetMapping("/healthlogin")
     public String health() {
-        return "/health/healthTest";
+        return "redirect:/health";
+    }
+
+    @MemberSignInCheck
+    @GetMapping("/dietlogin")
+    public String diet() {
+        return "redirect:/diet";
     }
 
 

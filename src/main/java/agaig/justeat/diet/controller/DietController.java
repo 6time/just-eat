@@ -33,30 +33,47 @@ public class DietController {
             return "redirect:/health/new";
         } else {
             diet.setDiet_id(health.getMember_id());
-            dietService.save(product, health, diet);
             diet = dietService.findDiet(diet.getDiet_id());
-            model.addAttribute("diet", diet);
 
-            Product product1 = dietService.findMonday(diet.getMonday());
-            Product product2 = dietService.findTuesday(diet.getTuesday());
-            Product product3 = dietService.findWednesday(diet.getWednesday());
-            Product product4 = dietService.findThursday(diet.getThursday());
-            Product product5 = dietService.findFriday(diet.getFriday());
-            Product product6 = dietService.findSaturday(diet.getSaturday());
-            Product product7 = dietService.findSunday(diet.getSunday());
-            model.addAttribute("product1", product1);
-            model.addAttribute("product2", product2);
-            model.addAttribute("product3", product3);
-            model.addAttribute("product4", product4);
-            model.addAttribute("product5", product5);
-            model.addAttribute("product6", product6);
-            model.addAttribute("product7", product7);
+            if(diet == null) {
+                dietService.save(product, health);
 
+                diet = new Diet();
+                diet.setDiet_id(health.getMember_id());
+                diet = dietService.findDiet(diet.getDiet_id());
 
-            member.setMember_id(health.getMember_id());
-            member = healthService.findMember(member.getMember_id());
-            model.addAttribute("health", health);
-            model.addAttribute("name", member.getName());
+                Product product1 = dietService.findMonday(diet.getMonday());
+                Product product2 = dietService.findTuesday(diet.getTuesday());
+                Product product3 = dietService.findWednesday(diet.getWednesday());
+                Product product4 = dietService.findThursday(diet.getThursday());
+                Product product5 = dietService.findFriday(diet.getFriday());
+                model.addAttribute("product1", product1);
+                model.addAttribute("product2", product2);
+                model.addAttribute("product3", product3);
+                model.addAttribute("product4", product4);
+                model.addAttribute("product5", product5);
+
+                member.setMember_id(health.getMember_id());
+                member = healthService.findMember(member.getMember_id());
+                model.addAttribute("name", member.getName());
+            } else {
+                diet = dietService.findDiet(diet.getDiet_id());
+
+                Product product1 = dietService.findMonday(diet.getMonday());
+                Product product2 = dietService.findTuesday(diet.getTuesday());
+                Product product3 = dietService.findWednesday(diet.getWednesday());
+                Product product4 = dietService.findThursday(diet.getThursday());
+                Product product5 = dietService.findFriday(diet.getFriday());
+                model.addAttribute("product1", product1);
+                model.addAttribute("product2", product2);
+                model.addAttribute("product3", product3);
+                model.addAttribute("product4", product4);
+                model.addAttribute("product5", product5);
+
+                member.setMember_id(health.getMember_id());
+                member = healthService.findMember(member.getMember_id());
+                model.addAttribute("name", member.getName());
+            }
 
             return "/diet/diets";
         }
