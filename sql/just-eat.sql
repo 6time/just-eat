@@ -101,6 +101,15 @@ CREATE TABLE `orders` (
 	`member_id`	BIGINT	NOT NULL
 );
 
+CREATE TABLE `selftest` (
+  `daykcal` int DEFAULT NULL,
+  `dayweight` int DEFAULT NULL,
+  `dayexercise` int DEFAULT NULL,
+  `member_id` bigint DEFAULT NULL,
+  `regDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `name` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 ALTER TABLE `members` ADD CONSTRAINT `PK_MEMBERS` PRIMARY KEY (
 	`member_id`
 );
