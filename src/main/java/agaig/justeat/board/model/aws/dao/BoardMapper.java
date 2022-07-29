@@ -1,7 +1,7 @@
-package agaig.justeat.jiwon.model.aws.dao;
+package agaig.justeat.board.model.aws.dao;
 
-import agaig.justeat.jiwon.domain.Articles;
-import agaig.justeat.jiwon.domain.Comments;
+import agaig.justeat.board.domain.Articles;
+import agaig.justeat.board.domain.Comments;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

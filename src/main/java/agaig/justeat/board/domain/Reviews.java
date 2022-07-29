@@ -1,4 +1,4 @@
-package agaig.justeat.jiwon.domain;
+package agaig.justeat.board.domain;
 
 public class Reviews {
     private Long review_id;

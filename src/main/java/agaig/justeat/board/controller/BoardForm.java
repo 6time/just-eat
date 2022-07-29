@@ -1,4 +1,4 @@
-package agaig.justeat.jiwon.controller;
+package agaig.justeat.board.controller;
 
 public class BoardForm {
     private String article_title;

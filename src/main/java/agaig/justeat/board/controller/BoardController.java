@@ -1,9 +1,9 @@
-package agaig.justeat.jiwon.controller;
+package agaig.justeat.board.controller;
 
 
-import agaig.justeat.jiwon.domain.Articles;
-import agaig.justeat.jiwon.domain.Comments;
-import agaig.justeat.jiwon.service.BoardService;
+import agaig.justeat.board.domain.Articles;
+import agaig.justeat.board.domain.Comments;
+import agaig.justeat.board.service.BoardService;
 import agaig.justeat.member.annotation.MemberSignInCheck;
 import agaig.justeat.member.dto.MemberUpdateResponseDto;
 import agaig.justeat.member.service.MemberService;

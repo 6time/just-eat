@@ -1,8 +1,8 @@
-package agaig.justeat.jiwon.service;
+package agaig.justeat.board.service;
 
-import agaig.justeat.jiwon.domain.Articles;
-import agaig.justeat.jiwon.domain.Comments;
-import agaig.justeat.jiwon.model.aws.dao.BoardMapper;
+import agaig.justeat.board.domain.Articles;
+import agaig.justeat.board.domain.Comments;
+import agaig.justeat.board.model.aws.dao.BoardMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
