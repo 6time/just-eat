@@ -38,6 +38,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         <a class="member-btn-a" href="<c:url value='/selflogin'/>">셀프 테스트</a>
         <a class="member-btn-a" href="<c:url value='/boards'/>">게시판</a>
         <a class="member-btn-a" href="<c:url value='/healthlogin'/>">건강 정보</a>
+        <a class="member-btn-a" href="<c:url value='/dietlogin'/>">금주의 식단</a>
         <c:if test="${sessionScope.session != null}">
           <a
             class="member-btn-a"
