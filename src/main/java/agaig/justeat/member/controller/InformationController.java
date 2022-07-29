@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
@@ -67,9 +68,12 @@ public class InformationController {
     }
 
     @GetMapping("/delete/{member_id}/{info_id}")
-    public String infoDelete(@PathVariable Long member_id, @PathVariable Long info_id, HttpSession session) {
+    public String infoDelete(@PathVariable Long member_id, @PathVariable Long info_id, HttpSession session, RedirectAttributes attributes) {
         memberService.verify(member_id, session);
-        informationService.remove(info_id, member_id);
+        Long remove = informationService.remove(info_id, member_id);
+        if (remove == 1) {
+            attributes.addFlashAttribute("msg", "DEL_OK");
+        }
         return "redirect:/info/list";
     }
 }
