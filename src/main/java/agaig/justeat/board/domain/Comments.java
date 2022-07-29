@@ -1,4 +1,4 @@
-package agaig.justeat.jiwon.domain;
+package agaig.justeat.board.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

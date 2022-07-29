@@ -3,9 +3,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="agaig.justeat.jiwon.model.aws.dao.BoardMapper">
+<mapper namespace="agaig.justeat.board.model.aws.dao.BoardMapper">
 
-    <select id="findAll" resultType="agaig.justeat.jiwon.domain.Articles">
+    <select id="findAll" resultType="agaig.justeat.board.domain.Articles">
         SELECT *
         FROM articles
         order by article_id
@@ -18,7 +18,7 @@
         VALUES(#{article_title},#{article_text},#{member_id},#{article_writer},0);
     </insert>
 
-    <select id="findOne" resultType="agaig.justeat.jiwon.domain.Articles">
+    <select id="findOne" resultType="agaig.justeat.board.domain.Articles">
         SELECT * FROM articles where article_id=#{article_id} ;
     </select>
 
@@ -42,7 +42,7 @@
     </update>
 
     <!-- 댓글 기능 -->
-    <select id="findAllComments" resultType="agaig.justeat.jiwon.domain.Comments">
+    <select id="findAllComments" resultType="agaig.justeat.board.domain.Comments">
         SELECT *
         FROM comments
         WHERE article_id = #{article_id};
