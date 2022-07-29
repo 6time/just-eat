@@ -6,9 +6,14 @@
 <mapper namespace="agaig.justeat.diet.repository.DietRepository">
 
     <insert id="insert" parameterType="agaig.justeat.diet.domain.Diet">
-        insert into diets(diet_id, monday, tuesday, wednesday, thursday, friday, saturday, sunday)
-        values(#{diet_id}, #{monday}, #{tuesday}, #{wednesday}, #{thursday}, #{friday}, #{saturday}, #{sunday})
+        insert into diets(diet_id, monday, tuesday, wednesday, thursday, friday)
+        values(#{diet_id}, #{monday}, #{tuesday}, #{wednesday}, #{thursday}, #{friday})
     </insert>
+
+    <update id="update" parameterType="agaig.justeat.diet.domain.Diet">
+        update diets set monday = #{monday}, tuesday = #{tuesday}, wednesday = #{wednesday}, thursday = #{thursday}, friday = #{friday}
+        where diet_id = #{diet_id};
+    </update>
     
     <select id="findLastProduct" resultType="agaig.justeat.diet.domain.Product">
         select * FROM products ORDER BY product_id DESC LIMIT 1;
@@ -19,7 +24,7 @@
     </select>
 
     <select id="findDiet" parameterType="Long" resultType="agaig.justeat.diet.domain.Diet">
-        select * from products where diet_id = #{diet_id}
+        select * from diets where diet_id = #{diet_id}
     </select>
 
 </mapper>

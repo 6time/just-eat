@@ -32,12 +32,15 @@ public class HealthService {
         return health;
     }
 
-    public void save(Health health,Member member) {
-        Calculation(health, member);
+    public void save(Health health) {
         healthRepository.insert(health);
     }
 
-    public void Calculation(Health health, Member member) {
+    public void update(Health health) {
+        healthRepository.update(health);
+    }
+
+    public void calculation(Health health, Member member) {
         compareWeight(health);
         dailyKcal(health, member);
         calculationPCF(health, member);

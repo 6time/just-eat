@@ -14,17 +14,14 @@ public class Diet {
     private long wednesday;
     private long thursday;
     private long friday;
-    private long saturday;
-    private long sunday;
 
-    public  Diet(Long diet_id, long monday, long tuesday, long wednesday, long thursday, long friday, long saturday, long sunday) {
+
+    public  Diet(Long diet_id, long monday, long tuesday, long wednesday, long thursday, long friday) {
         this.diet_id = diet_id;
         this.monday = monday;
         this.tuesday = tuesday;
         this.wednesday = wednesday;
         this.thursday = thursday;
         this.friday = friday;
-        this.saturday = saturday;
-        this.sunday = sunday;
     }
 }

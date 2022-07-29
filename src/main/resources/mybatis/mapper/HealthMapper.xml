@@ -10,6 +10,11 @@
         values(#{member_id}, #{height}, #{weight}, #{goal}, #{compare_weight}, #{goal_week}, #{kcal_max}, #{kcal_min}, #{protein_max}, #{protein_min}, #{carb_max}, #{carb_min}, #{fat_max}, #{fat_min})
     </insert>
 
+    <update id="update" parameterType="agaig.justeat.diet.domain.Health">
+        update health set height = #{height}, weight = #{weight}, goal = #{goal}, compare_weight = #{compare_weight}, goal_week = #{goal_week}, kcal_max = #{kcal_max}, kcal_min = #{kcal_min}, protein_max = #{protein_max}, protein_min = #{protein_min}, carb_max = #{carb_max}, carb_min = #{carb_min}, fat_max = #{fat_max}, fat_min = #{fat_min}
+        where member_id = #{member_id};
+    </update>
+
     <select id="findHealth" parameterType="Long" resultType="agaig.justeat.diet.domain.Health">
         select * from health where member_id = #{member_id}
     </select>
