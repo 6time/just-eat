@@ -33,9 +33,8 @@ public class InformationService {
 
     public InfoResponseDto read(Long info_id) {
         Information information = informationRepository.select(info_id);
-        InfoResponseDto responseDto = new InfoResponseDto(information);
         informationRepository.increaseViewCnt(info_id);
-        return responseDto;
+        return new InfoResponseDto(information);
     }
 
     public List<Information> getPage(Map<String, Integer> map) {
