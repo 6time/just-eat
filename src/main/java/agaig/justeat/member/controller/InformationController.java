@@ -43,13 +43,17 @@ public class InformationController {
         List<Information> boardList = informationService.getPage(map);
         model.addAttribute("infoBoardList", boardList);
         model.addAttribute("pageHandler", pageHandler);
+        model.addAttribute(page);
+        model.addAttribute(pageSize);
         return "information/infoList";
     }
 
     @GetMapping("/{info_id}")
-    public String infoRead(@PathVariable Long info_id, Model model) {
+    public String infoRead(@PathVariable Long info_id, Integer page, Integer pageSize, Model model) {
         InfoResponseDto responseDto = informationService.read(info_id);
         model.addAttribute("info", responseDto);
+        model.addAttribute(page);
+        model.addAttribute(pageSize);
         return "/information/info";
     }
 

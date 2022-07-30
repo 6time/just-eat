@@ -28,23 +28,23 @@ uri="http://java.sun.com/jstl/fmt_rt"%>
               </tr>
             </thead>
             <tbody>
-              <c:forEach var="board" items="${infoBoardList}">
+              <c:forEach var="boardDto" items="${infoBoardList}">
                 <tr>
-                  <td>${board.info_id}</td>
+                  <td>${boardDto.info_id}</td>
                   <td class="article-body-title">
-                    <a href="<c:url value='/info/${board.info_id}'/>"
-                      >${board.title}</a
+                    <a href="<c:url value='/info/${boardDto.info_id}?page=${pageHandler.page}&pageSize=${pageHandler.pageSize}'/>"
+                      >${boardDto.title}</a
                     >
                   </td>
-                  <td class="article-body-author">${board.writer}</td>
+                  <td class="article-body-author">${boardDto.writer}</td>
                   <td>
                     <fmt:formatDate
-                      value="${board.reg_date}"
+                      value="${boardDto.reg_date}"
                       pattern="yyyy-MM-dd"
                       type="date"
                     />
                   </td>
-                  <td>${board.view_cnt}</td>
+                  <td>${boardDto.view_cnt}</td>
                   <td>추천</td>
                 </tr>
               </c:forEach>
