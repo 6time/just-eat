@@ -2,8 +2,6 @@ package agaig.justeat.member.interceptor;
 
 import agaig.justeat.member.exception.ErrorCode;
 import agaig.justeat.member.exception.SignInException;
-import agaig.justeat.member.service.MemberService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
