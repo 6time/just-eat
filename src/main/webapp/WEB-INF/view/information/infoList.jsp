@@ -81,5 +81,9 @@ uri="http://java.sun.com/jstl/fmt_rt"%>
         </div>
       </div>
     </div>
+    <script>
+        let msg = "${param.msg}";
+        if(msg == "DEL_OK") alert("성공적으로 삭제되었습니다.");
+    </script>
   </body>
 </html>
