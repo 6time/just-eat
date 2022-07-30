@@ -13,10 +13,10 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <div class="box">
       <div class="article-box">
         <form
-          action="<c:url value='/info/write/${sessionScope.session}'/>"
+          action="<c:url value='/info/modify/${info.member_id}'/>"
           method="post"
         >
-          <div class="member-title">공지사항 작성</div>
+          <div class="member-title">공지사항 수정</div>
           <div class="nav"></div>
           <div class="member">
             <input
@@ -29,7 +29,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
               name="content"
               placeholder="공지사항 내용"
             />
-            <button class="member-btn-a" type="submit">공지사항 등록</button>
+            <button class="member-btn-a" type="submit">공지사항 수정</button>
             <a class="member-btn-b" href="/info/list"> 목록으로 돌아가기 </a>
           </div>
         </form>

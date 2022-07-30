@@ -17,13 +17,14 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         <div class="nav"></div>
         <div class="member">
         <form action="" method="">
+          <input type="text" name="member_id" value="${info.member_id}"/>
           <div class="member-title">${info.title}</div>
           <div class="member-title">${info.content}</div>
           <c:if test="${sessionScope.session!=null}">
-            <a class="member-btn-a" href="<c:url value='/info/delete/${member_id}/${info_id}'/>"
+            <a class="member-btn-a" href="<c:url value='/info/${info.member_id}/${info.info_id}'/>"
               >공지사항 수정</a
             >
-            <a class="member-btn-a" id="remove-btn" href="<c:url value='/info/delete/${sessionScope.session.member_id}/${info.info_id}'/>"
+            <a class="member-btn-a" id="remove-btn" href="<c:url value='/info/delete/${sessionScope.session}/${info.info_id}'/>"
               >공지사항 삭제</a
             >
           </c:if>
@@ -40,7 +41,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         $('#remove-btn').on("click", function(){
                 if(!confirm("정말로 삭제하시겠습니까?")) return;
                 let form = $('#form');
-                form.attr("action", "<c:url value='/info/delete/${sessionScope.session.member_id}/${info.info_id}'/>?page=${page}&pageSize=${pageSize}"
+                form.attr("action", "<c:url value='/info/delete/${sessionScope.session}/${info.info_id}'/>?page=${page}&pageSize=${pageSize}"
                 form.attr("method", "post");
                 form.submit();
                 });

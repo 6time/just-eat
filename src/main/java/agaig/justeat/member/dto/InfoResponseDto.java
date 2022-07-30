@@ -16,6 +16,7 @@ public class InfoResponseDto {
     private Date reg_date;
     private Long view_cnt;
     private Long comment_cnt;
+    private Long member_id;
 
     public InfoResponseDto(Information information) {
         this.Info_id = information.getInfo_id();
@@ -25,5 +26,6 @@ public class InfoResponseDto {
         this.reg_date = information.getReg_date();
         this.view_cnt = information.getView_cnt();
         this.comment_cnt = information.getComment_cnt();
+        this.member_id = information.getMember_id();
     }
 }

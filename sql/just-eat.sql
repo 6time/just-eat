@@ -53,8 +53,8 @@ CREATE TABLE `information` (
 	`writer`	VARCHAR(100)	NOT NULL,
 	`title`	VARCHAR(100)	NOT NULL,
 	`content`	TEXT	NOT NULL,
-	`reg_date`	DATE	NOT NULL	DEFAULT now(),
-	`up_date`	DATE	NOT NULL	DEFAULT now(),
+	`reg_date`	DATETIME	NOT NULL	DEFAULT now(),
+	`up_date`	DATETIME	NOT NULL	DEFAULT now(),
 	`view_cnt`	BIGINT	NOT NULL	DEFAULT 0,
 	`comment_cnt`	BIGINT	NOT NULL	DEFAULT 0,
 	`member_id`	BIGINT	NOT NULL

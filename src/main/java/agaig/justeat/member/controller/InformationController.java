@@ -5,6 +5,7 @@ import agaig.justeat.member.domain.Information;
 import agaig.justeat.member.domain.PageHandler;
 import agaig.justeat.member.dto.InfoResponseDto;
 import agaig.justeat.member.dto.InfoSaveRequestDto;
+import agaig.justeat.member.dto.InfoUpdateRequestDto;
 import agaig.justeat.member.dto.MemberUpdateResponseDto;
 import agaig.justeat.member.service.InformationService;
 import agaig.justeat.member.service.MemberService;
@@ -75,5 +76,12 @@ public class InformationController {
             attributes.addFlashAttribute("msg", "DEL_OK");
         }
         return "redirect:/info/list";
+    }
+
+    @GetMapping("/modify/{member_id}/{info_id}")
+    public String modify(@PathVariable Long member_id, @PathVariable Long info_id, HttpSession session, InfoUpdateRequestDto requestDto) {
+        memberService.verify(member_id, session);
+
+        return "/info/infoModify";
     }
 }
