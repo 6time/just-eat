@@ -16,6 +16,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .addPathPatterns("/info/write/*");
         registry.addInterceptor(new MemberVerifyInterceptor())
                 .addPathPatterns("/info/modify/*")
-                .addPathPatterns("/info/delete/*");
+                .addPathPatterns("/info/delete/*")
+                .addPathPatterns("/info/*");
     }
 }
