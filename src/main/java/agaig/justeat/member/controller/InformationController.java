@@ -82,10 +82,10 @@ public class InformationController {
         return "redirect:/info/list";
     }
 
+    @MemberSignInCheck
     @GetMapping("/modify/{member_id}/{info_id}")
     public String modify(@PathVariable Long member_id, @PathVariable Long info_id, HttpSession session, InfoUpdateRequestDto requestDto) {
         memberService.verify(member_id, session);
-
         return "/info/infoModify";
     }
 }
